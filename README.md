@@ -1,9 +1,9 @@
 ﻿# Carbonio
 
-Vitor de Ávila Pimentel - ProjetoBase\templates\main\pages\index.html
-Pedro Galvão Linhares - ProjetoBase\templates\main\pages\carrinho.html
-Bernardo Almeida Machado - ProjetoBase\templates\main\pages\store.html
-Raquel Garcia Neri - ProjetoBase\templates\main\pages\contato.html
+1. Vitor de Ávila Pimentel - ProjetoBase\templates\main\pages\index.html
+2. Pedro Galvão Linhares - ProjetoBase\templates\main\pages\carrinho.html
+3. Bernardo Almeida Machado - ProjetoBase\templates\main\pages\store.html
+4. Raquel Garcia Neri - ProjetoBase\templates\main\pages\contato.html
 
 # Alterando o Número da Porta de Saída
 
