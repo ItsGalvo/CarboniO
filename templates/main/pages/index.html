@@ -1,28 +1,59 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base_2.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/static/img/favicon.svg" type="image/x-icon">
-    <link rel="stylesheet" href="/static/lib/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/lib/bootstrap-icons/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/static/css/estilos.css">
-    <title>SeuSite.com :: Em Construção</title>
-</head>
+{% block subtitulo %}Página Inicial{% endblock %}
 
-<body class="d-flex flex-column justify-content-center min-vh-100">
-    <main class="container">
-        <div class="row">
-            <div class="col-12">
-                <p class="text-center"><i class="bi bi-cone-striped" style="font-size: 196px;"></i></p>
-                <h1 class="display-1 text-center">
-                    EM CONSTRUÇÃO
-                </h1>
+{% block conteudo %}
+
+
+
+<main class="body_index min-vh-100">
+    <nav class="navbar text-black bg-green p-3">
+        <div class="container">
+            <div class="row w-100 align-items-center">
+                <div class="col-2">
+                    
+                </div>
+                <div class="col-7">
+                    <div class="d-flex flex-column justify-content-center gap-2">
+                        <form action="/cadastrarnews" method="post">
+                            <div class="text-start">
+                                <div class="input-group">
+                                    <input type="email" class="form-control bg-beige border-beige rounded-start-2"
+                                        placeholder="Digite o termo da busca aqui" id="busca" />
+                                    <button class="btn btn-beige" type="submit">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <nav class="nav justify-content-between fs-5">
+                            <a class="nav-link text-white py-0" href="/store">Ofertas</a>
+                            <a class="nav-link text-white py-0" href="/">Juntar Pontos</a>
+                            <a class="nav-link text-white py-0" href="/">Comece Aqui</a>
+                            <a class="nav-link text-white py-0" href="/contato">Contato</a>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-2">
+                    
+                </div>
+                <div class="col-1">
+                
+                </div>
             </div>
         </div>
-    </main>
-    <script src="/static/lib/bootstrap/bootstrap.bundle.min.js"></script>
-</body>
+    </nav>
+    <div class="img">
+        <img src="/static/img/carbonioindex.png" alt="">
 
-</html>
+    </div>
+    <div class="enter_button">
+        <a href="/store">
+
+            <button>Entrar</button>
+        </a>
+
+    </div>
+</main>
+
+{% endblock %}

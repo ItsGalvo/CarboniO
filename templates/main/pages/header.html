@@ -1,0 +1,56 @@
+<header class="row">
+
+    <nav class="navbar text-black bg-green p-3">
+        <div class="container">
+            <div class="row w-100 align-items-center">
+                <div class="col-2">
+                    <div class="text-center">
+                        <a class="" href="/">
+                            <img src="/static/img/logo_carbonio.svg" alt="logotipo" height="80px">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="d-flex flex-column justify-content-center gap-2">
+                        <form action="/cadastrarnews" method="post">
+                            <div class="text-start">
+                                <div class="input-group">
+                                    <input type="email" class="form-control bg-beige border-beige rounded-start-2"
+                                        placeholder="Digite o termo da busca aqui" id="busca" />
+                                    <button class="btn btn-beige" type="submit">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <nav class="nav justify-content-between fs-5">
+                            <a class="nav-link text-black py-0" href="/store">Ofertas</a>
+                            <a class="nav-link text-black py-0" href="/">Juntar Pontos</a>
+                            <a class="nav-link text-black py-0" href="/">Comece Aqui</a>
+                            <a class="nav-link text-black py-0" href="/contato">Contato</a>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <nav class="nav flex-column justify-content-center gap-2">
+                        <a class="nav-link text-black py-0" href="/">
+                            <i class="bi bi-person"></i>
+                            Olá, {Usuário}!
+                        </a>
+                        <a class="nav-link text-black py-0" href="/">
+                            <i class="bi bi-coin"></i>
+                            30 créditos
+                        </a>
+                    </nav>
+                </div>
+                <div class="col-1">
+                    <div class="d-flex flex-column">
+                        <a class="nav-link text-black" href="/">
+                            <i class="bi bi-basket fs-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
