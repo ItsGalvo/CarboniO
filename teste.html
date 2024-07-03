@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Frutas</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .gallery img {
+      max-width: 100px;
+      margin: 10px;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="buttons">
+      <button type="button" class="btn btn-primary" onclick="goBack()">Voltar</button>
+      <button type="button" class="btn btn-success">Adicionar Produto</button>
+    </div>
+    <div class="gallery">
+      <img src="link_to_image1.jpg" alt="Fruta 1">
+      <img src="link_to_image2.jpg" alt="Fruta 2">
+      <img src="link_to_image3.jpg" alt="Fruta 3">
+      <img src="link_to_image4.jpg" alt="Fruta 4">
+      <img src="link_to_image5.jpg" alt="Fruta 5">
+      <img src="link_to_image6.jpg" alt="Fruta 6">
+      <img src="link_to_image7.jpg" alt="Fruta 7">
+      <img src="link_to_image8.jpg" alt="Fruta 8">
+      <img src="link_to_image9.jpg" alt="Fruta 9">
+    </div>
+  </div>
+
+  <script>
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
