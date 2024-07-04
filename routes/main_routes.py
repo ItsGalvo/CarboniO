@@ -8,27 +8,27 @@ from util.templates import obter_jinja_templates
 router = APIRouter()
 templates = obter_jinja_templates("templates/main")
 
-@router.get("/")
+@router.get("/pages/")
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/index.html", view_model)
 
-@router.get("/contato")
+@router.get("/pages/contato")
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/contato.html", view_model)
 
-@router.get("/store")
+@router.get("/pages/store")
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/store.html", view_model)
 
-@router.get("/teste")
+@router.get("/pages/teste")
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/teste.html", view_model)
 
-@router.get("/carrinho")
+@router.get("/pages/carrinho")
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/carrinho.html", view_model)
