@@ -2,29 +2,14 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/static/img/favicon.svg" type="image/x-icon">
+    <link rel="icon" href="/static/img/logo preta.svg" type="image/x-icon">
     <link rel="stylesheet" href="/static/lib/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/static/lib/bootstrap-icons/font/bootstrap-icons.min.css">
-    <title>Base CarboniO</title>
+    <link rel="stylesheet" href="/static/css/estilos.css">
+    <title>Carbonio :: {% block subtitulo %}{% endblock %}</title>
     <style>
-        .navbar.bg-green {
-            background-color: #c1edad !important;
-        }
-
-        footer.bg-dark-green {
-            background-color: #00241B !important;
-        }
-
-        .bg-beige {
-            background-color: #fbfbf6 !important;
-        }
-
-        input.border-beige {
-            border-color: #fbfbf6 !important;
-        }
-
         .btn-beige {
             --bs-btn-bg: #fbfbf6 !important;
             --bs-btn-border-color: #fbfbf6 !important;
@@ -35,11 +20,9 @@
     </style>
 </head>
 
-<body class="d-flex flex-column min-vh-100 bg-beige">
-    {% include "header.html" %}
+<body class="d-flex flex-column min-vh-100">
     {% block conteudo %}
     {% endblock %}
-    {% include "footer.html" %}
     <script src="/static/lib/bootstrap/bootstrap.bundle.min.js"></script>
 </body>
 </html>
