@@ -1,0 +1,39 @@
+{% extends "pages/base.html" %}
+
+{% block subtitulo %}Entre em contato{% endblock %}
+
+{% block conteudo %}
+
+
+
+<main>
+    <div class="content">
+        <h2>Entre em contato</h2>
+        <hr>
+        <div class="form w-50">
+            <form action="" class="col-12">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nome" placeholder=" ">
+                    <label for="nome">Nome Completo</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" placeholder=" ">
+                    <label for="email">E-mail</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="telefone" placeholder=" ">
+                    <label for="telefone">Telefone</label>
+                </div>
+                <div class="form-floating">
+                    <textarea name="mensagem" id="mensagem" class="form-control" style="height: 120px" placeholder=" "></textarea>
+                    <label for="mensagem">Mensagem</label>
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-danger btn-lg">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
