@@ -48,7 +48,6 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/carrinho.html", view_model)
 
-
 @router.get("/perfil")
 def get_root(request: Request):
     view_model = {"request": request}
