@@ -1,7 +1,7 @@
 ﻿# Carbonio
 
 1. Vitor de Ávila Pimentel - ProjetoBase\templates\main\pages\index.html
-2. Pedro Galvão - ProjetoBase\templates\main\pages\carrinho.html
+2. Pedro Galvão 1 - ProjetoBase\templates\main\pages\carrinho.html
 3. Bernardo Almeida Machado - ProjetoBase\templates\main\pages\store.html
 4. Raquel Garcia Neri - ProjetoBase\templates\main\pages\contato.html
 
