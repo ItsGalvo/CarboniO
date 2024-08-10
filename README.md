@@ -1,7 +1,11 @@
 ﻿# Carbonio
 
 1. Vitor de Ávila Pimentel - ProjetoBase\templates\main\pages\index.html
-2. Pedro Galvão 1 - ProjetoBase\templates\main\pages\carrinho.html
+<<<<<<< HEAD
+2. Pedro Galvão Linhares - ProjetoBase\templates\main\pages\carrinho.html
+=======
+2. Pedro Galvão Linhares - ProjetoBase\templates\main\pages\carrinho.html
+>>>>>>> 10cb2f2382941f2cee15f0b6870ba5e7ccced44c
 3. Bernardo Almeida Machado - ProjetoBase\templates\main\pages\store.html
 4. Raquel Garcia Neri - ProjetoBase\templates\main\pages\contato.html
 
