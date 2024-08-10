@@ -18,10 +18,10 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/contato.html", view_model)
 
-@router.get("/loja")
+@router.get("/store")
 def get_root(request: Request):
     view_model = {"request": request}
-    return templates.TemplateResponse("pages/loja.html", view_model)
+    return templates.TemplateResponse("pages/store.html", view_model)
 
 @router.get("/login")
 def get_root(request: Request):
