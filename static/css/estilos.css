@@ -59,19 +59,10 @@ hr {
 
 }
 
-.body_index img {
-    position: absolute;
-    left: 20%;
-    top: 35%;
-    max-width: 100%;
-    height: auto;
-}
+
 
 .body_index .enter_button button {
     background-color: #8fc866;
-    position: absolute;
-    left: 40%;
-    bottom: 10%;
     font-family: Arial, Helvetica, sans-serif;
     padding: 5px;
     border-radius: 5px;
