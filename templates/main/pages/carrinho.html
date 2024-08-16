@@ -1,102 +1,58 @@
 {% extends "pages/base.html" %}
 
-{% block subtitulo %}Entre em contato{% endblock %}
+{% block subtitulo %}Carrrinho{% endblock %}
 
 {% block conteudo %}
 
-    <style>
-        body {
-            background-color: #eef3e3;
-        }
-
-        .item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ccc;
-            padding: 20px 0;
-        }
-
-        .item:last-child {
-            border-bottom: none;
-        }
-
-        .item img {
-            max-width: 100px;
-            margin-right: 20px;
-        }
-
-        .item-info {
-            flex: 1;
-            display: flex;
-            align-items: center;
-        }
-
-        .item-info div {
-            margin-right: 20px;
-        }
-
-        .item-details {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .finalizar-compra {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 20px;
-        }
-
-        .finalizar-compra button {
-            background-color: #77b947;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .finalizar-compra button:hover {
-            background-color: #6da03f;
-        }
-    </style>
+<link rel="stylesheet" href="/static/css/estilos.css">
 
 <main>
+    <div class="container mt-5 mb-5">
+        <h2>Sua cestinha</h2>
+    </div>
+    <hr>
     <div class="container">
-        <div class="item">
-            <div class="item-info">
-                <img src="/static/img/DG.png" alt="Creatina">
-                <div>
-                    <h3>15% off em creatinas</h3>
-                    <p class="item-details">
-                        Creatina é um nutriente envolvido na produção de energia que abastece as células musculares. A suplementação de creatina em geral é realizada por quem visa aumentar a capacidade muscular e suas funções.
-                    </p>
-                </div>
+        <div class="row d-flex justify-content-center align-items-center mt-5">
+            <div class="col-2 d-flex justify-content-center">
+                <img src="/static/img/DG.png" alt="DG Suplementos" title="DG Suplementos">
             </div>
-            <div class="item-qtd-preco">
-                <div>QTD</div>
-                <div>Preço</div>
+            <div class="col-8">
+                <h3>15% off em creatinas</h3>
+                <p>
+                    Creatina é um nutriente envolvido na produção de energia que abastece as células musculares. A
+                    suplementação de creatina em geral é realizada por quem visa aumentar a capacidade muscular e suas
+                    funções.
+                </p>
             </div>
-        </div>
-
-        <div class="item">
-            <div class="item-info">
-                <img src="/static/img/nike.png" alt="Nike">
-                <div>
-                    <h3>10% off em qualquer produto</h3>
-                    <p class="item-details">
-                        10% de desconto em qualquer produto da loja Nike.
-                    </p>
-                </div>
-            </div>
-            <div class="item-qtd-preco">
-                <div>QTD</div>
-                <div>Preço</div>
+            <div class="col-2 d-flex justify-content-center ">
+                <p>QTD <br> Preço</p>
             </div>
         </div>
-
-        <div class="finalizar-compra">
-            <button>Finalizar Compra</button>
+        <hr>
+        <div class="row d-flex justify-content-center align-items-center mt-3">
+            <div class="col-2 d-flex justify-content-center">
+                <img src="/static/img/nike.png" alt="Nike" title="Nike">
+            </div>
+            <div class="col-8">
+                <h3>10% off em qualquer produto</h3>
+                <p>
+                    10% de desconto em qualquer produto da loja Nike.
+                </p>
+            </div>
+            <div class="col-2 d-flex justify-content-center">
+                <p>QTD <br> Preço</p>
+            </div>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-end gap-3">
+            <a href="/ofertas">
+                <div class="btn btn-success">
+                    Continuar comprando
+                </div>
+            </a>
+            <div class="btn btn-success align-content-end">
+                Finalizar Compra
+            </div>
         </div>
     </div>
 </main>

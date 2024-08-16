@@ -1,4 +1,4 @@
-.page-link {
+/*.page-link {
     color: var(--bs-danger);
     background-color: var(--bs-white);
     border: 1px solid var(--bs-danger);
@@ -22,18 +22,17 @@
     vertical-align: middle;
     text-align: center;
     white-space: nowrap;
-}
+}*/
 
 
 
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #fbfbf6;
+    background-color: #eef3e3;
+    
 }
 
-.content {
+/*.content {
     padding: 20px;
     background-color: #f6ffe3;
 }
@@ -51,7 +50,7 @@ body {
 hr {
     border: 2px solid black;
 }
-
+*/
 .body_index {
     background-image: url("/static/img/index_verde.png");
     background-size: cover;
@@ -187,15 +186,3 @@ hr {
     text-align: center;
 }
 
-.stores {
-    display: grid;
-    grid-template-columns: repeat(3, 5fr);
-    gap: 20px;
-}
-
-
-
-.store {
-    width: 30%;
-    display: inline-block;
-}
