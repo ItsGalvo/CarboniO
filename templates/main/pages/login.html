@@ -1,75 +1,57 @@
-<style>
-    body {
-        background-color: #00241B;
-        color: white;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .login-container {
-        display: flex;
-        justify-content: space-between;
-        background-color: #00241b;
-        border-radius: 8px;
-        padding: flex;
-        max-width: 800px;
-        width: 100%;
-    }
-    .info {
-        max-width: 400px;
-    }
-    .login-box {
-        background-color: white;
-        color: black;
-        border-radius: 8px;
-        padding: 20px;
-        width: 300px;
-        text-align: center;
-    }
-    button{
-        background-color: #77b947;
-        color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        width: 100%;
-        font-size: 16px;
-    }
-    
-    button:hover {
-        background-color: #6da03f;
-    }
-</style>
-<body>
-    <div class="login-container">
-        <div class="info">
-            <h1><img src="static/img/carbonio branco.png"></h1>
-            <p>Somos um programa de pontos. Isso significa que você pode economizar reciclando através dos nossos centros de coleta verificados. Seus pontos valem descontos, produtos e muito mais.</p>
-        </div>
-        <div class="login-box">
-            <h2>Fazer login como:</h2>
-            <p>Escolha se quer fazer login como empresa ou como consumidor.</p>
-            <br>
-            <div class="enter_button">
-                <a href="/loginempresa1">
-                    <button>Empresa</button>
-                </a>
-            </div>
-            <br>
-            <br>
-            <div class="enter_button">
-                <a href="/loginusuario1">
-                    <button>Consumidor</button>
-                </a>
-            </div>
+<!DOCTYPE html>
+<html lang="pt-br">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/img/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/static/lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/lib/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/static/css/estilos.css">
+    <title>Base para telas de login</title>
+</head>
+
+<body class="loginbody">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="container ">
+            <div class="row d-flex align-items-center">
+                <div class="col"></div>
+                <div class="col-sm-12 col-md-4 col-lg-3 justify-content-center">
+                    <img src="static/img/carbonio branco.png" alt="" class="w-100">
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-3 align-items-center loginbox">
+                    <div class="d-flex justify-content-center mt-5">
+                        <h3>Fazer login como:</h3>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <p>Escolha se quer fazer login como empresa ou como consumidor</p>
+
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="/loginempresa1" class=" w-75">
+                            <button type="button" class="btn btn-success w-100 mt-3"> Empresa</button>
+                        </a>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a href="/loginusuario1" class=" w-75">
+                            <button type="button" class="btn btn-success w-100 mt-3 mb-5"> Consumidor</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
+            <div class="row d-flex align-items-center">
+                <div class="col"></div>
+                <div class="col-sm-12 col-md-4 col-lg-3 justify-content-end logintext">
+                    <p>Somos um programa de pontos. Isso significa que você pode economizar reciclando através dos
+                    nossos
+                    centros de coleta verificados. Seus pontos valem descontos, produtos e muito mais.</p>
+                </div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
         </div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
+</html>
