@@ -3,57 +3,40 @@
 {% block subtitulo %}Loja{% endblock %}
 
 {% block conteudo %}
-<style>
-    body {
-        background-color: #eef3e3;
-    }
 
-    .storeimg{
-        border-radius: 100px;
-    }
+<link rel="stylesheet" href="/static/css/estilos.css">
 
-    h3{
-        color: white;
-    }
-
-    img{
-        border-radius: 5px;
-    }
-
-    .seta{
-        font-size: 50px;
-        color: black;
-    }
-</style>
 <main>
-    <div class="container d-flex mt-3 justify-content-between">
-        <div class="mt-4">
+    <div class="container mt-3 d-flex justify-content-between align-items-center">
+        <div>
             <a href="/ofertas" class="text-decoration-none">
-                <i class="seta bi bi-arrow-left"></i>
+                <i class="seta bi bi-arrow-left text-dark fs-1"></i>
             </a>
         </div>
-        <div class="d-flex mt-5 ms-3 justify-content-between">
+        <div>
             <h2>DG Suplementos</h2>
         </div>
-        <img class="storeimg" src="/static/img/DG.png" alt="">
+        <div>
+            <img class=" rounded-circle " src="/static/img/DG.png" alt="">
+        </div>
     </div>
     <hr>
     <div class="container">
         <div class="row">
             <div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 d-flex align-items-stretch gap-4">
                 <a href="/paginaproduto" class="text-decoration-none">
-                    <div class="card text-center bg-dark mt-3 mb-3">
-                        <img src="/static/img/creatina.png" alt="">
+                    <div class="card text-center text-light bg-dark mt-3 mb-3">
+                        <img src="/static/img/creatina.png" alt="" class=" rounded-1">
                         <h3>15% off em creatina</h3>
                     </div>
                 </a>
                 <a href="/paginaproduto" class="text-decoration-none">
-                    <div class="card text-center bg-dark mt-3 mb-3">
-                        <img src="/static/img/pré treino.png" alt="">
+                    <div class="card text-center text-light bg-dark mt-3 mb-3">
+                        <img src="/static/img/pré treino.png" alt="" class=" rounded-1">
                         <h3>5% off em pré treino</h3>
                     </div>
                 </a>
-                    
+
             </div>
         </div>
     </div>
