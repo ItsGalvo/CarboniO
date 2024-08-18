@@ -43,6 +43,24 @@ body {
     
 }
 
+/* Página comeceaqui*/
+
+.body_comeceaqui{
+    background-image: url('/static/img/comeceaqui.png');
+    background-size: cover;      
+}
+.icon-circle {
+    background-color: #6cdb8f;
+    border-radius: 50%;
+    padding: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+.step {
+    background-color: #a4e1b7;
+}
+
+
 /*.content {
     padding: 20px;
     background-color: #f6ffe3;
