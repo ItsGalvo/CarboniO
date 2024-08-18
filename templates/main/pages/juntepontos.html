@@ -4,61 +4,30 @@
 
 {% block conteudo %}
 
-    <style>
-        body {
-            background-color: #eef3e3;
-        }
+<link rel="stylesheet" href="/static/css/estilos.css">
 
-        .container-custom {
-            background-color: #eef3e3;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-        }
-
-        .header-text {
-            font-size: 35px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .sub-text {
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        .highlight-text {
-            color: #77b947;
-            font-weight: bold;
-            margin-bottom: 10px;
-            font-size: 30px;
-        }
-
-        .map-placeholder {
-            background-color: #e6e6e6;
-            height: 200px;
-            border-radius: 5px;
-        }
-    </style>
 <body>
-    <div class="container container-custom">
+    <div class="container mt-5 mb-5">
+        <h2>Juntar pontos</h2>
+    </div>
+    <hr>
+    <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <p class="header-text">Junte pontos</p>
-                <hr>
-                <p class="sub-text">Ganhe pontos ao utilizar nossos serviços e troque por benefícios exclusivos.</p>
+            <div class="col-md-8 fs-5">
+                <p>Ganhe pontos ao utilizar nossos serviços e troque por benefícios exclusivos.</p>
                 <br><br>
-                <p class="highlight-text">Encontre um centro perto de você</p>
-                <p class="sub-text">Utilize o mapa ao lado para encontrar o centro de coleta mais próximo e comece a juntar seus pontos.</p>
+                <h2 class=" text-success">Encontre um centro perto de você</h2>
+                <p class="sub-text">Utilize o mapa ao lado para encontrar o centro de coleta mais próximo e comece a
+                    juntar seus pontos.</p>
             </div>
             <div class="col-md-4">
-                <br><BR><br><br>
-                <div class="map-placeholder">
-                    <!-- colocar o mapa -->
+                <div>
+                    <img src="/static/img/mapa.png" alt="" class=" rounded-2">
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
 {% endblock %}
