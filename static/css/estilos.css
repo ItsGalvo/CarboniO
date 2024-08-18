@@ -51,6 +51,17 @@ body {
     background-color: #a4e1b7;
 }
 
+/* Página perfilempresa*/
+
+.body_perfilempresa{
+    background-image: url("/static/img/fundo usuario.png");
+    background-size: cover;
+}
+
+.profile_header{
+    background-color: #2d3d30;
+}
+
 
 /*.content {
     padding: 20px;
