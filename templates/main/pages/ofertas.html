@@ -4,15 +4,7 @@
 
 {% block conteudo %}
 
-<style>
-    body {
-        background-color: #eef3e3;
-    }
-
-    img{
-        border-radius: 5px;
-    }
-</style>
+<link rel="stylesheet" href="/static/css/estilos.css">
 
 <main>
     <div class="container mt-5 mb-5">
@@ -22,21 +14,21 @@
     <div class="container">
         <div class="row">
             <div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 d-flex align-items-stretch gap-4">
-                <div class="card text-center bg-light">
-                    <img src="/static/img/adidas.png" alt="">
-                </div>
-
-                <div class="card text-center bg-light">
-                    <img src="/static/img/nike.png" alt="">
-                </div>
-
-                <a href="/store">
-                    <div class="card text-center bg-light">
-                        <img src="/static/img/DG.png" alt="">
+                <a href="">
+                    <div class="card border-2 border-black">
+                        <img src="/static/img/adidas.png" alt="">
                     </div>
-
                 </a>
-            
+                <a href="">
+                    <div class="card border-2 border-black">
+                        <img src="/static/img/nike.png" alt="">
+                    </div>
+                </a>
+                <a href="/store">
+                    <div class="card border-2 border-black">
+                        <img src="/static/img/DG.png" alt="" class=" rounded-2">
+                    </div>
+                </a>
             </div>
         </div>
     </div>
