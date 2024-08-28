@@ -1,108 +1,55 @@
-<style>
-    body {
-        background-color: #00241B;
-        color: white;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .login-container {
-        display: flex;
-        justify-content: space-between;
-        background-color: #00241b;
-        border-radius: 8px;
-        padding: flex;
-        max-width: 800px;
-        width: 100%;
-    }
-    .info {
-        max-width: 400px;
-    }
-    .login-box {
-        background-color: white;
-        color: black;
-        border-radius: 8px;
-        padding: 20px;
-        width: 300px;
-        text-align: center;
-    }
-    .login-box button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    
-    .container {
-        background-color: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        width: 300px;
-    }
-    
-    h2 {
-        font-size: 24px;
-        color: #333;
-        margin-bottom: 10px;
-    }
-    
-    p {
-        font-size: 14px;
-        color: #ffffff;
-        margin-bottom: 20px;
-    }
-    .corpo {
-        font-size: 14px;
-        color: #000000;
-        margin-bottom: 20px;
-    }
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 14px;
-        box-sizing: border-box;
-    }
-    
-    button{
-        background-color: #77b947;
-        color: white;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        width: 100%;
-        font-size: 16px;
-    }
-    
-    button:hover {
-        background-color: #6da03f;
-    }
-    
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/static/img/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/static/lib/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/lib/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/static/css/estilos.css">
+    <title>Base para telas de login</title>
 </head>
-<body>
-    <div class="info">
-        <h1><img src="static/img/carbonio branco.png"></h1>
-        <p>Somos um programa de pontos. Isso significa que você pode economizar reciclando através dos nossos centros de coleta verificados. Seus pontos valem descontos, produtos e muito mais.</p>
-    </div>
-    <div class="container">
-        <h2>Crie sua conta</h2>
-        <p class="corpo">Vamos começar a criar sua conta, preencha os dados abaixo:</p>
-        <input type="text" placeholder="Nome completo">
-        <input type="text" placeholder="CPF">
-        <input type="text" placeholder="Email">
-        <div class="button">
-            <a href="/loginusuario2">
-                <button>Continuar</button>
-            </a>
+
+<body class="loginbody">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="container ">
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="col-sm-12 col-md-4 col-lg-3 justify-content-center">
+                    <img src="static/img/carbonio branco.png" alt="" class="w-100">
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-3 text-center bg-light rounded-3">
+                    <div class=" mt-3">
+                        <h3>Crie sua conta</h3>
+                    </div>
+                    
+                        <p>Vamos começar a criar sua conta, preencha os dados abaixo:</p>
+                    
+                        <form action="" class="col-12 mb-3">
+                            <div class="form mb-3">
+                                <input type="text" class="form-control" id="nome" placeholder="Nome Fantasia">
+                            </div>
+                            <div class="form mb-3">
+                                <input type="text" class="form-control" id="email" placeholder="CNPJ">
+                            </div>
+                            <div class="form mb-3 ">
+                                <input type="email" class="form-control" id="telefone" placeholder="Email">
+                            </div>
+                            <a href="/loginusuario2" class=" mt-3">
+                                <button type="button" class="btn btn-success w-75">Continuar</button>
+                            </a>
+                        </form>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center mt-3">
+                <div class="col-sm-12 col-md-8 col-lg-6 text-white text-center">
+                    <p>Somos um programa de pontos. Isso significa que você pode economizar reciclando através dos
+                    nossos
+                    centros de coleta verificados. Seus pontos valem descontos, produtos e muito mais.</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>
+
 </html>
-
-

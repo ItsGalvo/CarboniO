@@ -25,13 +25,21 @@
 }*/
 
 
-.loginbody{
-    background-color: #00241B;
-}
+
 
 body {
     background-color: #eef3e3;
     
+}
+
+/*login*/
+
+.loginbody{
+    background-color: #00241B;
+}
+
+.criarcontaempresabody{
+    background-color: #355F3C;
 }
 
 /* Página comeceaqui*/
