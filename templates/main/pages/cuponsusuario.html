@@ -1,0 +1,44 @@
+{% extends "pages/base.html" %}
+
+{% block subtitulo %}Cupons{% endblock %}
+
+{% block conteudo %}
+
+<link rel="stylesheet" href="/static/css/estilos.css">
+
+<main>
+    <div class="container mt-3 d-flex justify-content-between align-items-center">
+        <div>
+            <a href="/perfil" class="text-decoration-none">
+                <i class="seta bi bi-arrow-left text-dark fs-1"></i>
+            </a>
+        </div>
+        <div>
+            <h2>Meus cupons</h2>
+        </div>
+        <div class="">
+            <img class=" rounded-circle w-50 " src="/static/img/perfil_usuario.png" alt="">
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-6 col-md-7 col-sm-9 d-flex align-items-stretch gap-4">
+                <a href="" class="text-decoration-none">
+                    <div class="card text-center text-white bg-dark mt-3 mb-3">
+                        <img src="/static/img/creatina.png" alt="" class=" rounded-1">
+                        <h3>15% off em creatina</h3>
+                    </div>
+                </a>
+                <a href="" class="text-decoration-none">
+                    <div class="card text-center text-white bg-dark mt-3 mb-3">
+                        <img src="/static/img/adidas_cupon.png" alt="" class=" rounded-1">
+                        <h3>15% off em qualquer produto na loja oficial</h3>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

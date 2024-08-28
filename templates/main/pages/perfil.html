@@ -1,86 +1,54 @@
 {% extends "pages/base.html" %}
 
-{% block subtitulo %}Perfil do usuário{% endblock %}
+{% block subtitulo %}Perfil do Usuário{% endblock %}
 
 {% block conteudo %}
 
-    <style>
-        body {
-            background-image: url("/static/img/fundo usuario.png");
-            background-size: cover;
-            background-position: center;
-        }
-        .profile-header {
-            background-color: #2d3d30;
-            padding: 20px;
-            border-radius: 10px;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
-        .profile-header img {
-            border-radius: 50%;
-            margin-right: 50px;
-            width: 100px;
-            height: 100px;
-        }
-        .profile-header h5 {
-            margin: 0;
-        }
-        .icon-box {
-            text-align: center;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-        .icon-box img {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 10px;
-        }
-        .icon-box p {
-            margin: 0;
-            font-weight: bold;
-        }
-    </style>
-</head>
-<body>
+<link rel="stylesheet" href="/static/css/estilos.css">
+<style>
+    body {
+        background-image: url("/static/img/fundo usuario.png");
+        background-size: cover;
+    }
+</style>
 
+<body>
     <div class="container mt-5">
-        <!-- Cabeçalho do Perfil -->
-        <div class="profile-header mb-4">
-            <img src="static/img/foto.svg" alt="foto">
-            <div>
-                <h5>Nome</h5>
+        <div class="container d-flex justify-content-center mb-4 rounded-4 profile_header">
+            <div class="col-4 col-lg-2 text-center mb-3 mt-3">
+                <img src="static/img/foto.svg" alt="foto" class="w-50">
+            </div>
+            <div class="col-8 col-lg-10 text-white mb-3 mt-3">
+                <h5>Nome do usuário</h5>
                 <p>email</p>
                 <a href="/editarperfil" class="text-white">Editar perfil ></a>
             </div>
         </div>
-
-        <!-- Ícones do Corpo -->
         <div class="row text-center">
-            <div class="col-md-3">
-                <div class="icon-box">
-                    <img src="static/img/cupom.svg" alt="Meus Cupons">
-                    <p>Meus cupons</p>
+            <div class="col bg-white bg-opacity-75 rounded-4 ms-3 me-3">
+                <div class=" mt-3 mb-3">
+                    <a href="/cuponsusuario" class="text-decoration-none text-dark">
+                        <img src="static/img/cupom.svg" alt="Meus cupons" class="w-50">
+                        <h4>Meus cupons</h4>
+                    </a>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="icon-box">
-                    <img src="static/img/estatisticas.svg" alt="Estatísticas">
-                    <p>Estatísticas</p>
+            <div class="col bg-white bg-opacity-75 rounded-4 ms-3 me-3">
+                <div class="mt-3 mb-3">
+                    <img src="static/img/estatisticas.svg" alt="Estatísticas" class="w-50">
+                    <h4>Estatísticas</h4>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="icon-box">
-                    <img src="static/img/mensagens.svg" alt="Mensagens">
-                    <p>Mensagens</p>
+            <div class="col bg-white bg-opacity-75 rounded-4 ms-3 me-3">
+                <div class="mt-3 mb-3">
+                    <img src="static/img/mensagens.svg" alt="Mensagens" class="w-50">
+                    <h4>Mensagens</h4>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="icon-box">
-                    <img src="static/img/reembolso.svg" alt="Reembolsos">
-                    <p>Reembolsos</p>
+            <div class="col bg-white bg-opacity-75 fw-bold rounded-4 ms-3 me-3">
+                <div class="mt-3 mb-3">
+                    <img src="static/img/reembolso.svg" alt="Reembolso" class="w-50">
+                    <h4>Reembolso</h4>
                 </div>
             </div>
         </div>
