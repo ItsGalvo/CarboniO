@@ -1,0 +1,60 @@
+{% extends "pages/base.html" %}
+
+{% block subtitulo %} Cupons Ativos{% endblock %}
+
+{% block conteudo %}
+
+<link rel="stylesheet" href="/static/css/estilos.css">
+
+<main>
+    <div class="container mt-5 mb-5">
+        <h2>Cupons ativos</h2>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row d-flex justify-content-center align-items-center mt-5">
+            <div class="col-2 d-flex justify-content-center">
+                <img src="/static/img/DG.png" alt="DG Suplementos" title="DG Suplementos">
+            </div>
+            <div class="col-6">
+                <h3>15% off em creatinas</h3>
+                <p>
+                    15% off em creatinas
+                </p>
+            </div>
+            <div class="col-2 d-flex justify-content-center ">
+                <p>QTD</p>
+            </div>
+            <div class="col-2 d-flex justify-content-center ">
+                <p>Preço</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row d-flex justify-content-center align-items-center mt-3">
+            <div class="col-2 d-flex justify-content-center">
+                <img src="/static/img/nike.png" alt="Nike" title="Nike">
+            </div>
+            <div class="col-8">
+                <h3>10% off em qualquer produto</h3>
+                <p>
+                    10% de desconto em qualquer produto da loja Nike.
+                </p>
+            </div>
+            <div class="col-2 d-flex justify-content-center">
+                <p>QTD <br> Preço</p>
+            </div>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-end gap-3">
+            <a href="/ofertas">
+                <div class="btn btn-success">
+                    Continuar comprando
+                </div>
+            </a>
+            <div class="btn btn-success align-content-end">
+                Finalizar Compra
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

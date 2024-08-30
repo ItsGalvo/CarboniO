@@ -103,6 +103,11 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/editarperfilempresa.html", view_model)
 
+@router.get("/cuponsativos")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("pages/cuponsativos.html", view_model)
+
 @router.get("/perfilempresa")
 def get_root(request: Request):
     view_model = {"request": request}

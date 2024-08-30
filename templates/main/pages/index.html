@@ -3,35 +3,44 @@
 {% block subtitulo %}Página Inicial{% endblock %}
 
 {% block conteudo %}
-
-
-
 <main class="body_index min-vh-100 d-flex flex-column justify-content-between">
-    <nav class="navbar text-black bg-green p-3 mt-5">
-        <div class="container justify-content-center">
-            <div class="d-flex flex-column justify-content-center gap-2">
+    <nav class="navbar text-black bg-green p-3 mt-5 navbar-expand-sm d-flex flex-column justify-content-center gap-2">
+        <button
+            class="navbar-toggler text-bg-success"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menuNavbar"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menuNavbar">
+            <div class="container justify-content-center">
                 <form action="/cadastrarnews" method="post">
                     <div class="text-start">
                         <div class="input-group">
-                            <input type="email" class="form-control bg-beige border-beige rounded-start-2"
-                                placeholder="Digite o termo da busca aqui" id="busca" />
+                            <input
+                                type="email"
+                                class="form-control bg-beige border-beige rounded-start-2"
+                                placeholder="Digite o termo da busca aqui"
+                                id="busca"
+                            >
                             <button class="btn btn-beige" type="submit">
                                 <i class="bi bi-search"></i>
                             </button>
                         </div>
                     </div>
                 </form>
-                <nav class="nav justify-content-between fs-5">
+                <div class="navbar-nav justify-content-between fs-5">
                     <a class="nav-link text-white py-0" href="/ofertas">Ofertas</a>
                     <a class="nav-link text-white py-0" href="/juntepontos">Juntar Pontos</a>
                     <a class="nav-link text-white py-0" href="/comeceaqui">Comece Aqui</a>
                     <a class="nav-link text-white py-0" href="/contato">Contato</a>
-                </nav>
+                </div>
             </div>
         </div>
     </nav>
     <div class="img">
-        <img src="/static/img/carbonioindex.png" alt="">
+        <img src="/static/img/carbonioindex.png" class="img-fluid" alt="">
     </div>
     <div class="enter_button mb-5">
         <a href="/login">
@@ -39,5 +48,4 @@
         </a>
     </div>
 </main>
-
 {% endblock %}
