@@ -1,9 +1,8 @@
 {% extends "pages/base.html" %}
 
-{% block subtitulo %}Perfil da empresa{% endblock %}
+{% block subtitulo %}Perfil da Empresa{% endblock %}
 
 {% block conteudo %}
-
 <link rel="stylesheet" href="/static/css/estilos.css">
 <style>
     body {
@@ -11,7 +10,6 @@
         background-size: cover;
     }
 </style>
-
 <body>
     <div class="container mt-5">
         <div class="container d-flex justify-content-center mb-4 rounded-4 profile_header">
@@ -19,33 +17,33 @@
                 <img src="static/img/foto.svg" alt="foto" class="w-50">
             </div>
             <div class="col-8 col-lg-10 text-white mb-3 mt-3">
-                <h5>Nome da empresa</h5>
+                <h5>Nome Fantasia</h5>
                 <p>email</p>
                 <a href="/editarperfilempresa" class="text-white">Editar perfil ></a>
             </div>
         </div>
-        <div class="row text-center">
-            <div class="col bg-white bg-opacity-75 rounded-4 ms-3 me-3">
-                <div class=" mt-3 mb-3">
-                    <a href="/cuponsativos" class="text-decoration-none text-dark">
-                        <img src="static/img/cupom.svg" alt="Meus cupons" class="w-50">
+        <div class="row text-center d-flex justify-content-center gap-2">
+            <div class="col-5 col-sm bg-white bg-opacity-75 rounded-4">
+                <a href="/cuponsativos" class="text-decoration-none text-dark">
+                    <div class=" mt-3 mb-3">
+                        <img src="static/img/cupom.svg" alt="Meus ativos" class="w-50">
                         <h4>Cupons ativos</h4>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
-            <div class="col bg-white bg-opacity-75 rounded-4 ms-3 me-3">
+            <div class="col-5 col-sm bg-white bg-opacity-75 rounded-4">
                 <div class="mt-3 mb-3">
                     <img src="static/img/estatisticas.svg" alt="Estatísticas" class="w-50">
                     <h4>Estatísticas</h4>
                 </div>
             </div>
-            <div class="col bg-white bg-opacity-75 rounded-4 ms-3 me-3">
+            <div class="col-5 col-sm bg-white bg-opacity-75 rounded-4">
                 <div class="mt-3 mb-3">
                     <img src="static/img/mensagens.svg" alt="Mensagens" class="w-50">
                     <h4>Mensagens</h4>
                 </div>
             </div>
-            <div class="col bg-white bg-opacity-75 fw-bold rounded-4 ms-3 me-3">
+            <div class="col-5 col-sm bg-white bg-opacity-75 fw-bold rounded-4">
                 <div class="mt-3 mb-3">
                     <img src="static/img/adicionar.svg" alt="Adicionar" class="w-50">
                     <h4>Adicionar</h4>
