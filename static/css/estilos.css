@@ -70,6 +70,14 @@ body {
     background-color: #2d3d30;
 }
 
+.form-container {
+    background-color: #2f4f2f; 
+    padding: 20px;
+    border-radius: 10px;
+    margin: 50px auto;
+    width: 80%;
+    max-width: 800px;
+}
 
 /*.content {
     padding: 20px;

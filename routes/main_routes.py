@@ -88,10 +88,20 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/perfil.html", view_model)
 
+@router.get("/mensagens")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("pages/mensagens.html", view_model)
+
 @router.get("/editarperfil")
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/editarperfil.html", view_model)
+
+@router.get("/adicionarcupom")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("pages/adicionarcupom.html", view_model)
 
 @router.get("/cuponsusuario")
 def get_root(request: Request):
