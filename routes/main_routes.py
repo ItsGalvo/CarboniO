@@ -18,6 +18,16 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/juntepontos.html", view_model)
 
+@router.get("/paginaADM")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("pages/paginaADM.html", view_model)
+
+@router.get("/admin")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("pages/admin.html", view_model)
+
 @router.get("/estatisticas")
 def get_root(request: Request):
     view_model = {"request": request}
