@@ -1,51 +1,62 @@
-{% extends "/pages/base_2.html" %}
+{% extends "pages/base_2.html" %}
 
-{% block subtitulo %}Página Inicial{% endblock %}
+{% block subtitulo %}Comece aqui{% endblock %}
 
 {% block conteudo %}
+
+<link rel="stylesheet" href="/static/css/estilos.css">
+
 <main class="body_index min-vh-100 d-flex flex-column justify-content-between">
-    <nav class="navbar text-black bg-green p-3 mt-5 navbar-expand-sm d-flex flex-column justify-content-center gap-2">
-        <button
-            class="navbar-toggler text-bg-success"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#menuNavbar"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="menuNavbar">
-            <div class="container justify-content-center">
-                <form action="/cadastrarnews" method="post">
-                    <div class="text-start">
-                        <div class="input-group">
-                            <input
-                                type="email"
-                                class="form-control bg-beige border-beige rounded-start-2"
-                                placeholder="Digite o termo da busca aqui"
-                                id="busca"
-                            >
-                            <button class="btn btn-beige" type="submit">
-                                <i class="bi bi-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                <div class="navbar-nav justify-content-between fs-5">
-                    <a class="nav-link text-white py-0" href="/ofertas">Ofertas</a>
-                    <a class="nav-link text-white py-0" href="/juntepontos">Juntar Pontos</a>
-                    <a class="nav-link text-white py-0" href="/comeceaqui">Comece Aqui</a>
-                    <a class="nav-link text-white py-0" href="/contato">Contato</a>
-                </div>
+    <div class="container">
+        <nav class="nav justify-content-between fs-5 mt-5">
+            <a class="nav-link text-white py-0" href="/ofertas">Ofertas</a>
+            <a class="nav-link text-white py-0" href="/juntepontos">Juntar Pontos</a>
+            <a class="nav-link text-white py-0" href="/contato">Contato</a>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-10 col-md-8 col-lg-6 justify-content-center d-flex" style="margin-top: -50px;">
+                <img src="static/img/carbonioindex.png" alt="" class="img-fluid" style="max-width: 100%; height: auto; max-height: 500px;">
             </div>
         </div>
-    </nav>
-    <div class="img">
-        <img src="/static/img/carbonioindex.png" class="img-fluid" alt="">
-    </div>
-    <div class="enter_button mb-5">
-        <a href="/login">
-            <button>Entrar</button>
-        </a>
+        <div class="row text-white text-center">
+            <h3>Aqui você pode juntar e usar pontos de graça</h3>
+            <h5>Somos um programa de pontos. Isso significa que você pode economizar reciclando através dos nossos
+            centros de coleta verificados. Seus pontos valem descontos, produtos e muito mais.</h5>
+        </div>
+        <div class="row text-white mt-5 text-center">
+            <div class="col-3">
+                <div class="icon-circle">
+                    <img src="static/img/pessoa.svg" alt="Cadastro" width="50">
+                </div>
+                <p>Crie o seu cadastro de graça</p>
+            </div>
+            <div class="col-3">
+                <div class="icon-circle">
+                    <img src="static/img/porquinho.svg" alt="Resgate" width="50">
+                </div>
+                <p>Ganhe pontos ao entregar plástico</p>
+            </div>
+            <div class="col-3">
+                <div class="icon-circle">
+                    <img src="static/img/cesta.svg" alt="Cupons" width="50">
+                </div>
+                <p>Use seus pontos para resgatar cupons</p>
+            </div>
+            <div class="col-3">
+                <div class="icon-circle">
+                    <img src="static/img/dinheiro.svg" alt="Descontos" width="50">
+                </div>
+                <p>Troque seus cupons por descontos</p>
+            </div>
+        </div>
+
+        <div class="enter_button mb-5">
+            <a href="/login">
+                <button>Entrar</button>
+            </a>
+        </div>
     </div>
 </main>
 {% endblock %}

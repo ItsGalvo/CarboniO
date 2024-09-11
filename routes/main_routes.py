@@ -13,6 +13,16 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/index.html", view_model)
 
+@router.get("/centrodecoleta")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("pages/centrodecoleta.html", view_model)
+
+@router.get("/addcreditos")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("pages/addcreditos.html", view_model)
+
 @router.get("/juntepontos")
 def get_root(request: Request):
     view_model = {"request": request}

@@ -104,14 +104,13 @@ hr {
 }
 
 
-
 .body_index .enter_button button {
     background-color: #8fc866;
     font-family: Arial, Helvetica, sans-serif;
     padding: 5px;
     border-radius: 5px;
     border: 2px solid white;
-    width: 150px;
+    width: 250px;
 }
 
 .body_index .enter_button button:hover {
