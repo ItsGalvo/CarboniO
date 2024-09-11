@@ -1,0 +1,55 @@
+{% extends "pages/base.html" %}
+
+{% block subtitulo %}Editar perfil empresa{% endblock %}
+
+{% block conteudo %}
+
+<link rel="stylesheet" href="/static/css/estilos.css">
+
+<main>
+    <div class="container mt-5 mb-5">
+        <h2>Adicione uma empresa</h2>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="form w-50">
+            <form action="" class="col-12">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nome" placeholder=" ">
+                    <label for="nome">Nome Fantasia</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nome" placeholder=" ">
+                    <label for="nome">CNPJ</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea name="endereço" id="endereço" class="form-control" style="height: 120px" placeholder=" "></textarea>
+                    <label for="mensagem">Endereço</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" placeholder=" ">
+                    <label for="email">E-mail</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="telefone" placeholder=" ">
+                    <label for="telefone">Telefone</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="senha" placeholder=" ">
+                    <label for="senha">Senha</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="confsenha" placeholder=" ">
+                    <label for="confsenha">Confirmar senha</label>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-danger">cancelar</button>
+                    <button class="btn btn-success">salvar</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
