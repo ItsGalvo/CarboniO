@@ -3,66 +3,39 @@
 {% block subtitulo %}Produto{% endblock %}
 
 {% block conteudo %}
-<style>
-    body {
-        background-color: #eef3e3;
-    }
 
-    .produto{
-        width: 500px;
-        
-    }
+<link rel="stylesheet" href="/static/css/estilos.css">
 
-    .seta{
-        font-size: 50px;
-        color: black;
-    }
-
-    h1{
-        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-size: 50pt;
-    }
-
-    .valor{
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        font-size: 30pt;
-        color: white;
-    }
-
-    p{
-        font-size: 15pt;
-        color: white;
-    }
-</style>
 <body>
-
     <div class="container d-flex mt-3 mb-3">
-        <div class="mt-4">
+        <div class="mt-4 mb-4">
             <a href="/ofertas" class="text-decoration-none">
-                <i class="seta bi bi-arrow-left"></i>
+                <i class="seta bi bi-arrow-left text-black fs-1"></i>
             </a>
         </div>
         <div class="d-flex mt-4 ms-5">
             <h1>15% off em Creatinas</h1>
         </div>
-    
+
     </div>
 
-    <div class="container d-flex  align-items-center" style="background-color: #00241B; border-radius: 10px;">
-            <div class="col-md-6">
-                <img src="/static/img/creatina.png" class="produto" alt="Creatina">
+    <div class="bg_produto container d-flex  align-items-center mt-3 rounded-2">
+        <div class="col-md-6 d-flex justify-content-center bg-white">
+            <img src="/static/img/creatina.png" class="produto" alt="Creatina">
+        </div>
+        <div class="col-md-6 ms-3 me-3">
+            <div class="text-white">
+                <h3 class="mb-3">5 pontos</h3>
+                <p>Creatina é um nutriente envolvido na produção de energia que abastece as células musculares. A
+                    suplementação de creatina em geral é realizada por quem visa aumentar a capacidade muscular e suas
+                    funções.</p>
+                <button class="btn btn-light mt-3">Comprar agora</button>
+                <a href="/carrinho">
+                    <button class="btn btn-success mt-3">Adicionar ao carrinho</button>
+                </a>
             </div>
-            <div class="col-md-6">
-                <div>
-                    <p class="valor">5 pontos</p>
-                    <p>Creatina é um nutriente envolvido na produção de energia que abastece as células musculares. A suplementação de creatina em geral é realizada por quem visa aumentar a capacidade muscular e suas funções.</p>
-                    <button class="btn btn-light">Comprar agora</button>
-                    <a href="/carrinho">
-                        <button class="btn btn-success">Adicionar ao carrinho</button>
-                    </a>
-                </div>
-            </div>
-        
+        </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
