@@ -28,10 +28,6 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/juntepontos.html", view_model)
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 335fa5db7e34231ef6ff727e07fae9839c92c0a1
 @router.get("/index_adm")
 def get_root(request: Request):
     view_model = {"request": request}
@@ -52,10 +48,6 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/loginempresa.html", view_model)
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 335fa5db7e34231ef6ff727e07fae9839c92c0a1
 @router.get("/estatisticas")
 def get_root(request: Request):
     view_model = {"request": request}
