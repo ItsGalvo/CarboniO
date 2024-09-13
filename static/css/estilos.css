@@ -105,6 +105,7 @@ hr {
     border: 2px solid black;
 }
 */
+
 .body_index {
     background-image: url("/static/img/index_verde.png");
     background-size: cover;
@@ -144,8 +145,6 @@ hr {
 
 .header {
     background-color: #8fc866;
-
-
 }
 
 .header .search-container input[type="text"] {
@@ -155,8 +154,6 @@ hr {
     border: none;
     border-radius: 5px;
 }
-
-
 
 .header .menu a {
 

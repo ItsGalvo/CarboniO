@@ -78,20 +78,25 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("pages/login.html", view_model)
 
-@router.get("/loginusuario1")
+@router.get("/loginusuario")
 def get_root(request: Request):
     view_model = {"request": request}
-    return templates.TemplateResponse("pages/loginusuario1.html", view_model)
+    return templates.TemplateResponse("pages/loginusuario.html", view_model)
 
-@router.get("/loginusuario2")
+@router.get("/criarconta1")
 def get_root(request: Request):
     view_model = {"request": request}
-    return templates.TemplateResponse("pages/loginusuario2.html", view_model)
+    return templates.TemplateResponse("pages/criarconta1.html", view_model)
 
-@router.get("/loginusuario3")
+@router.get("/criarconta2")
 def get_root(request: Request):
     view_model = {"request": request}
-    return templates.TemplateResponse("pages/loginusuario3.html", view_model)
+    return templates.TemplateResponse("pages/criarconta2.html", view_model)
+
+@router.get("/criarconta3")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("pages/criarconta3.html", view_model)
 
 @router.get("/loginempresa1")
 def get_root(request: Request):
