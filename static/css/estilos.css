@@ -34,6 +34,14 @@ body {
 
 /*login*/
 
+.card_produto{
+    background-color: #c1edad;
+}
+
+.bg_codigo{
+    background-color: #00241B;
+}
+
 .loginbody{
     background-color: #00241B;
 }
