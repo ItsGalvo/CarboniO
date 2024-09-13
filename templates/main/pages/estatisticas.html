@@ -6,28 +6,25 @@
 
 <link rel="stylesheet" href="/static/css/estilos.css">
 <body class="bg-light">
-  <h1>Estatísticas</h1>
+  <div class="container mt-3">
+    <h2>Estatísticas</h2>
+  </div>
     <hr>
   <div class="container mt-5">
     <div class="row mt-4">
-      <!-- Dropdown Menu -->
       <div class="col-md-3">
-        <label for="selectOption" class="form-label">Make a selection</label>
+        <label for="selectOption" class="form-label">Escolha um período</label>
         <select class="form-select" id="selectOption">
-          <option selected>Option 1</option>
-          <option>Option 2</option>
-          <option>Option 3</option>
-          <option>Option 4</option>
+          <option selected>2021</option>
+          <option>2022</option>
+          <option>2023</option>
+          <option>2024</option>
         </select>
       </div>
-
-      <!-- Gráfico de Barras -->
       <div class="col-md-6">
         <h5 class="text-center">Plástico</h5>
         <canvas id="barChart" width="400" height="300"></canvas>
       </div>
-
-      <!-- Gráfico de Pizza -->
       <div class="col-md-3">
         <canvas id="pieChart" width="300" height="300"></canvas>
       </div>
@@ -38,7 +35,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   
   <script>
-    // Gráfico de Barras
+
     const barChartCtx = document.getElementById('barChart').getContext('2d');
     const barChart = new Chart(barChartCtx, {
       type: 'bar',
@@ -71,7 +68,6 @@
       }
     });
 
-    // Gráfico de Pizza
     const pieChartCtx = document.getElementById('pieChart').getContext('2d');
     const pieChart = new Chart(pieChartCtx, {
       type: 'pie',
