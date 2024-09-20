@@ -10,7 +10,7 @@ from routes.empresa_routes import router as empresa_router
 from util.auth import checar_autenticacao, checar_autorizacao
 
 UsuarioRepo.criar_tabela()
-dotenv.load_dontev()
+dotenv.load_dotenv()
 app = FastAPI(dependencies=[Depends(checar_autorizacao)])
 app.mount(path="/static", app=StaticFiles(directory="static"), name="static")
 app.middleware("http")(checar_autenticacao)
