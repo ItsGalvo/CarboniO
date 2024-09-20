@@ -1,0 +1,51 @@
+{% extends "pages/base.html" %}
+
+{% block subtitulo %}Editar perfil do usuário{% endblock %}
+
+{% block conteudo %}
+
+<link rel="stylesheet" href="/static/css/estilos.css">
+
+<main>
+    <div class="container mt-3">
+        <h2>Edite seu perfil</h2>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="form w-50">
+            <form action="" class="col-12">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nome" placeholder=" ">
+                    <label for="nome">Nome Completo</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nome" placeholder=" ">
+                    <label for="nome">CPF</label>
+                </div>
+                <div class="form mb-3">
+                    <input type="date" class="form-control" id="nome" placeholder=" ">
+                </div>
+                <div class="form-floating mb-3">
+                    <textarea name="endereço" id="endereço" class="form-control" style="height: 120px" placeholder=" "></textarea>
+                    <label for="mensagem">Endereço</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" placeholder=" ">
+                    <label for="email">E-mail</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="telefone" placeholder=" ">
+                    <label for="telefone">Telefone</label>
+                </div>
+                
+                <div class="mb-3">
+                    <button class="btn btn-danger">cancelar</button>
+                    <button class="btn btn-success">salvar</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

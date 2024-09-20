@@ -1,0 +1,33 @@
+{% extends "pages/base.html" %}
+
+{% block subtitulo %}Junte pontos{% endblock %}
+
+{% block conteudo %}
+
+<link rel="stylesheet" href="/static/css/estilos.css">
+
+<body>
+    <div class="container mt-3">
+        <h2>Juntar pontos</h2>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 fs-5">
+                <p>Ganhe pontos ao utilizar nossos serviços e troque por benefícios exclusivos.</p>
+                <br><br>
+                <h2 class=" text-success">Encontre um centro perto de você</h2>
+                <p class="sub-text">Utilize o mapa ao lado para encontrar o centro de coleta mais próximo e comece a
+                    juntar seus pontos.</p>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d29827.95840193891!2d-41.16057241891458!3d-20.85209746330641!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb95d3d7ef7ecb9%3A0xa68aadb2a822a95!2sCachoeiro%20de%20Itapemirim%2C%20ES!5e0!3m2!1spt-BR!2sbr!4v1725458266416!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+{% endblock %}
