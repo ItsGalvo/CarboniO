@@ -40,9 +40,9 @@ async def checar_autorizacao(request: Request):
     area_do_usuario = request.url.path.startswith("/usuario")
     area_da_empresa = request.url.path.startswith("/empresa")
     area_do_admin = request.url.path.startswith("/admin")
-    area_do_centro = request.url.path.startswith("/centro")
-    area_do_consumidor = request.url.path.startswith("/usuario")
-    if (area_do_usuario or area_da_empresa or area_do_admin or area_do_centro or area_do_consumidor) and not usuario.perfil:
+    area_do_centro_de_coleta = request.url.path.startswith("/centro")
+    area_do_consumidor = request.url.path.startswith("/consumidor")
+    if (area_do_usuario or area_da_empresa or area_do_admin or area_do_centro_de_coleta or area_do_consumidor) and not usuario.perfil:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
     if area_do_usuario and usuario.perfil != 1:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)
@@ -50,7 +50,7 @@ async def checar_autorizacao(request: Request):
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)
     if area_do_admin and usuario.perfil != 3:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)
-    if area_do_centro and usuario.perfil != 4:
+    if area_do_centro_de_coleta and usuario.perfil != 4:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)
     if area_do_consumidor and usuario.perfil != 5:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)

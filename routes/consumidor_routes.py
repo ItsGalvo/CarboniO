@@ -1,15 +1,10 @@
 from fastapi import APIRouter, Request
-from fastapi.responses import HTMLResponse
-
-from util.templates import obter_jinja_templates
+from fastapi.templating import Jinja2Templates
 
 router = APIRouter(prefix="/consumidor")
-templates = obter_jinja_templates("templates")
+templates = Jinja2Templates("templates")
 
-@router.get("/loginusuario")
-def get_root(request: Request):
-    view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/consumidor/loginusuario.html", view_model)
+router = APIRouter(prefix="/consumidor")
 
 @router.get("/criarconta1")
 def get_root(request: Request):
@@ -80,7 +75,3 @@ def get_root(request: Request):
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/consumidor/paginaproduto.html", view_model)
-
-@router.get("/", response_class=HTMLResponse)
-async def get_root(request: Request):
-    return templates.TemplateResponse("main/pages/consumidor/index.html", {"request": request})

@@ -19,11 +19,6 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/empresa/perfilempresa.html", view_model)
 
-@router.get("/loginempresa")
-def get_root(request: Request):
-    view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/empresa/loginempresa.html", view_model)
-
 @router.get("/adicionarcupom")
 def get_root(request: Request):
     view_model = {"request": request}
