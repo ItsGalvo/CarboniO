@@ -25,18 +25,33 @@
                     
                     <p>Vamos começar a criar sua conta, preencha os dados abaixo:</p>
                     
-                    <form action="" class=" col-12 mb-3 text-center">
+                    <form action="/post_cadastrar" class=" col-12 mb-3 text-center" method="post">
                         <div class="form-group mb-3 mx-auto" style="width: 75%;">
-                            <input type="text" class="form-control" id="nome" placeholder="Nome">
+                            <input type="text" class="form-control" id="nome" placeholder="Nome" name="nome">
                         </div>
                         <div class="form-group mb-3 mx-auto" style="width: 75%;">
-                            <input type="text" class="form-control" id="cpf" placeholder="CPF">
+                            <input type="text" class="form-control" id="cpf" placeholder="CPF" name="cpf">
                         </div>
                         <div class="form-group mb-3 mx-auto" style="width: 75%;">
-                            <input type="email" class="form-control" id="email" placeholder="Email">
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
                         </div>
-                        <a href="criarconta2" class="mt-3 w-75">
-                            <button type="button" class="btn btn-success w-75">Continuar</button>
+                        <div class="form mb-3 mx-auto w-75">
+                            <input type="date" class="form-control" id="dt_nascimento" placeholder="DD/MM/AAAA" name="dt_nascimento">
+                        </div>
+                        <div class="form mb-3 mx-auto w-75">
+                            <input type="telephone" class="form-control" id="telefone" placeholder="Telefone" name="telefone">
+                        </div>
+                        <div class="form mb-3 mx-auto w-75">
+                            <input type="cep" class="form-control" id="cep" placeholder="CEP" name="cep">
+                        </div>
+                        <div class="form mb-3 mx-auto w-75">
+                            <input type="password" class="form-control" id="senha" placeholder="Senha" name="senha">
+                        </div>
+                        <div class="form mb-3 mx-auto w-75">
+                            <input type="password" class="form-control" id="confsenha" placeholder="Confirmar senha" name="confsenha">
+                        </div>
+                        <a href="perfil" class="mt-3 w-75">
+                            <button type="submit" class="btn btn-success w-75">Finalizar</button>
                         </a>
                     </form>
                 </div>

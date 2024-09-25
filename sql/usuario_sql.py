@@ -3,14 +3,15 @@ SQL_CRIAR_TABELA = """
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL,
         email TEXT NOT NULL UNIQUE,
+        telefone INT NOT NULL,
         senha TEXT NOT NULL,
         perfil INT NOT NULL,        
         token TEXT)
 """
 
 SQL_INSERIR = """
-    INSERT INTO usuario(id, nome, email, senha, perfil)
-    VALUES (?, ?, ?)
+    INSERT INTO usuario(id, nome, email, telefone, senha, perfil)
+    VALUES (?, ?, ?, ?)
 """
 
 SQL_ALTERAR = """
@@ -57,4 +58,10 @@ SQL_EMAIL_EXISTE = """
     SELECT COUNT(*)
     FROM usuario
     WHERE email=?
+"""
+
+SQL_CHECAR_CREDENCIAIS = """
+    SELECT nome, email, perfil, senha
+    FROM usuario
+    WHERE email = ?
 """

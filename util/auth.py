@@ -42,7 +42,7 @@ async def checar_autorizacao(request: Request):
     area_do_admin = request.url.path.startswith("/admin")
     area_do_centro_de_coleta = request.url.path.startswith("/centro")
     area_do_consumidor = request.url.path.startswith("/consumidor")
-    if (area_do_usuario or area_da_empresa or area_do_admin or area_do_centro_de_coleta or area_do_consumidor) and not usuario.perfil:
+    if (area_do_usuario or area_da_empresa or area_do_admin or area_do_centro_de_coleta or area_do_consumidor) and (not usuario or not usuario.perfil):
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
     if area_do_usuario and usuario.perfil != 1:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)
@@ -82,7 +82,7 @@ def criar_token(nome: str, email: str, perfil: int) -> str:
         os.getenv("JWT_ALGORITHM"))
 
 
-def validar_token(token: str) -> dict:
+def  validar_token(token: str) -> dict:
     try:
         return jwt.decode(token, 
             os.getenv("JWT_SECRET"),

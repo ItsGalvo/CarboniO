@@ -4,8 +4,7 @@ from fastapi.templating import Jinja2Templates
 router = APIRouter(prefix="/admin")
 templates = Jinja2Templates("templates")
 
-
-@router.get("/index_adm")
+@router.get("/index")
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/admin/index_adm.html", view_model)

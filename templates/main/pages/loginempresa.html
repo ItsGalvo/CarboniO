@@ -22,16 +22,14 @@
                         <h3>Login de Empresa</h3>
                     </div>
                     
-                        <form action="" class="col-12 mb-3 text-center">
+                        <form action="/post_entrar_empresa" class="col-12 mb-3 text-center" method="post">
                             <div class="form mb-3 mx-auto w-75">
-                                <input type="text" class="form-control" id="nome" placeholder="CNPJ">
+                                <input type="text" class="form-control" id="email" placeholder="Email" name="email" required autofocus>
                             </div>
                             <div class="form mb-3 mx-auto w-75">
-                                <input type="text" class="form-control" id="email" placeholder="Senha">
+                                <input type="password" class="form-control" id="senha" placeholder="Senha" name="senha" required>
                             </div>
-                            <a href="empresa/perfilempresa.html" class=" mt-3">
-                                <button type="button" class="btn btn-success w-75">Entrar</button>
-                            </a>
+                                <button type="submit" class="btn btn-success w-75">Entrar</button>
                         </form>
                 </div>
             </div>

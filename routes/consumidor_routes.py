@@ -1,25 +1,8 @@
 from fastapi import APIRouter, Request
 from fastapi.templating import Jinja2Templates
 
-router = APIRouter(prefix="/consumidor")
 templates = Jinja2Templates("templates")
-
 router = APIRouter(prefix="/consumidor")
-
-@router.get("/criarconta1")
-def get_root(request: Request):
-    view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/consumidor/criarconta1.html", view_model)
-
-@router.get("/criarconta2")
-def get_root(request: Request):
-    view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/consumidor/criarconta2.html", view_model)
-
-@router.get("/criarconta3")
-def get_root(request: Request):
-    view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/consumidor/criarconta3.html", view_model)
 
 @router.get("/carrinho")
 def get_root(request: Request):

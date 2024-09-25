@@ -3,6 +3,7 @@ import sqlite3
 from typing import Optional
 from models.usuario_model import Usuario
 from sql.usuario_sql import *
+from util.auth import conferir_senha
 from util.database import obter_conexao
 
 
@@ -148,3 +149,14 @@ class UsuarioRepo:
         except sqlite3.Error as ex:
             print(ex)
             return False
+
+    @classmethod
+    def checar_credenciais(cls, email: str, senha: str) -> Optional[tuple]:
+        with obter_conexao() as db:
+            cursor = db.cursor()
+            dados = cursor.execute(
+                SQL_CHECAR_CREDENCIAIS, (email,)).fetchone()
+            if dados:
+                if conferir_senha(senha, dados[3]):
+                    return (dados[0], dados[1], dados[2])
+            return None
