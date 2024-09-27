@@ -52,7 +52,7 @@ async def post_entrar_empresa(
     senha: str = Form(...)):
     usuario = UsuarioRepo.checar_credenciais(email, senha)
     if usuario is None:
-        response = RedirectResponse("/loginempresa", status_code=status.HTTP_303_SEE_OTHER)
+        response = RedirectResponse(f"/{nome_perfil}", status_code=status.HTTP_303_SEE_OTHER)
         return response
     token = criar_token(usuario[0], usuario[1], usuario[2])
     nome_perfil = None
@@ -63,7 +63,7 @@ async def post_entrar_empresa(
         case 4: nome_perfil = "centrodecoleta"
         case _: nome_perfil = ""
         
-    response = RedirectResponse("/main/pages/empresa/perfilempresa", status_code=status.HTTP_303_SEE_OTHER)    
+    response = RedirectResponse("/empresa/perfilempresa", status_code=status.HTTP_303_SEE_OTHER)    
     response.set_cookie(
         key=NOME_COOKIE_AUTH,
         value=token,
@@ -155,17 +155,14 @@ async def get_root(request: Request):
 @router.post("/post_cadastrar")
 async def post_cadastrar(
     nome: str = Form(...),
-    cpf: int = Form(...),
     email: str = Form(...),
-    dt_nascimento: str = Form(...),
     telefone: str = Form(...),
-    cep: int = Form(...),
     senha: str = Form(...),
     confsenha: str = Form(...),
-    perfil: int = Form(...)):
+    perfil: int = Form(1)):
     if senha != confsenha:
         return RedirectResponse("/criarconta1", status_code=status.HTTP_303_SEE_OTHER)
     senha_hash = obter_hash_senha(senha)
-    usuario = Usuario(None, nome, cpf, email, dt_nascimento, telefone, cep, senha_hash, None, perfil)
+    usuario = Usuario(None, nome, email, telefone, senha_hash, None, perfil)
     UsuarioRepo.inserir(usuario)
-    return RedirectResponse("/perfil", status_code=status.HTTP_303_SEE_OTHER)
+    return RedirectResponse("/loginconsumidor", status_code=status.HTTP_303_SEE_OTHER)

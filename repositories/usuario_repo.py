@@ -25,6 +25,7 @@ class UsuarioRepo:
                         usuario.id,
                         usuario.nome,
                         usuario.email,
+                        usuario.telefone,
                         usuario.senha,
                         usuario.perfil,
                     ),
