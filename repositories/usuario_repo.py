@@ -24,8 +24,11 @@ class UsuarioRepo:
                     (
                         usuario.id,
                         usuario.nome,
+                        usuario.cpf,
+                        usuario.cnpj,
                         usuario.email,
                         usuario.telefone,
+                        usuario.cep,
                         usuario.senha,
                         usuario.perfil,
                     ),

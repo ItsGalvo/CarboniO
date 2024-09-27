@@ -25,7 +25,7 @@ async def post_entrar_consumidor(
     senha: str = Form(...)):
     usuario = UsuarioRepo.checar_credenciais(email, senha)
     if usuario is None:
-        response = RedirectResponse("/loginconsumidor", status_code=status.HTTP_303_SEE_OTHER)
+        response = RedirectResponse(f"/{nome_perfil}", status_code=status.HTTP_303_SEE_OTHER)
         return response
     token = criar_token(usuario[0], usuario[1], usuario[2])
     nome_perfil = None
@@ -117,7 +117,7 @@ async def post_entrar_centrodecoleta(
         case 4: nome_perfil = "centrodecoleta"
         case _: nome_perfil = ""
         
-    response = RedirectResponse(f"/{nome_perfil}", status_code=status.HTTP_303_SEE_OTHER)    
+    response = RedirectResponse(f"/{nome_perfil}/addcreditos", status_code=status.HTTP_303_SEE_OTHER)    
     response.set_cookie(
         key=NOME_COOKIE_AUTH,
         value=token,
@@ -155,14 +155,22 @@ async def get_root(request: Request):
 @router.post("/post_cadastrar")
 async def post_cadastrar(
     nome: str = Form(...),
+    cpf: str = Form(...),
     email: str = Form(...),
     telefone: str = Form(...),
+    cep: str = Form(...),
     senha: str = Form(...),
-    confsenha: str = Form(...),
-    perfil: int = Form(1)):
+    confsenha: str = Form(...)):
     if senha != confsenha:
         return RedirectResponse("/criarconta1", status_code=status.HTTP_303_SEE_OTHER)
     senha_hash = obter_hash_senha(senha)
-    usuario = Usuario(None, nome, email, telefone, senha_hash, None, perfil)
+    usuario = Usuario(
+        nome=nome, 
+        cpf=cpf, 
+        email=email, 
+        telefone=telefone,
+        cep=cep, 
+        senha=senha_hash,
+        perfil=1)
     UsuarioRepo.inserir(usuario)
     return RedirectResponse("/loginconsumidor", status_code=status.HTTP_303_SEE_OTHER)
