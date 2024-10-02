@@ -30,13 +30,13 @@ async def post_entrar_consumidor(
     token = criar_token(usuario[0], usuario[1], usuario[2])
     nome_perfil = None
     match (usuario[2]):
-        case 1: nome_perfil = "consumidor"
+        case 1: nome_perfil = "usuario"
         case 2: nome_perfil = "empresa"
         case 3: nome_perfil = "admin"
         case 4: nome_perfil = "centrodecoleta"
+        case 5: nome_perfil = "consumidor"
         case _: nome_perfil = ""
-
-    response = RedirectResponse(f"/{nome_perfil}", status_code=status.HTTP_303_SEE_OTHER)    
+    response = RedirectResponse(f"/{nome_perfil}/perfil", status_code=status.HTTP_303_SEE_OTHER)    
     response.set_cookie(
         key=NOME_COOKIE_AUTH,
         value=token,
@@ -52,7 +52,7 @@ async def post_entrar_empresa(
     senha: str = Form(...)):
     usuario = UsuarioRepo.checar_credenciais(email, senha)
     if usuario is None:
-        response = RedirectResponse("/loginempresa", status_code=status.HTTP_303_SEE_OTHER)
+        response = RedirectResponse(f"/{nome_perfil}", status_code=status.HTTP_303_SEE_OTHER)
         return response
     token = criar_token(usuario[0], usuario[1], usuario[2])
     nome_perfil = None
@@ -63,7 +63,7 @@ async def post_entrar_empresa(
         case 4: nome_perfil = "centrodecoleta"
         case _: nome_perfil = ""
         
-    response = RedirectResponse("/main/pages/empresa/perfilempresa", status_code=status.HTTP_303_SEE_OTHER)    
+    response = RedirectResponse("/empresa/perfilempresa", status_code=status.HTTP_303_SEE_OTHER)    
     response.set_cookie(
         key=NOME_COOKIE_AUTH,
         value=token,
@@ -117,7 +117,7 @@ async def post_entrar_centrodecoleta(
         case 4: nome_perfil = "centrodecoleta"
         case _: nome_perfil = ""
         
-    response = RedirectResponse(f"/{nome_perfil}", status_code=status.HTTP_303_SEE_OTHER)    
+    response = RedirectResponse(f"/{nome_perfil}/addcreditos", status_code=status.HTTP_303_SEE_OTHER)    
     response.set_cookie(
         key=NOME_COOKIE_AUTH,
         value=token,
@@ -155,17 +155,22 @@ async def get_root(request: Request):
 @router.post("/post_cadastrar")
 async def post_cadastrar(
     nome: str = Form(...),
-    cpf: int = Form(...),
+    cpf: str = Form(...),
     email: str = Form(...),
-    dt_nascimento: str = Form(...),
     telefone: str = Form(...),
-    cep: int = Form(...),
+    cep: str = Form(...),
     senha: str = Form(...),
-    confsenha: str = Form(...),
-    perfil: int = Form(...)):
+    confsenha: str = Form(...)):
     if senha != confsenha:
         return RedirectResponse("/criarconta1", status_code=status.HTTP_303_SEE_OTHER)
     senha_hash = obter_hash_senha(senha)
-    usuario = Usuario(None, nome, cpf, email, dt_nascimento, telefone, cep, senha_hash, None, perfil)
+    usuario = Usuario(
+        nome=nome, 
+        cpf=cpf, 
+        email=email, 
+        telefone=telefone,
+        cep=cep, 
+        senha=senha_hash,
+        perfil=5)
     UsuarioRepo.inserir(usuario)
-    return RedirectResponse("/perfil", status_code=status.HTTP_303_SEE_OTHER)
+    return RedirectResponse("/loginconsumidor", status_code=status.HTTP_303_SEE_OTHER)

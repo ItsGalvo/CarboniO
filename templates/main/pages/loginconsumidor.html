@@ -18,16 +18,19 @@
                     <img src="static/img/carbonio branco.png" alt="" class="w-100">
                 </div>
                 <div class="col-10 col-sm-10 col-md-6 col-lg-4 text-center bg-light rounded-3">
-                    <div class=" mt-3">
-                        <h3>Login de Usuário</h3>
+                    <div class="d-flex  align-items-center mt-3 mb-3">
+                        <a href="/login" class="text-decoration-none">
+                            <i class="seta bi bi-arrow-left text-black fs-4 me-5 me-md-2 me-lg-4 ms-2"></i>
+                        </a>
+                        <h3>Login de usuário</h3>
                     </div>
                     
                         <form action="/post_entrar_consumidor" class="col-12 mb-3 text-center" method="post">
                             <div class="form mb-3 mx-auto w-75">
-                                <input type="text" class="form-control" id="login" placeholder="Login" required autofocus>
+                                <input type="text" class="form-control" id="email" placeholder="email" name="email" required autofocus>
                             </div>
                             <div class="form mb-3 mx-auto w-75">
-                                <input type="password" class="form-control" id="senha" placeholder="Senha">
+                                <input type="password" class="form-control" id="senha" placeholder="Senha" name="senha" required>
                             </div>
                                 <button type="submit" class="btn btn-success w-75">Entrar</button>
                         </form>

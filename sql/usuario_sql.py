@@ -2,16 +2,19 @@ SQL_CRIAR_TABELA = """
     CREATE TABLE IF NOT EXISTS usuario (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT NOT NULL,
+        cpf INTEGER,
+        cnpj INTEGER,
         email TEXT NOT NULL UNIQUE,
-        telefone INT NOT NULL,
+        telefone INTEGER NOT NULL,
+        cep INTEGER,
         senha TEXT NOT NULL,
         perfil INT NOT NULL,        
         token TEXT)
 """
 
 SQL_INSERIR = """
-    INSERT INTO usuario(id, nome, email, telefone, senha, perfil)
-    VALUES (?, ?, ?, ?)
+    INSERT INTO usuario(nome, cpf, cnpj, email, telefone, cep, senha, perfil)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 """
 
 SQL_ALTERAR = """
@@ -61,7 +64,7 @@ SQL_EMAIL_EXISTE = """
 """
 
 SQL_CHECAR_CREDENCIAIS = """
-    SELECT nome, email, perfil, senha
+    SELECT email, senha, perfil
     FROM usuario
     WHERE email = ?
 """

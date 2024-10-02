@@ -15,25 +15,23 @@ class UsuarioRepo:
             cursor.execute(SQL_CRIAR_TABELA)
 
     @classmethod
-    def inserir(cls, usuario: Usuario) -> Optional[Usuario]:
-        try:
-            with obter_conexao() as conexao:
-                cursor = conexao.cursor()
-                cursor.execute(
+    def inserir(cls, usuario: Usuario) -> bool:
+            with obter_conexao() as db:
+                cursor = db.cursor()
+                resultado = cursor.execute(
                     SQL_INSERIR,
                     (
-                        usuario.id,
                         usuario.nome,
+                        usuario.cpf,
+                        usuario.cnpj,
                         usuario.email,
+                        usuario.telefone,
+                        usuario.cep,
                         usuario.senha,
                         usuario.perfil,
                     ),
                 )
-                if cursor.rowcount > 0:
-                    return usuario
-        except sqlite3.Error as ex:
-            print(ex)
-            return None
+            return resultado.rowcount > 0
 
     @classmethod
     def alterar(cls, usuario: Usuario) -> bool:
@@ -157,6 +155,6 @@ class UsuarioRepo:
             dados = cursor.execute(
                 SQL_CHECAR_CREDENCIAIS, (email,)).fetchone()
             if dados:
-                if conferir_senha(senha, dados[3]):
+                if conferir_senha(senha, dados[1]):
                     return (dados[0], dados[1], dados[2])
             return None
