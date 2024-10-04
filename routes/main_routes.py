@@ -52,18 +52,18 @@ async def post_entrar_empresa(
     senha: str = Form(...)):
     usuario = UsuarioRepo.checar_credenciais(email, senha)
     if usuario is None:
-        response = RedirectResponse(f"/{nome_perfil}", status_code=status.HTTP_303_SEE_OTHER)
+        response = RedirectResponse("/loginempresa", status_code=status.HTTP_303_SEE_OTHER)
         return response
     token = criar_token(usuario[0], usuario[1], usuario[2])
     nome_perfil = None
     match (usuario[2]):
-        case 1: nome_perfil = "consumidor"
+        case 1: nome_perfil = "usuario"
         case 2: nome_perfil = "empresa"
         case 3: nome_perfil = "admin"
         case 4: nome_perfil = "centrodecoleta"
+        case 5: nome_perfil = "consumidor"
         case _: nome_perfil = ""
-        
-    response = RedirectResponse("/empresa/perfilempresa", status_code=status.HTTP_303_SEE_OTHER)    
+    response = RedirectResponse(f"/{nome_perfil}/perfilempresa", status_code=status.HTTP_303_SEE_OTHER)    
     response.set_cookie(
         key=NOME_COOKIE_AUTH,
         value=token,
@@ -84,13 +84,13 @@ async def post_entrar_admin(
     token = criar_token(usuario[0], usuario[1], usuario[2])
     nome_perfil = None
     match (usuario[2]):
-        case 1: nome_perfil = "consumidor"
+        case 1: nome_perfil = "usuario"
         case 2: nome_perfil = "empresa"
         case 3: nome_perfil = "admin"
         case 4: nome_perfil = "centrodecoleta"
+        case 5: nome_perfil = "consumidor"
         case _: nome_perfil = ""
-        
-    response = RedirectResponse(f"/{nome_perfil}", status_code=status.HTTP_303_SEE_OTHER)    
+    response = RedirectResponse(f"/{nome_perfil}/index_adm", status_code=status.HTTP_303_SEE_OTHER)    
     response.set_cookie(
         key=NOME_COOKIE_AUTH,
         value=token,
@@ -111,12 +111,12 @@ async def post_entrar_centrodecoleta(
     token = criar_token(usuario[0], usuario[1], usuario[2])
     nome_perfil = None
     match (usuario[2]):
-        case 1: nome_perfil = "consumidor"
+        case 1: nome_perfil = "usuario"
         case 2: nome_perfil = "empresa"
         case 3: nome_perfil = "admin"
         case 4: nome_perfil = "centrodecoleta"
+        case 5: nome_perfil = "consumidor"
         case _: nome_perfil = ""
-        
     response = RedirectResponse(f"/{nome_perfil}/addcreditos", status_code=status.HTTP_303_SEE_OTHER)    
     response.set_cookie(
         key=NOME_COOKIE_AUTH,
