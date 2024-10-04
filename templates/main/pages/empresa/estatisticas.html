@@ -1,0 +1,96 @@
+{% extends "shared/pages/base.html" %}
+
+{% block subtitulo %}Estatísticas{% endblock %}
+
+{% block conteudo %}
+
+<link rel="stylesheet" href="/static/css/estilos.css">
+<body class="bg-light">
+  <div class="container mt-3">
+    <h2>Estatísticas</h2>
+  </div>
+    <hr>
+  <div class="container mt-5">
+    <div class="row mt-4">
+      <div class="col-md-3">
+        <label for="selectOption" class="form-label">Escolha um período</label>
+        <select class="form-select" id="selectOption">
+          <option selected>2021</option>
+          <option>2022</option>
+          <option>2023</option>
+          <option>2024</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <h5 class="text-center">Plástico</h5>
+        <canvas id="barChart" width="400" height="300"></canvas>
+      </div>
+      <div class="col-md-3">
+        <canvas id="pieChart" width="300" height="300"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <script>
+
+    const barChartCtx = document.getElementById('barChart').getContext('2d');
+    const barChart = new Chart(barChartCtx, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+        datasets: [{
+          label: 'Mês',
+          data: [200, 100, 150, 300, 400, 500],
+          backgroundColor: 'rgba(54, 162, 235, 0.5)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Plástico'
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Mês'
+            }
+          }
+        }
+      }
+    });
+
+    const pieChartCtx = document.getElementById('pieChart').getContext('2d');
+    const pieChart = new Chart(pieChartCtx, {
+      type: 'pie',
+      data: {
+        labels: ['Category 1', 'Category 2', 'Category 3'],
+        datasets: [{
+          data: [30, 40, 30],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(75, 192, 192, 0.5)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(75, 192, 192, 1)'
+          ],
+          borderWidth: 1
+        }]
+      }
+    });
+  </script>
+
+</body>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "shared/pages/base.html" %}
+
+{% block subtitulo %} Adicionar cupons {% endblock %}
+
+{% block conteudo %}
+    <link rel="stylesheet" href="/static/css/estilos.css">
+<body>
+    <div class="container mt-3">
+        <h2>Mensagens</h2>
+        <div class="message-list">
+            <div class="card mb-3 message">
+                <div class="d-flex align-items-center p-3">
+                    <div class="avatar me-3">
+                        <img src="/static/img/foto.svg" alt="Avatar" class="rounded-circle">
+                    </div>
+                    <div class="flex-grow-1">
+                        <p class="mb-0">Mensagem padrão para teste</p>
+                    </div>
+                    <div class="form-check ms-3">
+                        <input class="form-check-input check-message" type="checkbox">
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3 message">
+                <div class="d-flex align-items-center p-3">
+                    <div class="avatar me-3">
+                        <img src="/static/img/foto.svg" alt="Avatar" class="rounded-circle">
+                    </div>
+                    <div class="flex-grow-1">
+                        <p class="mb-0">Mensagem padrão para teste</p>
+                    </div>
+                    <div class="form-check ms-3">
+                        <input class="form-check-input check-message" type="checkbox">
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-3 message">
+                <div class="d-flex align-items-center p-3">
+                    <div class="avatar me-3">
+                        <img src="/static/img/foto.svg" alt="Avatar" class="rounded-circle">
+                    </div>
+                    <div class="flex-grow-1">
+                        <p class="mb-0">Mensagem padrão para teste</p>
+                    </div>
+                    <div class="form-check ms-3">
+                        <input class="form-check-input check-message" type="checkbox">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.check-message').forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                let messageCard = this.closest('.message');
+                if (this.checked) {
+                    messageCard.classList.add('bg-secondary', 'text-white');
+                } else {
+                    messageCard.classList.remove('bg-secondary', 'text-white');
+                }
+            });
+        });
+    </script>
+</body>
+
+{% endblock %}

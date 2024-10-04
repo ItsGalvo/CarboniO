@@ -30,7 +30,6 @@ async def post_entrar_consumidor(
     token = criar_token(usuario[0], usuario[1], usuario[2])
     nome_perfil = None
     match (usuario[2]):
-        case 1: nome_perfil = "usuario"
         case 2: nome_perfil = "empresa"
         case 3: nome_perfil = "admin"
         case 4: nome_perfil = "centrodecoleta"
@@ -57,7 +56,6 @@ async def post_entrar_empresa(
     token = criar_token(usuario[0], usuario[1], usuario[2])
     nome_perfil = None
     match (usuario[2]):
-        case 1: nome_perfil = "usuario"
         case 2: nome_perfil = "empresa"
         case 3: nome_perfil = "admin"
         case 4: nome_perfil = "centrodecoleta"
@@ -84,7 +82,6 @@ async def post_entrar_admin(
     token = criar_token(usuario[0], usuario[1], usuario[2])
     nome_perfil = None
     match (usuario[2]):
-        case 1: nome_perfil = "usuario"
         case 2: nome_perfil = "empresa"
         case 3: nome_perfil = "admin"
         case 4: nome_perfil = "centrodecoleta"
@@ -111,7 +108,6 @@ async def post_entrar_centrodecoleta(
     token = criar_token(usuario[0], usuario[1], usuario[2])
     nome_perfil = None
     match (usuario[2]):
-        case 1: nome_perfil = "usuario"
         case 2: nome_perfil = "empresa"
         case 3: nome_perfil = "admin"
         case 4: nome_perfil = "centrodecoleta"

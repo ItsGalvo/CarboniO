@@ -58,3 +58,8 @@ def get_root(request: Request):
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/consumidor/paginaproduto.html", view_model)
+
+@router.get("/estatisticas")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("main/pages/consumidor/estatisticas.html", view_model)

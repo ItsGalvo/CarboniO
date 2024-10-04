@@ -23,3 +23,8 @@ def get_root(request: Request):
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/empresa/adicionarcupom.html", view_model)
+
+@router.get("/estatisticas")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("main/pages/empresa/estatisticas.html", view_model)
