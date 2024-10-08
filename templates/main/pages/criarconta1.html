@@ -27,25 +27,28 @@
                     
                     <form action="/post_cadastrar" class=" col-12 mb-3 text-center" method="post">
                         <div class="form-group mb-3 mx-auto" style="width: 75%;">
-                            <input type="text" class="form-control" id="nome" placeholder="Nome" name="nome">
+                            <input type="text" class="form-control" id="nome" placeholder="Nome" name="nome" required autofocus>
                         </div>
                         <div class="form-group mb-3 mx-auto" style="width: 75%;">
-                            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required>
                         </div>
                         <div class="form-group mb-3 mx-auto" style="width: 75%;">
-                            <input type="cpf" class="form-control" id="cpf" placeholder="CPF" name="cpf">
+                            <input type="cpf" class="form-control" id="cpf" placeholder="CPF" name="cpf" required>
                         </div>
                         <div class="form mb-3 mx-auto w-75">
-                            <input type="telephone" class="form-control" id="telefone" placeholder="Telefone" name="telefone">
+                            <input type="telephone" class="form-control" id="telefone" placeholder="Telefone" name="telefone" required>
                         </div>
                         <div class="form-group mb-3 mx-auto" style="width: 75%;">
-                            <input type="cep" class="form-control" id="cep" placeholder="CEP" name="cep">
+                            <input type="cep" class="form-control" id="cep" placeholder="CEP" name="cep" required>
                         </div>
                         <div class="form mb-3 mx-auto w-75">
-                            <input type="password" class="form-control" id="senha" placeholder="Senha" name="senha">
+                            <input type="password" class="form-control" id="senha" placeholder="Senha" name="senha" required>
                         </div>
                         <div class="form mb-3 mx-auto w-75">
-                            <input type="password" class="form-control" id="confsenha" placeholder="Confirmar senha" name="confsenha">
+                            <input type="password" class="form-control" id="confsenha" placeholder="Confirmar senha" name="confsenha" required>
+                        </div>
+                        <div class="mb-3">
+                            <a href="login" class="text-black">Já tenho login</a>
                         </div>
                         <button type="submit" class="btn btn-success w-75">Finalizar</button>
                     </form>

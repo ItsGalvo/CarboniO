@@ -19,6 +19,11 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/empresa/perfilempresa.html", view_model)
 
+@router.get("/editarperfilempresa")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("main/pages/empresa/editarperfilempresa.html", view_model)
+
 @router.get("/adicionarcupom")
 def get_root(request: Request):
     view_model = {"request": request}
@@ -28,3 +33,8 @@ def get_root(request: Request):
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/empresa/estatisticas.html", view_model)
+
+@router.get("/mensagens")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("main/pages/empresa/mensagens.html", view_model)
