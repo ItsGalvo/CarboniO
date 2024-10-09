@@ -66,6 +66,12 @@ def conferir_senha(senha: str, hash_senha: str) -> bool:
     except ValueError:
         return False
     
+def conferir_nome(nome: str, dados: str) -> bool:
+    if nome == dados:
+        return None
+    else:
+        return False
+    
 
 def criar_token(nome: str, email: str, perfil: int) -> str:
     payload = {

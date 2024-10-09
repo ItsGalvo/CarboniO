@@ -16,6 +16,11 @@ SQL_INSERIR = """
     INSERT INTO usuario(nome, cpf, cnpj, email, telefone, cep, senha, perfil)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 """
+SQL_INSERIR_CREDITOS = """
+    UPDATE usuario
+    SET credito=?
+    WHERE cpf=?
+"""
 
 SQL_ALTERAR = """
     UPDATE usuario
@@ -67,4 +72,15 @@ SQL_CHECAR_CREDENCIAIS = """
     SELECT email, senha, perfil
     FROM usuario
     WHERE email = ?
+"""
+
+SQL_CHECAR_CREDENCIAIS_CREDITO = """
+    SELECT nome, cpf
+    FROM usuario
+    WHERE cpf = ?
+"""
+SQL_OBTER_CREDITO = """
+    SELECT credito
+    FROM usuario
+    WHERE cpf = ?
 """

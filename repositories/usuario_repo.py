@@ -3,7 +3,7 @@ import sqlite3
 from typing import Optional
 from models.usuario_model import Usuario
 from sql.usuario_sql import *
-from util.auth import conferir_senha
+from util.auth import conferir_senha, conferir_nome
 from util.database import obter_conexao
 
 
@@ -46,6 +46,18 @@ class UsuarioRepo:
                         usuario.id,
                     ),
                 )
+                return cursor.rowcount > 0
+        except sqlite3.Error as ex:
+            print(ex)
+            return False
+        
+    @classmethod
+    def addcreditos(cls, credito):
+        try:
+            with obter_conexao() as conexao:
+                cursor = conexao.cursor()
+                cursor.execute(
+                    SQL_INSERIR_CREDITOS,(credito), )
                 return cursor.rowcount > 0
         except sqlite3.Error as ex:
             print(ex)
@@ -158,3 +170,23 @@ class UsuarioRepo:
                 if conferir_senha(senha, dados[1]):
                     return (dados[0], dados[1], dados[2])
             return None
+        
+    #@classmethod
+    #def checar_credenciais_credito(cls, nome: str, cpf: str) -> Optional[tuple]:
+    #    with obter_conexao() as db:
+    #        cursor = db.cursor()
+    #        dados = cursor.execute(
+    #            SQL_CHECAR_CREDENCIAIS_CREDITO, (cpf,)).fetchone()
+    #        if dados:
+    #            if conferir_nome(nome, dados[0]):
+    #                return (dados[0], dados[1])
+    #        return None
+    #    
+    #@classmethod
+    #def obter_credito(cls, cpf: str):
+    #    with obter_conexao() as db:
+    #        cursor = db.cursor()
+    #        dados = cursor.execute(
+    #            SQL_OBTER_CREDITO, (cpf)).fetchone()
+    #
+    #        return dados
