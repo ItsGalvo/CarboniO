@@ -12,10 +12,15 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/centrodecoleta/index.html", view_model)
 
-@router.get("/addcreditos")
+@router.get("/politicaprivacidade")
 def get_root(request: Request):
     view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/centrodecoleta/addcreditos.html", view_model)
+    return templates.TemplateResponse("main/pages/centrodecoleta/politicaprivacidade.html", view_model)
+
+@router.get("/termosdeuso")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("main/pages/centrodecoleta/termosdeuso.html", view_model)
 
 #@router.post("/post_cadastrar_creditos")
 #async def post_cadastrar_creditos(
