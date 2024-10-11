@@ -1,0 +1,63 @@
+{% extends "shared/pages/base_admin.html" %}
+
+{% block subtitulo %}Adicionar centro de coleta{% endblock %}
+
+{% block conteudo %}
+
+<link rel="stylesheet" href="/static/css/estilos.css">
+
+<main>
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-6 d-flex align-items-center">
+                <h1>Adicione um centro de coleta</h1>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <img src="/static/img/logo_carbonio.svg" alt="Logo Carbonio" height="80px">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="form w-50">
+            <form action="/admin/post_cadastrar_centrocoleta" class="col-12" method="post">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder=" ">
+                    <label for="nome">Nome</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder=" ">
+                    <label for="nome">CNPJ</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="email" name="email" placeholder=" ">
+                    <label for="email">E-mail</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="telefone" name="telefone" placeholder=" ">
+                    <label for="telefone">Telefone</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="cep" name="cep" placeholder=" ">
+                    <label for="telefone">CEP</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="senha" name="senha" placeholder=" ">
+                    <label for="senha">Senha</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="confsenha" name="confsenha" placeholder=" ">
+                    <label for="confsenha">Confirmar senha</label>
+                </div>
+                <div class="mb-3">
+                    <a href="index" class="text-decoration-none">
+                        <button type="button" class="btn btn-danger">Cancelar</button>
+                    </a>
+                        <button type="submit" class="btn btn-success">Continuar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

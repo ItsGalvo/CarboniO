@@ -5,7 +5,7 @@
             <div class="row w-100 align-items-center">
                 <div class="col-2">
                     <div class="text-center">
-                        <a class="" href="ofertas">
+                        <a class="" href="/consumidor/index">
                             <img src="/static/img/logo_carbonio.svg" alt="logotipo" height="80px">
                         </a>
                     </div>
@@ -27,23 +27,19 @@
                                 </div>
                             </form>
                             <nav class="nav nav-justified fs-5">
-                                <a class="nav-link text-black py-0" href="/consumidor/ofertas">Ofertas</a>
+                                <a class="nav-link text-black py-0" href="/consumidor/index">Ofertas</a>
                                 <a class="nav-link text-black py-0" href="/consumidor/juntepontos">Juntar Pontos</a>
                                 <a class="nav-link text-black py-0" href="/usuario/contato">Contato</a>
                             </nav>
                         </div>
                     </div>
                     <div class="col-2">
-                        <nav class="nav flex-column justify-content-center gap-2">
-                            <a class="nav-link text-black py-0" href="perfil">
-                                <i class="bi bi-person"></i>
-                                Olá, {Usuario}!
+                        <div class="d-flex flex-column  gap-2">
+                            <a class="nav-link text-black text-center py-0" href="/consumidor/perfil">
+                                <i class="bi bi-person">Olá, {Usuario}!</i>
                             </a>
-                            <a class="nav-link text-black py-0" href="">
-                                <i class="bi bi-coin"></i>
-                                30 créditos
-                            </a>
-                        </nav>
+                                <i class="bi bi-coin text-center">30 créditos</i>                               
+                        </div>
                     </div>
                     <div class="col-1">
                         <div class="d-flex flex-column">
@@ -85,10 +81,8 @@
                                     <i class="bi bi-person"></i>
                                     Olá, {Usuário}!
                                 </a>
-                                <a class="nav-link text-black py-0" href="">
                                     <i class="bi bi-coin"></i>
                                     30 créditos
-                                </a>
                                 <a class="nav-link text-black py-0" href="/consumidor/carrinho">
                                     <i class="bi bi-basket fs-4"></i>
                                 </a>

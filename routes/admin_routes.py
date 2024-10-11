@@ -19,6 +19,11 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/admin/addempresa.html", view_model)
 
+@router.get("/addcentrocoleta")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("main/pages/admin/addcentrocoleta.html", view_model)
+
 @router.post("/post_cadastrar_empresa")
 async def post_cadastrar_empresa(
     nome: str = Form(...),
@@ -39,5 +44,28 @@ async def post_cadastrar_empresa(
         cep=cep, 
         senha=senha_hash,
         perfil=2)
+    UsuarioRepo.inserir(usuario)
+    return RedirectResponse("/admin/index", status_code=status.HTTP_303_SEE_OTHER)
+
+@router.post("/post_cadastrar_centrocoleta")
+async def post_cadastrar_centrocoleta(
+    nome: str = Form(...),
+    cnpj: str = Form(...),
+    email: str = Form(...),
+    telefone: str = Form(...),
+    cep: str = Form(...),
+    senha: str = Form(...),
+    confsenha: str = Form(...)):
+    if senha != confsenha:
+        return RedirectResponse("/addcentrocoleta", status_code=status.HTTP_303_SEE_OTHER)
+    senha_hash = obter_hash_senha(senha)
+    usuario = Usuario(
+        nome=nome, 
+        cnpj=cnpj, 
+        email=email, 
+        telefone=telefone,
+        cep=cep, 
+        senha=senha_hash,
+        perfil=4)
     UsuarioRepo.inserir(usuario)
     return RedirectResponse("/admin/index", status_code=status.HTTP_303_SEE_OTHER)
