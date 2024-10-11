@@ -4,6 +4,11 @@ from fastapi.templating import Jinja2Templates
 templates = Jinja2Templates("templates")
 router = APIRouter(prefix="/consumidor")
 
+@router.get("/index")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("main/pages/consumidor/index.html", view_model)
+
 @router.get("/carrinho")
 def get_root(request: Request):
     view_model = {"request": request}
@@ -39,11 +44,6 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/consumidor/cuponsusuario.html", view_model)
 
-@router.get("/ofertas")
-def get_root(request: Request):
-    view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/consumidor/ofertas.html", view_model)
-
 @router.get("/store")
 def get_root(request: Request):
     view_model = {"request": request}
@@ -63,3 +63,13 @@ def get_root(request: Request):
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/consumidor/estatisticas.html", view_model)
+
+@router.get("/politicaprivacidade")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("main/pages/consumidor/politicaprivacidade.html", view_model)
+
+@router.get("/termosdeuso")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("main/pages/consumidor/termosdeuso.html", view_model)

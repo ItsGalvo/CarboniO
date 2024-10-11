@@ -9,10 +9,10 @@ from util.auth import obter_hash_senha
 router = APIRouter(prefix="/admin")
 templates = Jinja2Templates("templates")
 
-@router.get("/index_adm")
+@router.get("/index")
 def get_root(request: Request):
     view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/admin/index_adm.html", view_model)
+    return templates.TemplateResponse("main/pages/admin/index.html", view_model)
 
 @router.get("/addempresa")
 def get_root(request: Request):
@@ -40,4 +40,4 @@ async def post_cadastrar_empresa(
         senha=senha_hash,
         perfil=2)
     UsuarioRepo.inserir(usuario)
-    return RedirectResponse("/index_adm", status_code=status.HTTP_303_SEE_OTHER)
+    return RedirectResponse("/admin/index", status_code=status.HTTP_303_SEE_OTHER)

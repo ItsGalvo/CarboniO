@@ -2,97 +2,18 @@
 
     <nav class="navbar navbar-expand-md text-black bg-green p-3">
         <div class="container">
-            <div class="row w-100 align-items-center">
-                <div class="col-2">
-                    <div class="text-center">
+            <div class="row w-100 d-flex">
+                    <div class="col-6">
                         <a class="" href="perfilempresa">
                             <img src="/static/img/logo_carbonio.svg" alt="logotipo" height="80px">
                         </a>
                     </div>
-                </div>
-
-
-                <div class="navbar navbar-expand-md d-none d-md-flex col-10">
-                    <div class="col-9">
-                        <div class="d-flex flex-column justify-content-center gap-2">
-                            <form action="/cadastrarnews" method="post">
-                                <div class="text-start">
-                                    <div class="input-group">
-                                        <input type="email" class="form-control bg-beige border-beige rounded-start-2"
-                                            placeholder="Digite o termo da busca aqui" id="busca" />
-                                        <button class="btn btn-beige" type="submit">
-                                            <i class="bi bi-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                            <nav class="nav nav-justified fs-5">
-                                <a class="nav-link text-black py-0" href="/consumidor/ofertas">Ofertas</a>
-                                <a class="nav-link text-black py-0" href="/consumidor/juntepontos">Juntar Pontos</a>
-                                <a class="nav-link text-black py-0" href="/usuario/contato">Contato</a>
-                            </nav>
-                        </div>
+                    <div class="col-6  d-flex align-items-center justify-content-end">
+                        <a href="/login" class="text-black">
+                            <i class="bi bi-box-arrow-left fs-4"></i>
+                        </a>
                     </div>
-                    <div class="col-2">
-                        <nav class="nav flex-column justify-content-center gap-2">
-                            <a class="nav-link text-black py-0" href="perfil">
-                                <i class="bi bi-person"></i>
-                                Olá, {Usuario}!
-                            </a>
-                            <a class="nav-link text-black py-0" href="">
-                                <i class="bi bi-coin"></i>
-                                30 créditos
-                            </a>
-                        </nav>
-                    </div>
-                    <div class="col-1">
-                        <div class="d-flex flex-column">
-                            <a class="nav-link text-black text-center" href="carrinho">
-                                <i class="bi bi-basket fs-4"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <button class="navbar-toggler col-1 position-absolute end-0 me-5" type="button"
-                    data-bs-toggle="collapse" data-bs-target="#menuNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="container  d-md-none mt-3 mb-3" id="menuNavbar">
-                        <div class="d-flex flex-column justify-content-center gap-2">
-                            <form action="/cadastrarnews" method="post">
-                                <div class="text-start">
-                                    <div class="input-group">
-                                        <input type="email" class="form-control bg-beige border-beige rounded-start-2"
-                                            placeholder="Digite o termo da busca aqui" id="busca" />
-                                        <button class="btn btn-beige" type="submit">
-                                            <i class="bi bi-search"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                            <nav class="nav nav-justified fs-5">
-                                <a class="nav-link text-black py-0" href="/consumidor/ofertas">Ofertas</a>
-                                <a class="nav-link text-black py-0" href="/consumidor/juntepontos">Juntar Pontos</a>
-                                <a class="nav-link text-black py-0" href="/usuario/contato">Contato</a>
-                            </nav>
-                        </div>
-                        <div>
-                            <nav class="nav nav-justified  mt-3">
-                                <a class="nav-link text-black py-0" href="/consumidor/perfil">
-                                    <i class="bi bi-person"></i>
-                                    Olá, {Usuário}!
-                                </a>
-                                <a class="nav-link text-black py-0" href="">
-                                    <i class="bi bi-coin"></i>
-                                    30 créditos
-                                </a>
-                                <a class="nav-link text-black py-0" href="/consumidor/carrinho">
-                                    <i class="bi bi-basket fs-4"></i>
-                                </a>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
             </div>
+        </div>
     </nav>
 </header>

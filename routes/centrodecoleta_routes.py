@@ -7,6 +7,11 @@ from repositories.usuario_repo import UsuarioRepo
 router = APIRouter(prefix="/centrodecoleta")
 templates = Jinja2Templates("templates")
 
+@router.get("/index")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("main/pages/centrodecoleta/index.html", view_model)
+
 @router.get("/addcreditos")
 def get_root(request: Request):
     view_model = {"request": request}

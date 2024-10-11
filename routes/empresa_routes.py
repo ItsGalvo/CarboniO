@@ -4,20 +4,15 @@ from fastapi.templating import Jinja2Templates
 router = APIRouter(prefix="/empresa")
 templates = Jinja2Templates("templates")
 
-@router.get("/editarperfilempresa")
-def get_root(request: Request):
-    view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/empresa/editarperfilempresa.html", view_model)
-
 @router.get("/cuponsativos")
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/empresa/cuponsativos.html", view_model)
 
-@router.get("/perfilempresa")
+@router.get("/index")
 def get_root(request: Request):
     view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/empresa/perfilempresa.html", view_model)
+    return templates.TemplateResponse("main/pages/empresa/index.html", view_model)
 
 @router.get("/editarperfilempresa")
 def get_root(request: Request):
@@ -38,3 +33,13 @@ def get_root(request: Request):
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/empresa/mensagens.html", view_model)
+
+@router.get("/politicaprivacidade")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("main/pages/empresa/politicaprivacidade.html", view_model)
+
+@router.get("/termosdeuso")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("main/pages/empresa/termosdeuso.html", view_model)

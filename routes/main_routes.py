@@ -19,13 +19,13 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/login.html", view_model)
 
-@router.post("/post_entrar_consumidor")
-async def post_entrar_consumidor(
+@router.post("/post_entrar")
+async def post_entrar(
     email: str = Form(...), 
     senha: str = Form(...)):
     usuario = UsuarioRepo.checar_credenciais(email, senha)
     if usuario is None:
-        response = RedirectResponse("/loginconsumidor", status_code=status.HTTP_303_SEE_OTHER)
+        response = RedirectResponse("/login", status_code=status.HTTP_303_SEE_OTHER)
         return response
     token = criar_token(usuario[0], usuario[1], usuario[2])
     nome_perfil = None
@@ -35,7 +35,7 @@ async def post_entrar_consumidor(
         case 4: nome_perfil = "centrodecoleta"
         case 5: nome_perfil = "consumidor"
         case _: nome_perfil = ""
-    response = RedirectResponse(f"/{nome_perfil}/perfil", status_code=status.HTTP_303_SEE_OTHER)    
+    response = RedirectResponse(f"/{nome_perfil}/index", status_code=status.HTTP_303_SEE_OTHER)    
     response.set_cookie(
         key=NOME_COOKIE_AUTH,
         value=token,
@@ -45,108 +45,10 @@ async def post_entrar_consumidor(
     )
     return response
 
-@router.post("/post_entrar_empresa")
-async def post_entrar_empresa(
-    email: str = Form(...), 
-    senha: str = Form(...)):
-    usuario = UsuarioRepo.checar_credenciais(email, senha)
-    if usuario is None:
-        response = RedirectResponse("/loginempresa", status_code=status.HTTP_303_SEE_OTHER)
-        return response
-    token = criar_token(usuario[0], usuario[1], usuario[2])
-    nome_perfil = None
-    match (usuario[2]):
-        case 2: nome_perfil = "empresa"
-        case 3: nome_perfil = "admin"
-        case 4: nome_perfil = "centrodecoleta"
-        case 5: nome_perfil = "consumidor"
-        case _: nome_perfil = ""
-    response = RedirectResponse(f"/{nome_perfil}/perfilempresa", status_code=status.HTTP_303_SEE_OTHER)    
-    response.set_cookie(
-        key=NOME_COOKIE_AUTH,
-        value=token,
-        max_age=3600*24*365*10,
-        httponly=True,
-        samesite="lax"
-    )
-    return response
-
-@router.post("/post_entrar_admin")
-async def post_entrar_admin(
-    email: str = Form(...), 
-    senha: str = Form(...)):
-    usuario = UsuarioRepo.checar_credenciais(email, senha)
-    if usuario is None:
-        response = RedirectResponse("/loginadmin", status_code=status.HTTP_303_SEE_OTHER)
-        return response
-    token = criar_token(usuario[0], usuario[1], usuario[2])
-    nome_perfil = None
-    match (usuario[2]):
-        case 2: nome_perfil = "empresa"
-        case 3: nome_perfil = "admin"
-        case 4: nome_perfil = "centrodecoleta"
-        case 5: nome_perfil = "consumidor"
-        case _: nome_perfil = ""
-    response = RedirectResponse(f"/{nome_perfil}/index_adm", status_code=status.HTTP_303_SEE_OTHER)    
-    response.set_cookie(
-        key=NOME_COOKIE_AUTH,
-        value=token,
-        max_age=3600*24*365*10,
-        httponly=True,
-        samesite="lax"
-    )
-    return response
-
-@router.post("/post_entrar_centrodecoleta")
-async def post_entrar_centrodecoleta(
-    email: str = Form(...), 
-    senha: str = Form(...)):
-    usuario = UsuarioRepo.checar_credenciais(email, senha)
-    if usuario is None:
-        response = RedirectResponse("/logincentrodecoleta", status_code=status.HTTP_303_SEE_OTHER)
-        return response
-    token = criar_token(usuario[0], usuario[1], usuario[2])
-    nome_perfil = None
-    match (usuario[2]):
-        case 2: nome_perfil = "empresa"
-        case 3: nome_perfil = "admin"
-        case 4: nome_perfil = "centrodecoleta"
-        case 5: nome_perfil = "consumidor"
-        case _: nome_perfil = ""
-    response = RedirectResponse(f"/{nome_perfil}/addcreditos", status_code=status.HTTP_303_SEE_OTHER)    
-    response.set_cookie(
-        key=NOME_COOKIE_AUTH,
-        value=token,
-        max_age=3600*24*365*10,
-        httponly=True,
-        samesite="lax"
-    )
-    return response
-
-@router.get("/loginempresa")
+@router.get("/criarconta")
 async def get_root(request: Request):
     view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/loginempresa.html", view_model)
-
-@router.get("/loginadmin")
-async def get_root(request: Request):
-    view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/loginadmin.html", view_model)
-
-@router.get("/loginconsumidor")
-async def get_root(request: Request):
-    view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/loginconsumidor.html", view_model)
-
-@router.get("/logincentrodecoleta")
-async def get_root(request: Request):
-    view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/logincentrodecoleta.html", view_model)
-
-@router.get("/criarconta1")
-async def get_root(request: Request):
-    view_model = {"request": request}
-    return templates.TemplateResponse("main/pages/criarconta1.html", view_model)
+    return templates.TemplateResponse("main/pages/criarconta.html", view_model)
 
 @router.post("/post_cadastrar")
 async def post_cadastrar(
@@ -158,7 +60,7 @@ async def post_cadastrar(
     senha: str = Form(...),
     confsenha: str = Form(...)):
     if senha != confsenha:
-        return RedirectResponse("/criarconta1", status_code=status.HTTP_303_SEE_OTHER)
+        return RedirectResponse("/criarconta", status_code=status.HTTP_303_SEE_OTHER)
     senha_hash = obter_hash_senha(senha)
     usuario = Usuario(
         nome=nome, 
@@ -169,4 +71,4 @@ async def post_cadastrar(
         senha=senha_hash,
         perfil=5)
     UsuarioRepo.inserir(usuario)
-    return RedirectResponse("/loginconsumidor", status_code=status.HTTP_303_SEE_OTHER)
+    return RedirectResponse("/login", status_code=status.HTTP_303_SEE_OTHER)
