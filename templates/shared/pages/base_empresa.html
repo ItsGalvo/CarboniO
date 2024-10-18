@@ -37,6 +37,7 @@
 
 <body class="d-flex flex-column min-vh-100">
     {% include "shared/includes/header_empresa.html" %}
+    {% include "shared/includes/mensagem.html" with context %}
     {% block conteudo %}
     {% endblock %}
     {% include "shared/includes/footer_empresa.html" %}

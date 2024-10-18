@@ -5,6 +5,8 @@ from fastapi.templating import Jinja2Templates
 from models.usuario_model import Usuario
 from repositories.usuario_repo import UsuarioRepo
 from util.auth import NOME_COOKIE_AUTH, criar_token, obter_hash_senha
+from util.mensagens import adicionar_mensagem_erro, adicionar_mensagem_sucesso
+
 
 router = APIRouter()
 templates = Jinja2Templates("templates")
@@ -26,6 +28,7 @@ async def post_entrar(
     usuario = UsuarioRepo.checar_credenciais(email, senha)
     if usuario is None:
         response = RedirectResponse("/login", status_code=status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_erro(response, "Credenciais inválidas! Cheque os valores digitados e tente novamente.")
         return response
     token = criar_token(usuario[0], usuario[1], usuario[2])
     nome_perfil = None
@@ -43,6 +46,7 @@ async def post_entrar(
         httponly=True,
         samesite="lax"
     )
+    adicionar_mensagem_sucesso(response, "Login realizado com sucesso!")
     return response
 
 @router.get("/criarconta")
@@ -60,7 +64,9 @@ async def post_cadastrar(
     senha: str = Form(...),
     confsenha: str = Form(...)):
     if senha != confsenha:
-        return RedirectResponse("/criarconta", status_code=status.HTTP_303_SEE_OTHER)
+        response = RedirectResponse("/criarconta", status_code=status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_erro(response, "Credenciais inválidas! Cheque os valores digitados e tente novamente.")
+        return response
     senha_hash = obter_hash_senha(senha)
     usuario = Usuario(
         nome=nome, 
@@ -71,4 +77,6 @@ async def post_cadastrar(
         senha=senha_hash,
         perfil=5)
     UsuarioRepo.inserir(usuario)
-    return RedirectResponse("/login", status_code=status.HTTP_303_SEE_OTHER)
+    response = RedirectResponse("/login", status_code=status.HTTP_303_SEE_OTHER)
+    adicionar_mensagem_sucesso(response, "Cadastro realizado com sucesso!")
+    return response

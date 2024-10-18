@@ -18,7 +18,7 @@
         </div>
     </div>
     <hr>
-    <div class="container">
+    <div class="container d-flex ">
         <div class="form w-50">
             <form action="/admin/post_cadastrar_empresa" class="col-12" method="post">
                 <div class="form-floating mb-3">
@@ -53,9 +53,12 @@
                     <a href="index" class="text-decoration-none">
                         <button type="button" class="btn btn-danger">Cancelar</button>
                     </a>
-                        <button type="submit" class="btn btn-success">Continuar</button>
+                    <button type="submit" class="btn btn-success">Continuar</button>
                 </div>
             </form>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-center">
+            {% include "shared/includes/mensagem.html" with context %}
         </div>
     </div>
 </main>

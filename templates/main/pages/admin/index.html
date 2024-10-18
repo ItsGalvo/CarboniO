@@ -1,12 +1,13 @@
 {% extends "shared/pages/base_admin.html" %}
 
-{% block subtitulo %} Cupons Ativos{% endblock %}
+{% block subtitulo %} Perfil admin {% endblock %}
 
 {% block conteudo %}
 
 <link rel="stylesheet" href="/static/css/estilos.css">
 <body>
     <div class="container">
+        {% include "shared/includes/mensagem.html" with context %}
         <h1 class="mt-4 text-center">Empresas</h1>
         <br>
         <div class="text-center my-3 enter_button mb-5">

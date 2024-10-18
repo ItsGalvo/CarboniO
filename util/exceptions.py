@@ -1,7 +1,7 @@
 import logging
 from fastapi import FastAPI, HTTPException, Request, status
 from fastapi.responses import RedirectResponse
-from util.cookies import adicionar_mensagem_erro
+from util.mensagens import adicionar_mensagem_erro
 from util.templates import obter_jinja_templates
 
 templates = obter_jinja_templates("templates/public")

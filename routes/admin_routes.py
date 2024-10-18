@@ -1,3 +1,4 @@
+from urllib import response
 from fastapi import APIRouter, Form, Request, status
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
@@ -5,6 +6,7 @@ from fastapi.templating import Jinja2Templates
 from models.usuario_model import Usuario
 from repositories.usuario_repo import UsuarioRepo
 from util.auth import obter_hash_senha
+from util.mensagens import adicionar_mensagem_erro, adicionar_mensagem_sucesso
 
 router = APIRouter(prefix="/admin")
 templates = Jinja2Templates("templates")
@@ -34,7 +36,9 @@ async def post_cadastrar_empresa(
     senha: str = Form(...),
     confsenha: str = Form(...)):
     if senha != confsenha:
-        return RedirectResponse("/addempresa", status_code=status.HTTP_303_SEE_OTHER)
+        response = RedirectResponse("/admin/addempresa", status_code=status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_erro(response, "Credenciais inválidas! Cheque os valores digitados e tente novamente.")
+        return response
     senha_hash = obter_hash_senha(senha)
     usuario = Usuario(
         nome=nome, 
@@ -45,7 +49,9 @@ async def post_cadastrar_empresa(
         senha=senha_hash,
         perfil=2)
     UsuarioRepo.inserir(usuario)
-    return RedirectResponse("/admin/index", status_code=status.HTTP_303_SEE_OTHER)
+    response = RedirectResponse("/admin/index", status_code=status.HTTP_303_SEE_OTHER)
+    adicionar_mensagem_sucesso(response, "Empresa cadastrada com sucesso!")
+    return response
 
 @router.post("/post_cadastrar_centrocoleta")
 async def post_cadastrar_centrocoleta(
@@ -57,7 +63,9 @@ async def post_cadastrar_centrocoleta(
     senha: str = Form(...),
     confsenha: str = Form(...)):
     if senha != confsenha:
-        return RedirectResponse("/addcentrocoleta", status_code=status.HTTP_303_SEE_OTHER)
+        response = RedirectResponse("/admin/addcentrocoleta", status_code=status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_erro(response, "Credenciais inválidas! Cheque os valores digitados e tente novamente.")
+        return response
     senha_hash = obter_hash_senha(senha)
     usuario = Usuario(
         nome=nome, 
@@ -68,4 +76,6 @@ async def post_cadastrar_centrocoleta(
         senha=senha_hash,
         perfil=4)
     UsuarioRepo.inserir(usuario)
-    return RedirectResponse("/admin/index", status_code=status.HTTP_303_SEE_OTHER)
+    response = RedirectResponse("/admin/index", status_code=status.HTTP_303_SEE_OTHER)
+    adicionar_mensagem_sucesso(response, "Empresa cadastrada com sucesso!")
+    return response
