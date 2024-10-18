@@ -1,12 +1,11 @@
-import logging
-from fastapi import FastAPI, HTTPException, Request, status
+from fastapi import FastAPI, HTTPException, Request, logger, status
 from fastapi.responses import RedirectResponse
+from fastapi.templating import Jinja2Templates
 from util.mensagens import adicionar_mensagem_erro
-from util.templates import obter_jinja_templates
 
-templates = obter_jinja_templates("templates/public")
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+
+templates = Jinja2Templates(directory="templates")
+
 
 
 def configurar_excecoes(app: FastAPI):
@@ -15,7 +14,7 @@ def configurar_excecoes(app: FastAPI):
     async def unauthorized_exception_handler(request: Request, _):
         return_url = f"?return_url={request.url.path}"
         response = RedirectResponse(
-            f"/entrar{return_url}", status_code=status.HTTP_302_FOUND
+            f"/login{return_url}", status_code=status.HTTP_302_FOUND
         )
         adicionar_mensagem_erro(
             response,
@@ -42,7 +41,7 @@ def configurar_excecoes(app: FastAPI):
             return response
         else:
             response = RedirectResponse(
-                f"/entrar{return_url}", status_code=status.HTTP_302_FOUND
+                f"/login{return_url}", status_code=status.HTTP_302_FOUND
             )
             adicionar_mensagem_erro(
                 response,
@@ -54,7 +53,7 @@ def configurar_excecoes(app: FastAPI):
     async def page_not_found_exception_handler(request: Request, _):
         usuario = request.state.usuario if hasattr(request.state, "usuario") else None
         return templates.TemplateResponse(
-            "pages/404.html",
+            "shared/pages/404.html",
             {
                 "request": request,
                 "usuario": usuario,
@@ -63,7 +62,7 @@ def configurar_excecoes(app: FastAPI):
 
     @app.exception_handler(HTTPException)
     async def http_exception_handler(request: Request, ex: HTTPException):
-        logger.error("Ocorreu uma exceção não tratada: %s", ex)
+        #logger.error("Ocorreu uma exceção não tratada: %s", ex)
         usuario = request.state.usuario if hasattr(request.state, "usuario") else None
         view_model = {
             "request": request,
@@ -71,14 +70,14 @@ def configurar_excecoes(app: FastAPI):
             "detail": "Erro na requisição HTTP.",
         }
         return templates.TemplateResponse(
-            "pages/error.html",
+            "shared/pages/error.html",
             view_model,
             status_code=ex.status_code,
         )
 
     @app.exception_handler(Exception)
     async def general_exception_handler(request: Request, ex: Exception):
-        logger.error("Ocorreu uma exceção não tratada: %s", ex)
+        #logger.error("Ocorreu uma exceção não tratada: %s", ex)
         usuario = request.state.usuario if hasattr(request.state, "usuario") else None
         view_model = {
             "request": request,
@@ -86,7 +85,7 @@ def configurar_excecoes(app: FastAPI):
             "detail": "Erro interno do servidor.",
         }
         return templates.TemplateResponse(
-            "pages/error.html",
+            "shared/pages/error.html",
             view_model,
             status_code=500,
         )
