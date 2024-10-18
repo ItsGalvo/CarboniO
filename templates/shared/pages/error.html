@@ -1,12 +1,18 @@
-{% extends "shared/pages/base.html" %}
-{% block subtitulo %}Tivemos um Contratempo...{% endblock %}
+{% extends "shared/pages/base_excecoes.html" %}
+{% block subtitulo %}Página Não Encontrada{% endblock %}
 {% block conteudo %}
-<h1 class="display-5"><b>Tivemos um Contratempo...</b></h1>
+
+<div class="container mt-3">
+    <h1 class="display-5"><b>Tivemos um Contratempo...</b></h1>
+</div>
 <hr>
-<p class="lead">
-    Um problema inesperado ocorreu em nossos servidores. A equipe de suporte já foi notificada para sanar o problema. Clique no link a seguir para retornar à página principal.
-</p>
-<p>
-    <a href="/" class="btn btn-danger btn-lg">Voltar à Página Principal</a>
-</p>
+<div class="container">
+    <p class="lead">
+        Um problema inesperado ocorreu em nossos servidores. A equipe de suporte já foi notificada para sanar o problema. Clique no link a seguir para retornar à página principal.
+    </p>
+    <div class="d-flex justify-content-center">
+        <a href="/" class="btn btn-danger btn-lg">Voltar à Página Principal</a>
+    </div>
+
+</div>
 {% endblock %}
