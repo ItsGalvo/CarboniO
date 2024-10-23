@@ -1,5 +1,5 @@
 {% extends "shared/pages/base_admin.html" %}
-
+{% from "shared/pages/macros.html" import input_text, input_email, input_date, input_password, input_textarea, input_select, input_radios, input_switch %}
 {% block subtitulo %}Adicionar centro de coleta{% endblock %}
 
 {% block conteudo %}
@@ -21,34 +21,13 @@
     <div class="container d-flex ">
         <div class="form w-50">
             <form action="/admin/post_cadastrar_centrocoleta" class="col-12" method="post">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder=" ">
-                    <label for="nome">Nome</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="cnpj" name="cnpj" placeholder=" ">
-                    <label for="nome">CNPJ</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="email" name="email" placeholder=" ">
-                    <label for="email">E-mail</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="telefone" name="telefone" placeholder=" ">
-                    <label for="telefone">Telefone</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="cep" name="cep" placeholder=" ">
-                    <label for="telefone">CEP</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="senha" name="senha" placeholder=" ">
-                    <label for="senha">Senha</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" id="confsenha" name="confsenha" placeholder=" ">
-                    <label for="confsenha">Confirmar senha</label>
-                </div>
+                {{ input_text('nome', 'Nome', 'data-mask="nome"', '', 'form-floating mb-3')}}
+                {{ input_text('cnpj', 'CNPJ', 'data-mask="cnpj"', '', "form-floating mb-3")}}
+                {{ input_email('email', 'Email', '', '', "form-floating mb-3")}}
+                {{ input_text('telefone', 'Telefone', 'data-mask="telefone"', '', "form-floating mb-3")}}
+                {{ input_text('cep', 'CEP', '', '', "form-floating mb-3")}}
+                {{ input_password('senha', 'Senha', '', "form-floating mb-3")}}
+                {{ input_password('confsenha', 'Confirmar senha', '', "form-floating mb-3")}}
                 <div class="mb-3">
                     <a href="index" class="text-decoration-none">
                         <button type="button" class="btn btn-danger">Cancelar</button>
@@ -61,6 +40,7 @@
             {% include "shared/includes/mensagem.html" with context %}
         </div>
     </div>
+    <script src="/static/js/mascararCampos.js"></script>
 </main>
 
 {% endblock %}
