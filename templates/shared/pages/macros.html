@@ -6,19 +6,19 @@
 
 {% macro input_email(name, label, attributes='', value='', div_classes='form-group mb-3 mx-auto') %}
 <div class="{{div_classes}}" style="width: 75%;">
-    <input type="email" name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" required {{attributes|safe}} value="{{value|e}}>
+    <input type="email" name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" required {{attributes|safe}} value="{{value|e}}">
 </div>
 {% endmacro %}
 
 {% macro input_date(name, label, attributes='', value='', div_classes='form-group mb-3 mx-auto') %}
 <div class="{{div_classes}}" style="width: 75%;">
-        <input type="date" name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" required {{attributes|safe}} value="{{value|e}}>
+        <input type="date" name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" required {{attributes|safe}} value="{{value|e}}">
 </div>
 {% endmacro %}
 
 {% macro input_password(name, label, attributes='', div_classes='form-group mb-3 mx-auto') %}
 <div class="{{div_classes}}" style="width: 75%;">
-        <input type="password" name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" required {{attributes|safe}} value="{{value|e}}>
+        <input type="password" name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" required {{attributes|safe}} value="{{value|e}}">
 </div>
 {% endmacro %}
 
@@ -30,7 +30,7 @@
 
 {% macro input_select(name, label, options, attributes='', value='', div_classes='form-group mb-3 mx-auto') %}
 <div class="{{div_classes}}"  style="width: 75%;">
-        <select name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" {{attributes|safe}} value="{{value|e}}>
+        <select name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" {{attributes|safe}} value="{{value|e}}">
             <option value="" {{"selected" if not value}}>Escolha uma opção...</option>
             {% for option in options %}
             {%- set selected = "selected" if option.value == value -%}
