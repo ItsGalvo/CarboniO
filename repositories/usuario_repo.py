@@ -23,6 +23,7 @@ class UsuarioRepo:
                     (
                         usuario.nome,
                         usuario.cpf,
+                        usuario.data_nascimento,
                         usuario.cnpj,
                         usuario.email,
                         usuario.telefone,

@@ -58,45 +58,44 @@ async def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/criarconta.html", view_model)
 
-@router.post("/post_cadastrar")
-async def post_cadastrar(
-    nome: str = Form(...),
-    cpf: str = Form(...),
-    email: str = Form(...),
-    telefone: str = Form(...),
-    cep: str = Form(...),
-    senha: str = Form(...),
-    confsenha: str = Form(...)):
-    if senha != confsenha:
-        response = RedirectResponse("/criarconta", status_code=status.HTTP_303_SEE_OTHER)
-        adicionar_mensagem_erro(response, "Credenciais inválidas! Cheque os valores digitados e tente novamente.")
-        return response
-    senha_hash = obter_hash_senha(senha)
-    usuario = Usuario(
-        nome=nome, 
-        cpf=cpf, 
-        email=email, 
-        telefone=telefone,
-        cep=cep, 
-        senha=senha_hash,
-        perfil=5)
-    UsuarioRepo.inserir(usuario)
-    response = RedirectResponse("/login", status_code=status.HTTP_303_SEE_OTHER)
-    adicionar_mensagem_sucesso(response, "Cadastro realizado com sucesso!")
-    return response
+# @router.post("/post_cadastrar")
+# async def post_cadastrar(
+#     nome: str = Form(...),
+#     cpf: str = Form(...),
+#     email: str = Form(...),
+#     telefone: str = Form(...),
+#     cep: str = Form(...),
+#     senha: str = Form(...),
+#     confsenha: str = Form(...)):
+#     if senha != confsenha:
+#         response = RedirectResponse("/criarconta", status_code=status.HTTP_303_SEE_OTHER)
+#         adicionar_mensagem_erro(response, "Credenciais inválidas! Cheque os valores digitados e tente novamente.")
+#         return response
+#     senha_hash = obter_hash_senha(senha)
+#     usuario = Usuario(
+#         nome=nome, 
+#         cpf=cpf, 
+#         email=email, 
+#         telefone=telefone,
+#         cep=cep, 
+#         senha=senha_hash,
+#         perfil=5)
+#     UsuarioRepo.inserir(usuario)
+#     response = RedirectResponse("/login", status_code=status.HTTP_303_SEE_OTHER)
+#     adicionar_mensagem_sucesso(response, "Cadastro realizado com sucesso!")
+#     return response
 
-@router.post("/cadastrar")
+@router.post("/post_cadastrar")
 async def post_cadastrar(request: Request):
     # capturar os dados do formulário de cadastro como um dicionário
     dados = dict(await request.form())
     # normalizar os dados para tipificar os valores corretamente
     dados["data_nascimento"] = date.fromisoformat(dados["data_nascimento"])
-    dados["perfil"] = int(dados["perfil"])
     # validar dados do formulário
     erros = {}
     #validação da senha igual à confirmação senha
     if is_matching_fields(dados["senha"],"senha", "Senha", dados["confsenha"], "Confirmar senha", erros):
-        dados.pop("confirmacao_senha")
+        dados.pop("confsenha")
     #validação do nome
     is_person_fullname(dados["nome"], "nome", "Nome", erros)
     is_size_between(dados["nome"], "nome", "Nome", erros)
@@ -123,6 +122,7 @@ async def post_cadastrar(request: Request):
     senha_hash = bcrypt.hashpw(dados["senha"].encode(), bcrypt.gensalt())
     dados["senha"] = senha_hash.decode()
     # criar um objeto Usuario com os dados do dicionário
+    dados["perfil"] = 5
     usuario = Usuario(**dados)
     # inserir o objeto Usuario no banco de dados usando o repositório
     usuario = UsuarioRepo.inserir(usuario)
