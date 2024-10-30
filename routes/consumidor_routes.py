@@ -60,8 +60,14 @@ def get_root(request: Request):
     return templates.TemplateResponse("main/pages/consumidor/paginaproduto.html", view_model)
 
 @router.get("/estatisticas")
-def get_root(request: Request):
-    view_model = {"request": request}
+def get_root(request: Request):  
+    options = [
+        {"value": "2021", "label": "2021"},
+        {"value": "2022", "label": "2022"},
+        {"value": "2023", "label": "2023"},
+        {"value": "2024", "label": "2024"},
+    ]
+    view_model = {"request": request, "options": options}
     return templates.TemplateResponse("main/pages/consumidor/estatisticas.html", view_model)
 
 @router.get("/politicaprivacidade")

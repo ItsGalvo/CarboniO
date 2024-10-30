@@ -1,5 +1,7 @@
 {% extends "shared/pages/base_empresa.html" %}
 
+{% from "shared/pages/macros.html" import input_text, input_email, input_date, input_password, input_textarea, input_select, input_radios, input_switch %}
+
 {% block subtitulo %}Estatísticas{% endblock %}
 
 {% block conteudo %}
@@ -15,14 +17,9 @@
     <hr>
   <div class="container mt-5">
     <div class="row mt-4">
-      <div class="col-md-3">
+      <div class="col-md-3 text-center">
         <label for="selectOption" class="form-label">Escolha um período</label>
-        <select class="form-select" id="selectOption">
-          <option selected>2021</option>
-          <option>2022</option>
-          <option>2023</option>
-          <option>2024</option>
-        </select>
+        {{input_select('selecao_periodo', 'Escolha um período', options)}}
       </div>
       <div class="col-md-6">
         <h5 class="text-center">Plástico</h5>
