@@ -27,8 +27,8 @@
                     </div>
                     
                         <form action="/post_entrar" class="col-12 mb-3 text-center" method="post">
-                            {{ input_email('email', 'Email',)}}
-                            {{ input_password('senha', 'Senha',)}}
+                            {{ input_email('email', 'Email', '', '', 'form-group mb-3 w-75 mx-auto')}}
+                            {{ input_password('senha', 'Senha', '', 'form-group mb-3 w-75 mx-auto')}}
                                 <button type="submit" class="btn btn-success w-75">Entrar</button>
                         </form>
 

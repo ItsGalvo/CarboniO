@@ -1,35 +1,35 @@
-{% macro input_text(name, label, attributes='', value='', div_classes='form-group mb-3 mx-auto') %}
-<div class="{{div_classes}}" style="width: 75%;">
+{% macro input_text(name, label, attributes='', value='', div_classes='form-group mb-3') %}
+<div class="{{div_classes}}">
     <input type="text" name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" required {{attributes|safe}} value="{{value|e}}">
 </div>
 {% endmacro %}
 
-{% macro input_email(name, label, attributes='', value='', div_classes='form-group mb-3 mx-auto') %}
-<div class="{{div_classes}}" style="width: 75%;">
+{% macro input_email(name, label, attributes='', value='', div_classes='form-group mb-3') %}
+<div class="{{div_classes}}">
     <input type="email" name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" required {{attributes|safe}} value="{{value|e}}">
 </div>
 {% endmacro %}
 
-{% macro input_date(name, label, attributes='', value='', div_classes='form-group mb-3 mx-auto') %}
-<div class="{{div_classes}}" style="width: 75%;">
+{% macro input_date(name, label, attributes='', value='', div_classes='form-group mb-3') %}
+<div class="{{div_classes}}">
         <input type="date" name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" required {{attributes|safe}} value="{{value|e}}">
 </div>
 {% endmacro %}
 
-{% macro input_password(name, label, attributes='', div_classes='form-group mb-3 mx-auto') %}
-<div class="{{div_classes}}" style="width: 75%;">
+{% macro input_password(name, label, attributes='', div_classes='form-group mb-3') %}
+<div class="{{div_classes}}">
         <input type="password" name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" required {{attributes|safe}} value="{{value|e}}">
 </div>
 {% endmacro %}
 
-{% macro input_textarea(name, label, attributes='', value='', div_classes='form-group mb-3 mx-auto') %}
-<div class="{{div_classes}}" style="width: 75%;">
+{% macro input_textarea(name, label, attributes='', value='', div_classes='form-group mb-3') %}
+<div class="{{div_classes}}">
         <textarea name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" {{attributes|safe}} style="height:6rem;">{{value|e}}</textarea>
 </div>
 {% endmacro %}
 
-{% macro input_select(name, label, options, attributes='', value='', div_classes='form-group mb-3 mx-auto') %}
-<div class="{{div_classes}}"  style="width: 75%;">
+{% macro input_select(name, label, options, attributes='', value='', div_classes='form-group mb-3') %}
+<div class="{{div_classes}}">
         <select name="{{name}}" id="{{name}}" class="form-control" placeholder="{{label}}" {{attributes|safe}} value="{{value|e}}">
             <option value="" {{"selected" if not value}}>Escolha uma opção...</option>
             {% for option in options %}
@@ -40,8 +40,8 @@
 </div>
 {% endmacro %}
 
-{% macro input_radios(name, label, options, attributes='', value='', div_classes='form-group mb-3 mx-auto') %}
-<div class="{{div_classes}}"  style="width: 75%;">
+{% macro input_radios(name, label, options, attributes='', value='', div_classes='form-group mb-3') %}
+<div class="{{div_classes}}">
     <fieldset class="border rounded-2" style="padding: .75rem">
         <legend class="text-secondary" style="font-size:13px">{{label}}</legend>
         <div class="row gx-3">
@@ -57,7 +57,7 @@
 </div>
 {% endmacro %}
 
-{%- macro input_switch(name, label, attributes='', value='', div_classes='form-group mb-3 mx-auto') -%}
+{%- macro input_switch(name, label, attributes='', value='', div_classes='form-group mb-3') -%}
 {% set checked = "checked" if valor else "" %}
 <div class="{{div_classes}}">
     <div class="form-check form-switch">

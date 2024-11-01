@@ -1,12 +1,14 @@
 {% extends "shared/pages/base_empresa.html" %}
 
+{% from "shared/pages/macros.html" import input_text, input_email, input_date, input_password, input_textarea,input_select, input_radios, input_switch %}
+
 {% block subtitulo %}Editar perfil empresa{% endblock %}
 
 {% block conteudo %}
 
 <link rel="stylesheet" href="/static/css/estilos.css">
 
-<main>
+<main class="flex-fill">
     <div class="container mt-3 d-flex align-items-center">
         <a href="index" class="text-decoration-none me-5">
           <i class="seta bi bi-arrow-left text-dark fs-1"></i>
@@ -17,30 +19,14 @@
     <div class="container">
         <div class="form w-50">
             <form action="" class="col-12">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nome" placeholder=" ">
-                    <label for="nome">Nome Fantasia</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nome" placeholder=" ">
-                    <label for="nome">CNPJ</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <textarea name="endereço" id="endereço" class="form-control" style="height: 120px" placeholder=" "></textarea>
-                    <label for="mensagem">Endereço</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="email" placeholder=" ">
-                    <label for="email">E-mail</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="telefone" placeholder=" ">
-                    <label for="telefone">Telefone</label>
-                </div>
-                
+                    {{input_text('nome', 'Nome Fantasia')}}
+                    {{input_text('cnpj', 'CNPJ', 'data-mask="cnpj"')}}
+                    {{input_textarea('endereco', 'Endereço', 'data-mask="endereco"')}}
+                    {{input_text('email', 'E-mail', 'data-mask="email"')}}
+                    {{input_text('telefone', 'Telefone', 'data-mask="telefone"')}}
                 <div class="mb-3">
-                    <a href="perfilempresa">
-                        <button class="btn btn-danger">cancelar</button>
+                    <a href="/empresa/index" class="text-decoration-none">
+                        <button type="button" class="btn btn-danger">Cancelar</button>
                     </a>
                     <button class="btn btn-success">salvar</button>
                 </div>
@@ -49,5 +35,7 @@
         </div>
     </div>
 </main>
+<script src="/static/js/mascararCampos.js"></script>
+
 
 {% endblock %}

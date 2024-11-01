@@ -1,5 +1,7 @@
 {% extends "shared/pages/base.html" %}
 
+{% from "shared/pages/macros.html" import input_text, input_email, input_date, input_password, input_textarea,input_select, input_radios, input_switch %}
+
 {% block subtitulo %}Editar perfil do usuário{% endblock %}
 
 {% block conteudo %}
@@ -14,30 +16,12 @@
     <div class="container">
         <div class="form w-50">
             <form action="" class="col-12">
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nome" placeholder=" ">
-                    <label for="nome">Nome Completo</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="nome" placeholder=" ">
-                    <label for="nome">CPF</label>
-                </div>
-                <div class="form mb-3">
-                    <input type="date" class="form-control" id="nome" placeholder=" ">
-                </div>
-                <div class="form-floating mb-3">
-                    <textarea name="endereço" id="endereço" class="form-control" style="height: 120px"
-                        placeholder=" "></textarea>
-                    <label for="mensagem">Endereço</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="email" placeholder=" ">
-                    <label for="email">E-mail</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="telefone" placeholder=" ">
-                    <label for="telefone">Telefone</label>
-                </div>
+                {{input_text('nome', 'Nome', 'data-mask="nome"')}}
+                {{input_text('email', 'E-mail', 'data-mask="email"')}}
+                {{input_text('cpf', 'CPF', 'data-mask="cpf"')}}
+                {{input_text('data_nascimento', 'Data de nascimento', 'data-mask="data"')}}
+                {{input_textarea('endereco', 'Endereço', 'data-mask="endereco"')}}
+                {{input_text('telefone', 'Telefone', 'data-mask="telefone"')}}
 
                 <div class="mb-3">
                     <a href="/consumidor/perfil" class="text-decoration-none">

@@ -1,46 +1,48 @@
 {% extends "shared/pages/base_empresa.html" %}
 
+{% from "shared/pages/macros.html" import input_text, input_email, input_date, input_password, input_textarea,input_select, input_radios, input_switch %}
+
 {% block subtitulo %} Adicionar cupons {% endblock %}
 
 {% block conteudo %}
-    <link rel="stylesheet" href="/static/css/estilos.css">
+<link rel="stylesheet" href="/static/css/estilos.css">
 
-<main>
+<main class="flex-fill d-flex flex-column">
     <div class="container mt-3 d-flex align-items-center">
         <a href="index" class="text-decoration-none me-5">
-          <i class="seta bi bi-arrow-left text-dark fs-1"></i>
+            <i class="seta bi bi-arrow-left text-dark fs-1"></i>
         </a>
         <h2>Adicionar cupom</h2>
-      </div>
-      <hr>
-    <div class="container form-container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="nome" class="form-label text-white">Nome</label>
-                    <input type="text" class="form-control" id="nome" placeholder="Nome">
+    </div>
+    <hr>
+    <div class="container flex-fill d-flex flex-column justify-content-center">
+        <div class="bordered rounded-3 bg-darkgreen p-3 offset-3 col-6">
+            <div class="row">
+                <div class="col-6">
+                    <div class="mb-3 ">
+                        {{input_text('nome', 'Nome do produto', '', '')}}
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label for="preco" class="form-label text-white">Preço</label>
-                    <input type="text" class="form-control" id="preco" placeholder="Preço">
+                <div class="col-6">
+                    <div class="mb-3">
+                        {{input_text('preco', 'Preço')}}
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label for="descricao" class="form-label text-white">Descrição</label>
-            <textarea class="form-control" id="descricao" rows="3" placeholder="Descrição"></textarea>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <img src="/static/img/mikasa.png" alt="Produto" class="product-image">
-            </div>
-            <div class="col-md-6 d-flex align-items-end">
-                <button type="button" class="btn btn-outline-light w-100">Adicionar</button>
+                <div class="col-12">
+                    <div class="mb-3">
+                        {{input_textarea('descricao', 'Descrição do produto')}}
+                    </div>
+                </div>
+                <div class="col-6">
+                    <img src="/static/img/mikasa.png" alt="Produto" class="product-image">
+                </div>
+                <div class="col-6 d-flex align-items-end">
+                    <button type="button" class="btn btn-outline-light w-100">Adicionar</button>
+                </div>
             </div>
         </div>
     </div>
+<script src="/static/js/mascararCampos.js"></script>
 </main>
 
 {% endblock %}

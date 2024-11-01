@@ -30,14 +30,14 @@
                     <p>Vamos criar sua conta, preencha os dados abaixo:</p>
                     
                     <form action="/post_cadastrar" class=" col-12 mb-3 justify-content-center" method="post">
-                        {{ input_text('nome', 'Nome', 'data-mask="nome"')}}
-                        {{ input_email('email', 'Email')}}
-                        {{ input_text('cpf', 'CPF', 'data-mask="cpf"')}}
-                        {{ input_date('data_nascimento', 'Data de Nascimento')}}
-                        {{ input_text('telefone', 'Telefone', 'data-mask="telefone"')}}
-                        {{ input_text('cep', 'CEP', 'data-mask="cep"')}}
-                        {{ input_password('senha', 'Senha')}}
-                        {{ input_password('confsenha', 'Confirmar senha')}}
+                        {{ input_text('nome', 'Nome', 'data-mask="nome"', '', 'form-group mb-3 w-75 mx-auto')}}
+                        {{ input_email('email', 'Email', '', '', 'form-group mb-3 w-75 mx-auto')}}
+                        {{ input_text('cpf', 'CPF', 'data-mask="cpf"', '', 'form-group mb-3 w-75 mx-auto')}}
+                        {{ input_date('data_nascimento', 'Data de Nascimento', '', '', 'form-group mb-3 w-75 mx-auto')}}
+                        {{ input_text('telefone', 'Telefone', 'data-mask="telefone"', '', 'form-group mb-3 w-75 mx-auto')}}
+                        {{ input_text('cep', 'CEP', 'data-mask="cep"', '', 'form-group mb-3 w-75 mx-auto')}}
+                        {{ input_password('senha', 'Senha', '', 'form-group mb-3 w-75 mx-auto')}}
+                        {{ input_password('confsenha', 'Confirmar senha', '', 'form-group mb-3 w-75 mx-auto')}}
 
                         <div class="mb-3">
                             <a href="login" class="text-black">Já tenho login</a>

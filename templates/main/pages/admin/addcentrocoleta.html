@@ -21,13 +21,13 @@
     <div class="container d-flex ">
         <div class="form w-50">
             <form action="/admin/post_cadastrar_centrocoleta" class="col-12" method="post">
-                {{ input_text('nome', 'Nome', 'data-mask="nome"', '', 'mb-3')}}
-                {{ input_text('cnpj', 'CNPJ', 'data-mask="cnpj"', '', "mb-3")}}
+                {{ input_text('nome', 'Nome', 'data-mask="nome"')}}
+                {{ input_text('cnpj', 'CNPJ', 'data-mask="cnpj"')}}
                 {{ input_email('email', 'Email', '', '', "mb-3")}}
-                {{ input_text('telefone', 'Telefone', 'data-mask="telefone"', '', "mb-3")}}
-                {{ input_text('cep', 'CEP', '', '', "mb-3")}}
-                {{ input_password('senha', 'Senha', '', "mb-3")}}
-                {{ input_password('confsenha', 'Confirmar senha', '', "mb-3")}}
+                {{ input_text('telefone', 'Telefone', 'data-mask="telefone"')}}
+                {{ input_text('cep', 'CEP')}}
+                {{ input_password('senha', 'Senha')}}
+                {{ input_password('confsenha', 'Confirmar senha')}}
                 <div class="mb-3">
                     <a href="index" class="text-decoration-none">
                         <button type="button" class="btn btn-danger">Cancelar</button>
