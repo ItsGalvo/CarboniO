@@ -1,5 +1,8 @@
 {% extends "shared/pages/base_centrocoleta.html" %}
 
+{% from "shared/pages/macros.html" import input_text, input_email, input_date, input_password, input_textarea, input_select, input_radios, input_switch %}
+
+
 {% block subtitulo %} perfil centro de coleta {% endblock %}
 
 {% block conteudo %}
@@ -12,18 +15,10 @@
                     </div>
                     
                         <form action="/post_cadastrar_creditos" class="col-6 mb-3 p-3 rounded-3  bg-light" method="post">
-                            <div class="form mb-3">
-                                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome Completo">
-                            </div>
-                            <div class="form mb-3">
-                                <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF">
-                            </div>
-                            <div class="form mb-3 ">
-                                <input type="text" class="form-control" id="creditos" name="creditos" placeholder="Qtd. Créditos">
-                            </div>
-                            <a href="" class=" mt-3">
-                                <button type="button" class="btn btn-success w-75">Adicionar</button>
-                            </a>
+                            {{input_text('nome', 'Nome', 'data-mask="nome"', '', 'form-group mb-3 w-75 mx-auto')}}
+                            {{input_text('cpf', 'CPF', 'data-mask="cpf"', '', 'form-group mb-3 w-75 mx-auto')}}
+                            {{input_text('credito', 'Créditos', '', '', 'form-group mb-3 w-75 mx-auto')}}
+                            <button type="submit" class="btn btn-success w-75">Adicionar</button>
                         </form>
                 </div>
             </div>
