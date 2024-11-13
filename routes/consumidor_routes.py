@@ -79,3 +79,8 @@ def get_root(request: Request):
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/consumidor/termosdeuso.html", view_model)
+
+@router.get("/contato")
+def get_root(request: Request):
+    view_model = {"request": request}
+    return templates.TemplateResponse("main/pages/consumidor/contato.html", view_model)

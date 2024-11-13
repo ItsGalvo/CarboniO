@@ -7,7 +7,6 @@ from routes.admin_routes import router as admin_router
 from routes.consumidor_routes import router as consumidor_router
 from routes.centrodecoleta_routes import router as centrodecoleta_router
 from routes.empresa_routes import router as empresa_router
-from routes.usuario_routes import router as usuario_router
 from util.auth import checar_autenticacao, checar_autorizacao
 from util.exceptions import configurar_excecoes
 
@@ -22,5 +21,3 @@ app.include_router(admin_router)
 app.include_router(centrodecoleta_router)
 app.include_router(empresa_router)
 app.include_router(consumidor_router)
-app.include_router(usuario_router)
-

@@ -1,0 +1,25 @@
+{% from "shared/pages/macros.html" import input_text, input_email, input_date, input_password, input_textarea, input_select, input_radios, input_switch %}
+
+<link rel="stylesheet" href="/static/css/estilos.css">
+
+<main class="flex-fill">
+    <div class="container mt-3">
+        <h2>Entre em contato</h2>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="form w-50 ">
+            <form action="" class="col-12">
+                {{input_text('nome', 'Nome completo', 'data-mask="nome"')}}
+                {{input_email('email', 'E-mail')}}
+                {{input_text('telefone', 'Telefone', 'data-mask="telefone"')}}
+                {{input_textarea('mensagem', 'Mensagem')}}
+                <div class="mt-3">
+                    <a href="mailto:p.galvaolinhares@gmail.com?&body=mensagem">
+                        <button class="btn btn-danger btn-lg">Enviar</button>       
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
