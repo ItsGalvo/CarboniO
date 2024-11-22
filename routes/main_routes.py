@@ -42,7 +42,8 @@ async def post_entrar(
         case 4: nome_perfil = "centrodecoleta"
         case 5: nome_perfil = "consumidor"
         case _: nome_perfil = ""
-    response = RedirectResponse(f"/{nome_perfil}/index", status_code=status.HTTP_303_SEE_OTHER)    
+    response = RedirectResponse(f"/{nome_perfil}/index", status_code=status.HTTP_303_SEE_OTHER)  
+    adicionar_token_jwt(response, token)  
     response.set_cookie(
         key=NOME_COOKIE_AUTH,
         value=token,
