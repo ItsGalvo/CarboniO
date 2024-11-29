@@ -68,6 +68,7 @@ async def post_entrar(request: Request):
             nome=usuario.nome,
             email=usuario.email,
             perfil=usuario.perfil,
+            credito=usuario.credito,
         )
         token = criar_token_jwt(usuarioAutenticadoDto)
         nome_perfil = None

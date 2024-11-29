@@ -15,24 +15,25 @@
     <hr>
     <div class="container">
         <div class="form w-50">
-            <form action="" class="col-12">
-                {{input_text('nome', 'Nome', 'data-mask="nome"')}}
-                {{input_text('email', 'E-mail', 'data-mask="email"')}}
-                {{input_text('cpf', 'CPF', 'data-mask="cpf"')}}
-                {{input_text('data_nascimento', 'Data de nascimento', 'data-mask="data"')}}
-                {{input_textarea('endereco', 'Endereço', 'data-mask="endereco"')}}
-                {{input_text('telefone', 'Telefone', 'data-mask="telefone"')}}
+            <form action="atualizar_dados" class="col-12" method="post">
+                {{input_text('nome', 'Nome', 'data-mask="nome"', dados.nome)}}
+                {{input_text('cpf', 'CPF', 'data-mask="cpf"', dados.cpf)}}
+                {{input_text('email', 'E-mail', 'data-mask="email"', dados.email)}}
+                {{input_text('telefone', 'Telefone', 'data-mask="telefone"', dados.telefone)}}
+                {{input_text('cep', 'CEP', 'data-mask="cep"', dados.cep)}}
 
                 <div class="mb-3">
                     <a href="/consumidor/perfil" class="text-decoration-none">
                         <button type="button" class="btn btn-danger">Cancelar</button>
                     </a>
-                    <button class="btn btn-success">salvar</button>
+                    <button type="submit" class="btn btn-success">salvar</button>
                 </div>
 
             </form>
         </div>
     </div>
+    <script src="/static/lib/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/static/js/mascararCampos.js"></script>
 </main>
 
 {% endblock %}

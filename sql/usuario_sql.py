@@ -8,7 +8,8 @@ SQL_CRIAR_TABELA = """
         telefone INTEGER NOT NULL,
         cep INTEGER,
         senha TEXT NOT NULL,
-        perfil INT NOT NULL,        
+        perfil INT NOT NULL,
+        credito INT DEFAULT 0,         
         token TEXT)
 """
 
@@ -23,7 +24,7 @@ SQL_OBTER_SENHA_POR_EMAIL = """
 """
 
 SQL_OBTER_DADOS_POR_EMAIL = """
-    SELECT id, nome, email, perfil
+    SELECT id, nome, cpf, cnpj, email, telefone, cep, perfil, credito
     FROM usuario
     WHERE email = ?
 """
@@ -36,7 +37,7 @@ SQL_OBTER_POR_ID = """
 
 SQL_ATUALIZAR_DADOS = """
     UPDATE usuario
-    SET nome = ?, data_nascimento = ?, email = ?, telefone = ?
+    SET nome = ?, cnpj = ?, cpf = ?, email = ?, telefone = ?, cep = ?
     WHERE id = ?
 """
 

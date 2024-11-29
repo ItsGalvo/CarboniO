@@ -59,6 +59,7 @@ def criar_token_jwt(usuarioAutenticado: UsuarioAutenticado) -> str:
         "nome": usuarioAutenticado.nome,
         "email": usuarioAutenticado.email,
         "perfil": usuarioAutenticado.perfil,
+        "credito": usuarioAutenticado.credito,
         "exp": datetime.now() + timedelta(days=1),
     }
     secret_key = os.getenv("JWT_TOKEN_SECRET")
@@ -74,6 +75,7 @@ def decodificar_token_jwt(token: str) -> Optional[UsuarioAutenticado]:
             nome=dados_token["nome"],
             email=dados_token["email"],
             perfil=int(dados_token["perfil"]),
+            credito=int(dados_token["credito"])
         )
     except jwt.ExpiredSignatureError:
         return None

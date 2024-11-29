@@ -20,11 +20,13 @@ class UsuarioRepo:
                 SQL_INSERIR,
                 (
                     usuario.nome,
-                    usuario.data_nascimento,
+                    usuario.cpf,
+                    usuario.cnpj,
                     usuario.email,
                     usuario.telefone,
                     usuario.senha,
                     usuario.perfil,
+                    usuario.credito,
                 ),
             )
             if cursor.rowcount == 0:
@@ -70,9 +72,11 @@ class UsuarioRepo:
                 SQL_ATUALIZAR_DADOS,
                 (
                     usuario.nome,
-                    usuario.data_nascimento,
+                    usuario.cnpj,
+                    usuario.cpf,
                     usuario.email,
                     usuario.telefone,
+                    usuario.cep,
                     usuario.id,
                 ),
             )

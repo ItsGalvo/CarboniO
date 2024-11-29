@@ -7,7 +7,6 @@ class Usuario:
     id: Optional[str] = None
     nome: Optional[str] = None
     cpf: Optional[int] = None
-    data_nascimento: Optional[int] = None
     cnpj: Optional[int] = None
     email: Optional[str] = None
     telefone:Optional[int] = None
@@ -15,3 +14,4 @@ class Usuario:
     senha: Optional[str] = None
     perfil: Optional[int] = None
     token: Optional[str] = None
+    credito: Optional[int] = None

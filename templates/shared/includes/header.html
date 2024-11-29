@@ -36,9 +36,9 @@
                     <div class="col-2">
                         <div class="d-flex flex-column  gap-2">
                             <a class="nav-link text-black text-center py-0" href="/consumidor/perfil">
-                                <i class="bi bi-person"> Olá, usuario.nome</i>
+                                <i class="bi bi-person"> <u>Olá, {{ usuario.nome }}</u></i>
                             </a>
-                                <i class="bi bi-coin text-center"> 30 créditos</i>                               
+                                <i class="bi bi-coin text-center"> {{ usuario.credito }} créditos</i>                               
                         </div>
                     </div>
                     <div class="col-1">

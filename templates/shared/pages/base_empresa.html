@@ -36,6 +36,7 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+    {%- set usuario = request.state.usuario -%}
     {% include "shared/includes/header_empresa.html" %}
     {% include "shared/includes/mensagem.html" with context %}
     {% block conteudo %}
