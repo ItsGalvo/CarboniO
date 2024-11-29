@@ -1,12 +1,14 @@
+import datetime
 from urllib import response
+import bcrypt
 from fastapi import APIRouter, Form, Request, status
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
 from models.usuario_model import Usuario
 from repositories.usuario_repo import UsuarioRepo
-from util.auth import obter_hash_senha
 from util.mensagens import adicionar_mensagem_erro, adicionar_mensagem_sucesso
+from util.validators import *
 
 router = APIRouter(prefix="/admin")
 templates = Jinja2Templates("templates")
@@ -27,55 +29,111 @@ def get_root(request: Request):
     return templates.TemplateResponse("main/pages/admin/addcentrocoleta.html", view_model)
 
 @router.post("/post_cadastrar_empresa")
-async def post_cadastrar_empresa(
-    nome: str = Form(...),
-    cnpj: str = Form(...),
-    email: str = Form(...),
-    telefone: str = Form(...),
-    cep: str = Form(...),
-    senha: str = Form(...),
-    confsenha: str = Form(...)):
-    if senha != confsenha:
-        response = RedirectResponse("/admin/addempresa", status_code=status.HTTP_303_SEE_OTHER)
-        adicionar_mensagem_erro(response, "Credenciais inválidas! Cheque os valores digitados e tente novamente.")
+async def post_cadastrar(request: Request):
+    # capturar os dados do formulário de cadastro como um dicionário
+    dados = dict(await request.form())
+    # normalizar os dados para tipificar os valores corretamente
+    dados["data_nascimento"] = date.fromisoformat(dados["data_nascimento"])
+    # validar dados do formulário
+    erros = {}
+    #validação da senha igual à confirmação senha
+    if is_matching_fields(dados["senha"],"senha", "Senha", dados["confsenha"], "Confirmar senha", erros):
+        dados.pop("confsenha")
+    #validação do nome
+    is_person_fullname(dados["nome"], "nome", "Nome", erros)
+    is_size_between(dados["nome"], "nome", "Nome", erros)
+    #validação de data de nascimento
+    data_minima = datetime.now() - datetime.timedelta(days=365 * 130)
+    data_maxima = datetime.now() - datetime.timedelta(days=365 * 18)
+    is_date_between(dados["data_nascimento"], "data_nascimento", "Data de nasciemnto", data_minima, data_maxima, erros)
+    #validação do email
+    is_email(dados["email"], "email", "E-mail", erros)
+    #validação do telefone
+    is_size_between(dados["telefone"], "telefone", "Telefone", 14, 15, erros)
+    #validção da senha
+    is_password(dados["senha"], "senha", "Senha", erros)
+
+    #montagem da exibição da senha
+    if erros:
+        response = templates.TemplatesResponse(
+            "pages/cadastrar.html",
+            {"request": request, "dados": dados, "erros": erros},
+        )
+        adicionar_mensagem_erro(response, "Há erros no formulário. corrija-os e tente novamente.")
         return response
-    senha_hash = obter_hash_senha(senha)
-    usuario = Usuario(
-        nome=nome, 
-        cnpj=cnpj, 
-        email=email, 
-        telefone=telefone,
-        cep=cep, 
-        senha=senha_hash,
-        perfil=2)
-    UsuarioRepo.inserir(usuario)
-    response = RedirectResponse("/admin/index", status_code=status.HTTP_303_SEE_OTHER)
-    adicionar_mensagem_sucesso(response, "Empresa cadastrada com sucesso!")
-    return response
+    # criptografar a senha com bcrypt
+    senha_hash = bcrypt.hashpw(dados["senha"].encode(), bcrypt.gensalt())
+    dados["senha"] = senha_hash.decode()
+    # criar um objeto Usuario com os dados do dicionário
+    dados["perfil"] = 2
+    usuario = Usuario(**dados)
+    # inserir o objeto Usuario no banco de dados usando o repositório
+    usuario = UsuarioRepo.inserir(usuario)
+    # se inseriu com sucesso, redirecionar para a página de login
+    if usuario:
+        response = RedirectResponse("/entrar", status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_sucesso(response, "Cadastro realizado com sucesso!")
+        return response
+    # se não inseriu, redirecionar para a página de cadastro com mensagem de erro
+    else:
+        response = RedirectResponse("/cadastrar", status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_erro(
+            response,
+            "Ocorreu um problema ao realizar seu cadastro. Tente novamente mais tarde.",
+        )
+        return response
 
 @router.post("/post_cadastrar_centrocoleta")
-async def post_cadastrar_centrocoleta(
-    nome: str = Form(...),
-    cnpj: str = Form(...),
-    email: str = Form(...),
-    telefone: str = Form(...),
-    cep: str = Form(...),
-    senha: str = Form(...),
-    confsenha: str = Form(...)):
-    if senha != confsenha:
-        response = RedirectResponse("/admin/addcentrocoleta", status_code=status.HTTP_303_SEE_OTHER)
-        adicionar_mensagem_erro(response, "Credenciais inválidas! Cheque os valores digitados e tente novamente.")
+async def post_cadastrar(request: Request):
+    # capturar os dados do formulário de cadastro como um dicionário
+    dados = dict(await request.form())
+    # normalizar os dados para tipificar os valores corretamente
+    dados["data_nascimento"] = date.fromisoformat(dados["data_nascimento"])
+    # validar dados do formulário
+    erros = {}
+    #validação da senha igual à confirmação senha
+    if is_matching_fields(dados["senha"],"senha", "Senha", dados["confsenha"], "Confirmar senha", erros):
+        dados.pop("confsenha")
+    #validação do nome
+    is_person_fullname(dados["nome"], "nome", "Nome", erros)
+    is_size_between(dados["nome"], "nome", "Nome", erros)
+    #validação de data de nascimento
+    data_minima = datetime.now() - datetime.timedelta(days=365 * 130)
+    data_maxima = datetime.now() - datetime.timedelta(days=365 * 18)
+    is_date_between(dados["data_nascimento"], "data_nascimento", "Data de nasciemnto", data_minima, data_maxima, erros)
+    #validação do email
+    is_email(dados["email"], "email", "E-mail", erros)
+    #validação do telefone
+    is_size_between(dados["telefone"], "telefone", "Telefone", 14, 15, erros)
+    #validção da senha
+    is_password(dados["senha"], "senha", "Senha", erros)
+
+    #montagem da exibição da senha
+    if erros:
+        response = templates.TemplatesResponse(
+            "pages/cadastrar.html",
+            {"request": request, "dados": dados, "erros": erros},
+        )
+        adicionar_mensagem_erro(response, "Há erros no formulário. corrija-os e tente novamente.")
         return response
-    senha_hash = obter_hash_senha(senha)
-    usuario = Usuario(
-        nome=nome, 
-        cnpj=cnpj, 
-        email=email, 
-        telefone=telefone,
-        cep=cep, 
-        senha=senha_hash,
-        perfil=4)
-    UsuarioRepo.inserir(usuario)
-    response = RedirectResponse("/admin/index", status_code=status.HTTP_303_SEE_OTHER)
-    adicionar_mensagem_sucesso(response, "Empresa cadastrada com sucesso!")
-    return response
+    # criptografar a senha com bcrypt
+    senha_hash = bcrypt.hashpw(dados["senha"].encode(), bcrypt.gensalt())
+    dados["senha"] = senha_hash.decode()
+    # criar um objeto Usuario com os dados do dicionário
+    dados["perfil"] = 4
+    usuario = Usuario(**dados)
+    # inserir o objeto Usuario no banco de dados usando o repositório
+    usuario = UsuarioRepo.inserir(usuario)
+    # se inseriu com sucesso, redirecionar para a página de login
+    if usuario:
+        response = RedirectResponse("/entrar", status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_sucesso(response, "Cadastro realizado com sucesso!")
+        return response
+    # se não inseriu, redirecionar para a página de cadastro com mensagem de erro
+    else:
+        response = RedirectResponse("/cadastrar", status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_erro(
+            response,
+            "Ocorreu um problema ao realizar seu cadastro. Tente novamente mais tarde.",
+        )
+        return response

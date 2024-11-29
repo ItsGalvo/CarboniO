@@ -16,71 +16,37 @@ SQL_INSERIR = """
     INSERT INTO usuario(nome, cpf, cnpj, email, telefone, cep, senha, perfil)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 """
-SQL_INSERIR_CREDITOS = """
-    UPDATE usuario
-    SET credito=?
-    WHERE cpf=?
-"""
-
-SQL_ALTERAR = """
-    UPDATE usuario
-    SET nome=?, email=?
-    WHERE id=?
-"""
-
-SQL_ALTERAR_TOKEN = """
-    UPDATE usuario
-    SET token=?
-    WHERE id=?
-"""
-
-SQL_EXCLUIR = """
-    DELETE FROM usuario    
-    WHERE id=?
-"""
-
-SQL_OBTER_POR_ID = """
-    SELECT id, nome, email, perfil, token
-    FROM usuario
-    WHERE id=?
-"""
-
-SQL_OBTER_POR_EMAIL = """
-    SELECT id, nome, email, perfil, token
-    FROM usuario
-    WHERE id=?
-"""
-
-SQL_OBTER_POR_TOKEN = """
-    SELECT id, nome, email, perfil, token
-    FROM usuario
-    WHERE token=?
-"""
-
-SQL_OBTER_QUANTIDADE = """
-    SELECT COUNT(*)
-    FROM usuario
-"""
-
-SQL_EMAIL_EXISTE = """
-    SELECT COUNT(*)
-    FROM usuario
-    WHERE email=?
-"""
-
-SQL_CHECAR_CREDENCIAIS = """
-    SELECT email, senha, perfil
+SQL_OBTER_SENHA_POR_EMAIL = """
+    SELECT senha
     FROM usuario
     WHERE email = ?
 """
 
-SQL_CHECAR_CREDENCIAIS_CREDITO = """
-    SELECT nome, cpf
+SQL_OBTER_DADOS_POR_EMAIL = """
+    SELECT id, nome, email, perfil
     FROM usuario
-    WHERE cpf = ?
+    WHERE email = ?
 """
-SQL_OBTER_CREDITO = """
-    SELECT credito
+
+SQL_OBTER_POR_ID = """
+    SELECT id, nome, data_nascimento, email, telefone, perfil
     FROM usuario
-    WHERE cpf = ?
+    WHERE id = ?
+"""
+
+SQL_ATUALIZAR_DADOS = """
+    UPDATE usuario
+    SET nome = ?, data_nascimento = ?, email = ?, telefone = ?
+    WHERE id = ?
+"""
+
+SQL_ATUALIZAR_SENHA = """
+    UPDATE usuario
+    SET senha = ?
+    WHERE id = ?
+"""
+
+SQL_EXCLUIR = """
+    DELETE FROM usuario
+    WHERE id = ?
 """

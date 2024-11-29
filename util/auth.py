@@ -1,5 +1,7 @@
 import os
+from typing import Optional
 import bcrypt
+from fastapi.responses import RedirectResponse
 import jwt
 from datetime import datetime
 from datetime import timedelta
@@ -9,31 +11,30 @@ from dtos.usuario_autenticado import UsuarioAutenticado
 
 NOME_COOKIE_AUTH = "jwt-token"
 
-async def obter_usuario_logado(request: Request) -> dict:
-    try:
-        token = request.cookies[NOME_COOKIE_AUTH]
-        if token.strip() == "":
-            return None
-        dados = validar_token(token)
-        usuario = UsuarioAutenticado(
-            nome = dados["nome"], 
-            email = dados["email"], 
-            perfil= dados["perfil"])
-        if "mensagem" in dados.keys():
-            usuario.mensagem = dados["mensagem"]
-        return usuario
-    except KeyError:
-        return None
+# async def obter_usuario_logado(request: Request) -> dict:
+#     try:
+#         token = request.cookies[NOME_COOKIE_AUTH]
+#         if token.strip() == "":
+#             return None
+#         dados = validar_token_jwt(token)
+#         usuario = UsuarioAutenticado(
+#             nome = dados["nome"], 
+#             email = dados["email"], 
+#             perfil= dados["perfil"])
+#         if "mensagem" in dados.keys():
+#             usuario.mensagem = dados["mensagem"]
+#         return usuario
+#     except KeyError:
+#         return None
     
 
 async def checar_autenticacao(request: Request, call_next):
-    usuario = await obter_usuario_logado(request)
-    request.state.usuario = usuario
+    token = request.cookies.get("jwt_token", None)
+    if token:
+        usuario_autenticado_dto = decodificar_token_jwt(token)
+        request.state.usuario = usuario_autenticado_dto
     response = await call_next(request)
-    if response.status_code == status.HTTP_307_TEMPORARY_REDIRECT:
-        return response
     return response
-
 
 async def checar_autorizacao(request: Request):
     usuario = request.state.usuario if hasattr(request.state, "usuario") else None
@@ -52,58 +53,58 @@ async def checar_autorizacao(request: Request):
     if area_do_consumidor and usuario.perfil != 5:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)
 
-def obter_hash_senha(senha: str) -> str:
-    try:
-        hashed = bcrypt.hashpw(senha.encode(), bcrypt.gensalt())
-        return hashed.decode()
-    except ValueError:
-        return ""
-
-
-def conferir_senha(senha: str, hash_senha: str) -> bool:
-    try:
-        return bcrypt.checkpw(senha.encode(), hash_senha.encode())
-    except ValueError:
-        return False
-    
-def conferir_nome(nome: str, dados: str) -> bool:
-    if nome == dados:
-        return None
-    else:
-        return False
-    
-
-def criar_token(nome: str, email: str, perfil: int) -> str:
-    payload = {
-        "nome": nome,
-        "email": email,
-        "perfil": perfil,
-        "exp": datetime.now() + timedelta(days=1)
+def criar_token_jwt(usuarioAutenticado: UsuarioAutenticado) -> str:
+    dados_token = {
+        "id": usuarioAutenticado.id,
+        "nome": usuarioAutenticado.nome,
+        "email": usuarioAutenticado.email,
+        "perfil": usuarioAutenticado.perfil,
+        "exp": datetime.now() + timedelta(days=1),
     }
-    return jwt.encode(payload, 
-        os.getenv("JWT_SECRET"),
-        os.getenv("JWT_ALGORITHM"))
+    secret_key = os.getenv("JWT_TOKEN_SECRET")
+    return jwt.encode(dados_token, secret_key, "HS256")
 
 
-def  validar_token(token: str) -> dict:
+def decodificar_token_jwt(token: str) -> Optional[UsuarioAutenticado]:
+    secret_key = os.getenv("JWT_TOKEN_SECRET")
     try:
-        return jwt.decode(token, 
-            os.getenv("JWT_SECRET"),
-            os.getenv("JWT_ALGORITHM"))
+        dados_token = jwt.decode(token, secret_key, "HS256")
+        return UsuarioAutenticado(
+            id=int(dados_token["id"]),
+            nome=dados_token["nome"],
+            email=dados_token["email"],
+            perfil=int(dados_token["perfil"]),
+        )
     except jwt.ExpiredSignatureError:
-        return { "nome": None, "email": None, "perfil": 0, "mensagem": "Token expirado" }
+        return None
     except jwt.InvalidTokenError:
-        return { "nome": None, "email": None, "perfil": 0, "mensagem": "Token inválido" }        
-    except Exception as e:
-        return { "nome": None, "email": None, "perfil": 0, "mensagem": f"Erro: {e}" }
-    
+        return None
 
-def criar_cookie_auth(response, token):
+
+def adicionar_token_jwt(response: RedirectResponse, token: str):
     response.set_cookie(
-        key=NOME_COOKIE_AUTH,
+        key="jwt_token",
         value=token,
-        max_age=1800,
+        max_age=3600 * 24,
         httponly=True,
-        samesite="lax",
+        samesite="strict",
     )
+
+
+def remover_token_jwt(response: RedirectResponse):
+    response.set_cookie(
+        key="jwt_token",
+        value="",
+        max_age=0,
+        httponly=True,
+        samesite="strict",
+    )
+
+
+async def checar_autenticacao(request: Request, call_next):
+    token = request.cookies.get("jwt_token", None)
+    if token:
+        usuario_autenticado_dto = decodificar_token_jwt(token)
+        request.state.usuario = usuario_autenticado_dto
+    response = await call_next(request)
     return response
