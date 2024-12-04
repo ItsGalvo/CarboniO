@@ -1,4 +1,5 @@
 from datetime import date
+import bcrypt
 from fastapi import APIRouter, Request, status
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates

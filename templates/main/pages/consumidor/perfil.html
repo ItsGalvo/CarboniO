@@ -1,5 +1,8 @@
 {% extends "shared/pages/base.html" %}
 
+{% from "shared/pages/macros.html" import input_text, input_email, input_date, input_password, input_textarea,input_select, input_radios, input_switch %}
+
+
 {% block subtitulo %}Perfil do Usuário{% endblock %}
 
 {% block conteudo %}
@@ -12,11 +15,36 @@
             <div class="col-4 col-lg-2 text-center mb-3 mt-3">
                 <img src="/static/img/foto.svg" alt="foto" class="w-50">
             </div>
-            <div class="col-8 col-lg-10 text-white mb-3 mt-3">
+            <div class="col-6 col-lg-8 text-white mb-3 mt-3">
                 <h5> {{ usuario.nome}} </h5>
                 <p> {{usuario.email}} </p>
-                <a href="editarperfil" class="text-white">Editar perfil ></a>
+                <a href="editarperfil" class="text-white">Editar perfil</a>
             </div>
+            <div class="col-2 text-white text-center d-flex align-items-center">
+                <i class="bi bi-lock-fill"><a href="#" data-bs-toggle="modal" data-bs-target="#alterarsenha" class="text-white"> Alterar senha</a></i>
+            </div>
+            <div class="modal fade" id="alterarsenha" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title " id="checktermos">Alterando a senha</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <form action="/post_alterarsenha" class="col-12 mb-3 mt-3 text-center" method="post">
+                            {{ input_password('senha', 'Senha', '', 'form-group mb-3 w-75 mx-auto')}}
+                            {{ input_password('novasenha', 'Nova senha', '', 'form-group mb-3 w-75 mx-auto')}}
+                            {{ input_password('confsenha', 'Confirme a senha', '', 'form-group mb-3 w-75 mx-auto')}}
+                            <button type="submit" class="btn btn-success w-75">Alterar senha</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </div>
         <div class="row text-center justify-content-center">
             <div class="col-10 col-md col-sm-5 bg-white bg-opacity-75 rounded-4 ms-3 me-3">
