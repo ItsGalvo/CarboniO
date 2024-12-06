@@ -1,3 +1,4 @@
+import bcrypt
 from fastapi import APIRouter, Request, status
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
@@ -81,3 +82,22 @@ def get_root(request: Request):
 def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/empresa/contato.html", view_model)
+
+@router.post("/post_alterarsenha")
+async def post_alterarsenha(request: Request):
+    dados = dict(await request.form())
+    usuario = request.state.usuario
+    email = usuario["email"]
+    senha = dados["senha"]
+    novasenha = dados["novasenha"]
+    confsenha = dados["confsenha"]
+    senha_hash = UsuarioRepo.obter_senha_por_email(email)
+    if senha_hash and bcrypt.checkpw(senha.encode(), senha_hash.encode()) and novasenha == confsenha:
+        UsuarioRepo.atualizar_senha(novasenha)
+        response = RedirectResponse("/empresa/index", status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_sucesso(response, "Senha alterada com sucesso!")
+        return response
+    else:
+        response = RedirectResponse("/empresa/index", status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_erro(response, "Algo deu errado, tente novamente.")
+        return response
