@@ -1,6 +1,7 @@
 {% extends "shared/pages/base_centrocoleta.html" %}
 
-{% from "shared/pages/macros.html" import input_text, input_email, input_date, input_password, input_textarea, input_select, input_radios, input_switch %}
+{% from "shared/pages/macros.html" import input_text, input_email, input_date, input_password, input_textarea,
+input_select, input_radios, input_switch %}
 
 
 {% block subtitulo %} perfil centro de coleta {% endblock %}
@@ -8,21 +9,61 @@
 {% block conteudo %}
 
 <body class="loginbody">
-        <div class="container flex-fill d-flex flex-column justify-content-center">
-                <div class="d-flex flex-column text-center align-items-center">
-                    <div class=" mt-3 mb-3">
-                        <h3>Adicionar Créditos</h3>
-                    </div>
-                    
-                        <form action="/post_cadastrar_creditos" class="col-6 mb-3 p-3 rounded-3  bg-light" method="post">
-                            {{input_text('nome', 'Nome', 'data-mask="nome"', '', 'form-group mb-3 w-75 mx-auto')}}
-                            {{input_text('cpf', 'CPF', 'data-mask="cpf"', '', 'form-group mb-3 w-75 mx-auto')}}
-                            {{input_text('credito', 'Créditos', '', '', 'form-group mb-3 w-75 mx-auto')}}
-                            <button type="submit" class="btn btn-success w-75">Adicionar</button>
-                        </form>
+    <div class="container flex-fill d-flex flex-column justify-content-center">
+        <div class="row">
+            <div class="col-6 d-flex flex-column text-center align-items-center">
+                <div class=" mt-3 mb-3">
+                    <h3>Dados Centro de coleta</h3>
                 </div>
+                <div class="col-10 rounded-3 bg-light mb-3 p-3">
+                    {{ input_text('nome', 'Nome', 'data-mask="nome"', dados.nome, 'form-group mb-3 w-75 mx-auto')}}
+                    {{ input_text('cnpj', 'CNPJ', 'data-mask="cnpj"', dados.cnpj, 'form-group mb-3 w-75 mx-auto')}}
+                    {{ input_email('email', 'Email', '', dados.email, 'form-group mb-3 w-75 mx-auto')}}
+                    {{ input_text('telefone', 'Telefone', 'data-mask="telefone"', dados.telefone, 'form-group mb-3 w-75 mx-auto')}}
+                    {{ input_text('cep', 'CEP','data-mask="cep"', dados.cep, 'form-group mb-3 w-75 mx-auto')}}
+                </div>
+                <div class="text-white text-center d-flex align-items-center">
+                    <i class="bi bi-lock-fill text-black"><a href="#" data-bs-toggle="modal" data-bs-target="#alterarsenha" class="text-black"> Alterar senha</a></i>
+                </div>
+                <div class="modal fade" id="alterarsenha" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title " id="checktermos">Alterando a senha</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+    
+                            <form action="/centrodecoleta/alterar_senha" class="col-12 mb-3 mt-3 text-center" method="post">
+                                {{ input_password('senha', 'Senha Atual', '', 'form-group mb-3 w-75 mx-auto')}}
+                                {{ input_password('novasenha', 'Nova senha', '', 'form-group mb-3 w-75 mx-auto')}}
+                                {{ input_password('confsenha', 'Confirme a senha', '', 'form-group mb-3 w-75 mx-auto')}}
+                                <button type="submit" class="btn btn-success w-75">Alterar senha</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
             </div>
+            <div class="col-6 d-flex flex-column text-center align-items-center justify-content-center">
+                <div class=" mt-3 mb-3">
+                    <h3>Adicionar Créditos</h3>
+                </div>
+
+                <form action="/post_cadastrar_creditos" class="col-10 mb-3 p-3 rounded-3  bg-light" method="post">
+                    {{input_text('nome', 'Nome', 'data-mask="nome"', '', 'form-group mb-3 w-75 mx-auto')}}
+                    {{input_text('cpf', 'CPF', 'data-mask="cpf"', '', 'form-group mb-3 w-75 mx-auto')}}
+                    {{input_text('credito', 'Créditos', '', '', 'form-group mb-3 w-75 mx-auto')}}
+                    <button type="submit" class="btn btn-success w-75">Adicionar</button>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
+<script src="/static/js/mascararCampos.js"></script>
 
 {% endblock %}
