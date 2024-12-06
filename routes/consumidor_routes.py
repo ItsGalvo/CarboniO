@@ -113,3 +113,22 @@ async def post_dados(request: Request):
             "Ocorreu um problema ao atualizar seu cadastro. Tente novamente mais tarde.",
         )
         return response
+    
+@router.post("/post_alterarsenha")
+async def post_alterarsenha(request: Request):
+    dados = dict(await request.form())
+    usuario = request.state.usuario
+    email = usuario["email"]
+    senha = dados["senha"]
+    novasenha = dados["novasenha"]
+    confsenha = dados["confsenha"]
+    senha_hash = UsuarioRepo.obter_senha_por_email(email)
+    if senha_hash and bcrypt.checkpw(senha.encode(), senha_hash.encode()) and novasenha == confsenha:
+        UsuarioRepo.atualizar_senha(novasenha)
+        response = RedirectResponse("/consumidor/perfil", status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_sucesso(response, "Senha alterada com sucesso!")
+        return response
+    else:
+        response = RedirectResponse("/consumidor/perfil", status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_erro(response, "Algo deu errado, tente novamente.")
+        return response
