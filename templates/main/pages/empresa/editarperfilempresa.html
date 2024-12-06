@@ -18,12 +18,12 @@
     <hr>
     <div class="container">
         <div class="form w-50">
-            <form action="" class="col-12">
-                    {{input_text('nome', 'Nome Fantasia')}}
-                    {{input_text('cnpj', 'CNPJ', 'data-mask="cnpj"')}}
-                    {{input_text('email', 'E-mail', 'data-mask="email"')}}
-                    {{input_text('telefone', 'Telefone', 'data-mask="telefone"')}}
-                    {{input_text('cep', 'CEP', 'data-mask= "cep"')}}
+            <form action="atualizar_dados" method="post" class="col-12">
+                    {{input_text('nome', 'Nome Fantasia', '', dados.nome )}}
+                    {{input_text('cnpj', 'CNPJ', 'data-mask="cnpj"', dados.cnpj)}}
+                    {{input_text('email', 'E-mail', 'data-mask="email"', dados.email)}}
+                    {{input_text('telefone', 'Telefone', 'data-mask="telefone"', dados.telefone)}}
+                    {{input_text('cep', 'CEP', 'data-mask= "cep"', dados.cep)}}
                 <div class="mb-3">
                     <a href="/empresa/index" class="text-decoration-none">
                         <button type="button" class="btn btn-danger">Cancelar</button>
