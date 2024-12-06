@@ -70,7 +70,7 @@
                                 </div>
                             </form>
                             <nav class="nav nav-justified fs-5">
-                                <a class="nav-link text-black py-0" href="/consumidor/ofertas">Ofertas</a>
+                                <a class="nav-link text-black py-0" href="/consumidor/index">Ofertas</a>
                                 <a class="nav-link text-black py-0" href="/consumidor/juntepontos">Juntar Pontos</a>
                                 <a class="nav-link text-black py-0" href="/usuario/contato">Contato</a>
                             </nav>
@@ -79,10 +79,10 @@
                             <nav class="nav nav-justified  mt-3">
                                 <a class="nav-link text-black py-0" href="/consumidor/perfil">
                                     <i class="bi bi-person"></i>
-                                    Olá, {Usuário}!
+                                    Olá, {{ usuario.nome }}!
                                 </a>
                                     <i class="bi bi-coin"></i>
-                                    30 créditos
+                                    {{ usuario.credito }} créditos
                                 <a class="nav-link text-black py-0" href="/consumidor/carrinho">
                                     <i class="bi bi-basket fs-4"></i>
                                 </a>
