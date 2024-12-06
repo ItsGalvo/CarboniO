@@ -19,7 +19,7 @@ SQL_OBTER_DADOS_POR_ID = """
     WHERE id = ?
 """
 
-SQL_ATUALIZAR_DADOS_produto = """
+SQL_ATUALIZAR_DADOS_PRODUTO = """
     UPDATE produto
     SET nome = ?, preco = ?, descricao = ?
     WHERE id = ?
