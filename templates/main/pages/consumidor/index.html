@@ -13,27 +13,15 @@
     <hr>
     <div class="container">
         <div class="row gap-2">
+            {% for loja in lojas %}
             <div class="col-auto">
                 <a href="">
                     <div class="card border-2 border-black">
-                        <img src="/static/img/adidas.png" alt="">
+                        <img src="/static/img/lojas/{{ loja.id }}.png" alt=" {{ loja.nome }}">
                     </div>
                 </a>
             </div>
-            <div class="col-auto">
-                <a href="">
-                    <div class="card border-2 border-black">
-                        <img src="/static/img/nike.png" alt="">
-                    </div>
-                </a>
-            </div>
-            <div class="col-auto">
-                <a href="store">
-                    <div class="card border-2 border-black">
-                        <img src="/static/img/DG.png" alt="" class=" rounded-2">
-                    </div>
-                </a>
-            </div>
+            {% endfor %}
         </div>
     </div>
     </div>

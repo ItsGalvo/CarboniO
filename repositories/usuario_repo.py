@@ -55,6 +55,16 @@ class UsuarioRepo:
             return Usuario(**dados)
         
     @staticmethod
+    def selecionar_por_perfil(perfil: int) -> Optional[Usuario]:
+        with obter_conexao() as db:
+            cursor = db.cursor()
+            cursor.execute(SQL_SELECIONAR_POR_PERFIL, (perfil,))
+            dados = cursor.fetchall()
+            if dados is None:
+                return None
+            return dados
+        
+    @staticmethod
     def obter_por_id(id: int) -> Optional[Usuario]:
         with obter_conexao() as db:
             cursor = db.cursor()
@@ -91,6 +101,12 @@ class UsuarioRepo:
             cursor.execute(SQL_ATUALIZAR_SENHA, (senha, id))
             return cursor.rowcount > 0
 
+    @staticmethod
+    def atualizar_credito(id: int, credito: int) -> bool:
+        with obter_conexao() as db:
+            cursor = db.cursor()
+            cursor.execute(SQL_ATUALIZAR_CREDITO, (credito, id))
+            return cursor.rowcount > 0
 
     @staticmethod
     def excluir(id: int) -> bool:

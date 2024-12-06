@@ -32,6 +32,7 @@
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+    {%- set usuario = request.state.usuario -%}
     {% block conteudo %}
     {% endblock %}
     <script src="/static/lib/bootstrap/bootstrap.bundle.min.js"></script>

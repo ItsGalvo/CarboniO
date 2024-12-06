@@ -16,11 +16,14 @@ input_select, input_radios, input_switch %}
                     <h3>Dados Centro de coleta</h3>
                 </div>
                 <div class="col-10 rounded-3 bg-light mb-3 p-3">
-                    {{ input_text('nome', 'Nome', 'data-mask="nome"', dados.nome, 'form-group mb-3 w-75 mx-auto')}}
-                    {{ input_text('cnpj', 'CNPJ', 'data-mask="cnpj"', dados.cnpj, 'form-group mb-3 w-75 mx-auto')}}
-                    {{ input_email('email', 'Email', '', dados.email, 'form-group mb-3 w-75 mx-auto')}}
-                    {{ input_text('telefone', 'Telefone', 'data-mask="telefone"', dados.telefone, 'form-group mb-3 w-75 mx-auto')}}
-                    {{ input_text('cep', 'CEP','data-mask="cep"', dados.cep, 'form-group mb-3 w-75 mx-auto')}}
+                    <ul>
+                        <li class="mb-3 mt-3"><strong>Nome:</strong> {{ dados.nome }}</li>
+                        <li class="mb-3"><strong>CNPJ:</strong> {{ dados.cnpj }}</li>
+                        <li class="mb-3"><strong>Email:</strong> {{ dados.email }}</li>
+                        <li class="mb-3"><strong>Telefone:</strong> {{ dados.telefone }}</li>
+                        <li class="mb-3"><strong>CEP:</strong> {{ dados.cep }}</li>
+                    </ul>
+
                 </div>
                 <div class="text-white text-center d-flex align-items-center">
                     <i class="bi bi-lock-fill text-black"><a href="#" data-bs-toggle="modal" data-bs-target="#alterarsenha" class="text-black"> Alterar senha</a></i>
@@ -54,9 +57,9 @@ input_select, input_radios, input_switch %}
                     <h3>Adicionar Créditos</h3>
                 </div>
 
-                <form action="/post_cadastrar_creditos" class="col-10 mb-3 p-3 rounded-3  bg-light" method="post">
+                <form action="/centrodecoleta/adicionar_credito" class="col-10 mb-3 p-3 rounded-3  bg-light" method="post">
                     {{input_text('nome', 'Nome', 'data-mask="nome"', '', 'form-group mb-3 w-75 mx-auto')}}
-                    {{input_text('cpf', 'CPF', 'data-mask="cpf"', '', 'form-group mb-3 w-75 mx-auto')}}
+                    {{input_text('email', 'Email', 'data-mask="email"', '', 'form-group mb-3 w-75 mx-auto')}}
                     {{input_text('credito', 'Créditos', '', '', 'form-group mb-3 w-75 mx-auto')}}
                     <button type="submit" class="btn btn-success w-75">Adicionar</button>
                 </form>

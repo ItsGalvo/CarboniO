@@ -5,7 +5,19 @@
 {% block conteudo %}
 
 <link rel="stylesheet" href="/static/css/estilos.css">
+
 <body>
+    <div class="container mt-5 mb-5">
+        <div class="row">
+            <div class="col-6 d-flex align-items-center">
+                <h1>Olá {{ usuario.nome }} </h1>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <img src="/static/img/logo_carbonio.svg" alt="Logo Carbonio" height="80px">
+            </div>
+        </div>
+    </div>
+    <hr>
     <div class="container">
         {% include "shared/includes/mensagem.html" with context %}
         <h1 class="mt-4 text-center">Empresas</h1>

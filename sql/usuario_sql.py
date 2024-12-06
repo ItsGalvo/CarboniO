@@ -9,7 +9,7 @@ SQL_CRIAR_TABELA = """
         cep INTEGER,
         senha TEXT NOT NULL,
         perfil INT NOT NULL,
-        credito INT DEFAULT 0,         
+        credito INT DEFAULT 0,        
         token TEXT)
 """
 
@@ -46,8 +46,17 @@ SQL_ATUALIZAR_SENHA = """
     SET senha = ?
     WHERE id = ?
 """
+SQL_ATUALIZAR_CREDITO = """
+    UPDATE usuario
+    SET credito = ?
+    WHERE id = ?
+"""
 
 SQL_EXCLUIR = """
     DELETE FROM usuario
     WHERE id = ?
+"""
+
+SQL_SELECIONAR_POR_PERFIL = """
+    SELECT * FROM usuario WHERE perfil = ?
 """

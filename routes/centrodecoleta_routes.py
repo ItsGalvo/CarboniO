@@ -57,3 +57,20 @@ async def post_alterarsenha(request: Request):
     response = RedirectResponse("/centrodecoleta/index", status.HTTP_303_SEE_OTHER)
     adicionar_mensagem_sucesso(response, "Senha alterada com sucesso!")
     return response
+
+@router.post("/adicionar_credito")
+async def post_adicionar_credito(request : Request):
+    dados = dict(await request.form())
+    add_credito = int(dados['credito'])
+    usuario = UsuarioRepo.obter_dados_por_email(dados['email'])
+    if usuario:
+        creditoatual = usuario.credito
+        credito = creditoatual + add_credito
+        UsuarioRepo.atualizar_credito(usuario.id, credito)
+        response = RedirectResponse("/centrodecoleta/index", status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_sucesso(response, "Crédito adicionado com sucesso!")
+        return response
+    
+    response = RedirectResponse("/centrodecoleta/index", status.HTTP_303_SEE_OTHER)
+    adicionar_mensagem_erro(response, "Ocorreu um erro, tente novamente.")
+    return response

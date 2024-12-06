@@ -13,7 +13,8 @@ router = APIRouter(prefix="/consumidor")
 
 @router.get("/index")
 def get_root(request: Request):
-    view_model = {"request": request}
+    lojas = UsuarioRepo.selecionar_por_perfil(2)
+    view_model = {"request": request, "lojas": lojas}
     return templates.TemplateResponse("main/pages/consumidor/index.html", view_model)
 
 @router.get("/carrinho")

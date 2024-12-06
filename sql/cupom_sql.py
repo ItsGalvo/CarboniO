@@ -5,24 +5,23 @@ SQL_CRIAR_TABELA = """
         valor TEXT NOT NULL,
         descricao TEXT NOT NULL,
         id_empresa INTEGER,
-        imagem TEXT NOT NULL,
         FOREIGN KEY(id_empresa) REFERENCES usuario(id))
 """
 
 SQL_INSERIR = """
-    INSERT INTO cupom(nome, valor, descricao, id_empresa, imagem)
-    VALUES (?, ?, ?, ?, ?)
+    INSERT INTO cupom(nome, valor, descricao, id_empresa)
+    VALUES (?, ?, ?, ?)
 """
 
 SQL_OBTER_POR_ID = """
-    SELECT id, nome, valor, descricao, id_empresa, imagem
+    SELECT id, nome, valor, descricao, id_empresa
     FROM cupom
     WHERE id = ?
 """
 
 SQL_ATUALIZAR = """
     UPDATE cupom
-    SET nome = ?, valor = ?, descricao = ?, imagem = ?
+    SET nome = ?, valor = ?, descricao = ?
     WHERE id = ?
 """
 
