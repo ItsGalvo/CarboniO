@@ -1,6 +1,7 @@
 {% extends "shared/pages/base_empresa.html" %}
 
-{% from "shared/pages/macros.html" import input_text, input_email, input_date, input_password, input_textarea,input_select, input_radios, input_switch %}
+{% from "shared/pages/macros.html" import input_text, input_email, input_date, input_password,
+input_textarea,input_select, input_radios, input_switch %}
 
 {% block subtitulo %} Adicionar cupons {% endblock %}
 
@@ -17,8 +18,8 @@
     <hr>
     <div class="container flex-fill d-flex flex-column justify-content-center">
         <div class="bordered rounded-3 bg-darkgreen p-3 offset-3 col-6">
-            <div class="row">
-                <form action="" method="post">
+            <form action="/empresa/cadastrar_cupom" method="post">
+                <div class="row">
 
                     <div class="col-6">
                         <div class="mb-3 ">
@@ -36,16 +37,16 @@
                         </div>
                     </div>
                     <div class="col-6">
-                        <input type="file">
+                        <input type="file" name="imagem">
                     </div>
                     <div class="col-6 d-flex align-items-end">
                         <button type="submit" class="btn btn-outline-light w-100">Adicionar</button>
-                    </form>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-<script src="/static/js/mascararCampos.js"></script>
+    <script src="/static/js/mascararCampos.js"></script>
 </main>
 
 {% endblock %}

@@ -23,6 +23,7 @@ class CupomRepo:
                     cupom.valor,
                     cupom.descricao,
                     cupom.id_empresa,
+                    cupom.imagem
                 ),
             )
             if cursor.rowcount == 0:

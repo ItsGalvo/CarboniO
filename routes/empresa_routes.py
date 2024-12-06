@@ -3,7 +3,9 @@ from fastapi import APIRouter, Request, status
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 
+from models.cupom_model import Cupom
 from models.usuario_model import Usuario
+from repositories.cupom_repo import CupomRepo
 from repositories.usuario_repo import UsuarioRepo
 from util.mensagens import adicionar_mensagem_erro, adicionar_mensagem_sucesso
 
@@ -115,19 +117,22 @@ async def post_alterarsenha(request: Request):
     adicionar_mensagem_sucesso(response, "Senha alterada com sucesso!")
     return response
 
-@router.post("/post_cadastrar_cupom")
+@router.post("/cadastrar_cupom")
 async def post_cadastrar_cupom(request: Request):
     dados = dict(await request.form())
-    usuario = Usuario(**dados)
-    usuario = UsuarioRepo.inserir(usuario)
-    if usuario:
-        response = RedirectResponse("/entrar", status.HTTP_303_SEE_OTHER)
-        adicionar_mensagem_sucesso(response, "Cadastro realizado com sucesso!")
+    empresa = request.state.usuario
+    id_empresa = empresa.id
+    dados["id_empresa"] = id_empresa
+    cupom = Cupom(**dados)
+    cupom = CupomRepo.inserir(cupom)
+    if cupom:
+        response = RedirectResponse("/empresa/adicionarcupom", status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_sucesso(response, "cupom cadastrado com sucesso!")
         return response
     else:
-        response = RedirectResponse("/cadastrar", status.HTTP_303_SEE_OTHER)
+        response = RedirectResponse("/empresa/adicionarcupom", status.HTTP_303_SEE_OTHER)
         adicionar_mensagem_erro(
             response,
-            "Ocorreu um problema ao realizar seu cadastro. Tente novamente mais tarde.",
+            "Ocorreu um problema ao realizar o cadastro. Tente novamente.",
         )
         return response
