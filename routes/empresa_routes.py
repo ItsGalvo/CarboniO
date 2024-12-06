@@ -83,21 +83,34 @@ def get_root(request: Request):
     view_model = {"request": request}
     return templates.TemplateResponse("main/pages/empresa/contato.html", view_model)
 
-@router.post("/post_alterarsenha")
+@router.post("/alterar_senha")
 async def post_alterarsenha(request: Request):
     dados = dict(await request.form())
     usuario = request.state.usuario
-    email = usuario["email"]
+    id = usuario.id
+    email = usuario.email
     senha = dados["senha"]
     novasenha = dados["novasenha"]
     confsenha = dados["confsenha"]
     senha_hash = UsuarioRepo.obter_senha_por_email(email)
-    if senha_hash and bcrypt.checkpw(senha.encode(), senha_hash.encode()) and novasenha == confsenha:
-        UsuarioRepo.atualizar_senha(novasenha)
+
+    if not senha_hash:
         response = RedirectResponse("/empresa/index", status.HTTP_303_SEE_OTHER)
-        adicionar_mensagem_sucesso(response, "Senha alterada com sucesso!")
+        adicionar_mensagem_erro(response, "Usuário/senha não encontrado em nossa base de dados.")
         return response
-    else:
+    
+    if not bcrypt.checkpw(senha.encode(), senha_hash.encode()):
         response = RedirectResponse("/empresa/index", status.HTTP_303_SEE_OTHER)
-        adicionar_mensagem_erro(response, "Algo deu errado, tente novamente.")
+        adicionar_mensagem_erro(response, "Senha atual não confere.")
         return response
+    
+    if novasenha != confsenha:
+        response = RedirectResponse("/empresa/index", status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_erro(response, "Nova senha não foi confirmada com sucesso.")
+        return response
+    
+    senha_hash = bcrypt.hashpw(novasenha.encode(), bcrypt.gensalt())
+    UsuarioRepo.atualizar_senha(id, senha_hash.decode())
+    response = RedirectResponse("/empresa/index", status.HTTP_303_SEE_OTHER)
+    adicionar_mensagem_sucesso(response, "Senha alterada com sucesso!")
+    return response

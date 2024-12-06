@@ -42,7 +42,7 @@ class UsuarioRepo:
             dados = cursor.fetchone()
             if dados is None:
                 return None
-            return dados["senha"]
+            return dados[0]
 
     @staticmethod
     def obter_dados_por_email(email: str) -> Optional[Usuario]:

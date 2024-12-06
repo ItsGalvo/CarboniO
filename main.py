@@ -1,6 +1,7 @@
 import dotenv
 from fastapi import FastAPI, Depends
 from fastapi.staticfiles import StaticFiles
+from repositories.cupom_repo import CupomRepo
 from repositories.usuario_repo import UsuarioRepo
 from routes.main_routes import router as main_router
 from routes.admin_routes import router as admin_router
@@ -11,6 +12,7 @@ from util.auth import checar_autenticacao, checar_autorizacao
 from util.exceptions import configurar_excecoes
 
 UsuarioRepo.criar_tabela()
+CupomRepo.criar_tabela()
 dotenv.load_dotenv()
 app = FastAPI(dependencies=[Depends(checar_autorizacao)])
 app.mount(path="/static", app=StaticFiles(directory="static"), name="static")

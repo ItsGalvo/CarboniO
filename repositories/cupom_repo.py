@@ -1,10 +1,10 @@
 from typing import Optional
-from models.produto_model import Produto
-from sql.produto_sql import *
+from models.cupom_model import Cupom
+from sql.cupom_sql import *
 from util.db import obter_conexao
 
 
-class ProdutoRepo:
+class CupomRepo:
 
     @staticmethod
     def criar_tabela():
@@ -13,44 +13,44 @@ class ProdutoRepo:
             cursor.execute(SQL_CRIAR_TABELA)
 
     @staticmethod
-    def inserir(produto: Produto) -> Optional[Produto]:
+    def inserir(cupom: Cupom) -> Optional[Cupom]:
         with obter_conexao() as db:
             cursor = db.cursor()
             cursor.execute(
-                SQL_INSERIR_PRODUTO,
+                SQL_INSERIR,
                 (
-                    produto.nome,
-                    produto.preco,
-                    produto.descricao,
-                    produto.id_empresa,
+                    cupom.nome,
+                    cupom.valor,
+                    cupom.descricao,
+                    cupom.id_empresa,
                 ),
             )
             if cursor.rowcount == 0:
                 return None
-            produto.id = cursor.lastrowid
-            return produto
+            cupom.id = cursor.lastrowid
+            return cupom
         
         
     @staticmethod
-    def obter_por_id(id: int) -> Optional[Produto]:
+    def obter_por_id(id: int) -> Optional[Cupom]:
         with obter_conexao() as db:
             cursor = db.cursor()
-            cursor.execute(SQL_OBTER_DADOS_POR_ID, (id,))
+            cursor.execute(SQL_OBTER_POR_ID, (id,))
             dados = cursor.fetchone()
             if dados is None:
                 return None
-            return Produto(**dados)
+            return Cupom(**dados)
 
     @staticmethod
-    def atualizar_dados(produto: Produto) -> bool:
+    def atualizar_dados(cupom: Cupom) -> bool:
         with obter_conexao() as db:
             cursor = db.cursor()
             cursor.execute(
-                SQL_ATUALIZAR_DADOS_PRODUTO,
+                SQL_ATUALIZAR,
                 (
-                    produto.nome,
-                    produto.preco,
-                    produto.descricao,
+                    cupom.nome,
+                    cupom.valor,
+                    cupom.descricao,
                 ),
             )
             if cursor.rowcount == 0:

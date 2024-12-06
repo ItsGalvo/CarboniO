@@ -3,9 +3,9 @@ from typing import Optional
 
 
 @dataclass
-class Produto:
+class Cupom:
     id: Optional[str] = None
     nome: Optional[str] = None
-    preco: Optional[int] = None
+    valor: Optional[int] = None
     descricao: Optional[int] = None
     id_empresa: Optional[str] = None
