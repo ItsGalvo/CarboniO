@@ -18,6 +18,7 @@
             <form action="atualizar_dados" class="col-12" method="post">
                 {{input_text('nome', 'Nome', 'data-mask="nome"', dados.nome)}}
                 {{input_text('cpf', 'CPF', 'data-mask="cpf"', dados.cpf)}}
+                {{ input_date('data_nascimento', 'Data de Nascimento', '', dados.data_nascimento)}}
                 {{input_text('email', 'E-mail', 'data-mask="email"', dados.email)}}
                 {{input_text('telefone', 'Telefone', 'data-mask="telefone"', dados.telefone)}}
                 {{input_text('cep', 'CEP', 'data-mask="cep"', dados.cep)}}

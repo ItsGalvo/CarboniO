@@ -14,7 +14,9 @@ templates = Jinja2Templates("templates")
 
 @router.get("/cuponsativos")
 def get_root(request: Request):
-    view_model = {"request": request}
+    empresa = request.state.usuario
+    cupons = CupomRepo.selecionar_Cupons(empresa.id)
+    view_model = {"request": request, "cupons": cupons}
     return templates.TemplateResponse("main/pages/empresa/cuponsativos.html", view_model)
 
 @router.get("/index")

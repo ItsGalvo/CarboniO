@@ -24,6 +24,9 @@ SQL_ATUALIZAR = """
     SET nome = ?, valor = ?, descricao = ?
     WHERE id = ?
 """
+SQL_SELECIONAR_CUPONS = """
+    SELECT * FROM cupom WHERE id_empresa = ?
+"""
 
 SQL_EXCLUIR = """
     DELETE FROM cupom

@@ -9,4 +9,3 @@ class Cupom:
     valor: Optional[int] = None
     descricao: Optional[int] = None
     id_empresa: Optional[str] = None
-    imagem: Optional[str] = None

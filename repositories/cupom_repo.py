@@ -23,7 +23,6 @@ class CupomRepo:
                     cupom.valor,
                     cupom.descricao,
                     cupom.id_empresa,
-                    cupom.imagem
                 ),
             )
             if cursor.rowcount == 0:
@@ -57,6 +56,16 @@ class CupomRepo:
             if cursor.rowcount == 0:
                 return False
             return True
+        
+    @staticmethod
+    def selecionar_Cupons(perfil: int) -> Optional[Cupom]:
+        with obter_conexao() as db:
+            cursor = db.cursor()
+            cursor.execute(SQL_SELECIONAR_CUPONS, (perfil,))
+            dados = cursor.fetchall()
+            if dados is None:
+                return None
+            return dados
 
 
     @staticmethod

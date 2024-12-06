@@ -15,13 +15,14 @@
     <hr>
     <div class="container flex-fill">
         <div class="row d-flex justify-content-center align-items-center mt-3">
+            {% for cupom in cupons %}
             <div class="col-2 d-flex justify-content-center">
-                <img src="/static/img/DG.png" alt="DG" title="DG">
+                <img src="/static/img/cupons/{{cupom.id}}.png" alt="{{cupom.nome}}" title="{{cupom.nome}}">
             </div>
             <div class="col-8">
-                <h3>15% off em creatinas</h3>
+                <h3> {{cupom.nome}} </h3>
                 <p>
-                    15% off em creatinas
+                    {{cupom.descricao}}
                 </p>
             </div>
             <div class="col-2 d-flex justify-content-center">
@@ -29,21 +30,7 @@
             </div>
         </div>
         <hr>
-        <div class="row d-flex justify-content-center align-items-center mt-3">
-            <div class="col-2 d-flex justify-content-center">
-                <img src="/static/img/nike.png" alt="Nike" title="Nike">
-            </div>
-            <div class="col-8">
-                <h3>10% off em qualquer cupom</h3>
-                <p>
-                    10% de desconto em qualquer cupom da loja Nike.
-                </p>
-            </div>
-            <div class="col-2 d-flex justify-content-center">
-                <p>QTD <br> Preço</p>
-            </div>
-        </div>
-        <hr>
+        {% endfor %}
     </div>
 </main>
 {% endblock %}

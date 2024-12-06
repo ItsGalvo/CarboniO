@@ -75,7 +75,6 @@ def decodificar_token_jwt(token: str) -> Optional[UsuarioAutenticado]:
             nome=dados_token["nome"],
             email=dados_token["email"],
             perfil=int(dados_token["perfil"]),
-            credito=int(dados_token["credito"])
         )
     except jwt.ExpiredSignatureError:
         return None

@@ -4,6 +4,7 @@ SQL_CRIAR_TABELA = """
         nome TEXT NOT NULL,
         cpf INTEGER,
         cnpj INTEGER,
+        data_nasciomento TEXT,
         email TEXT NOT NULL UNIQUE,
         telefone INTEGER NOT NULL,
         cep INTEGER,
@@ -14,8 +15,8 @@ SQL_CRIAR_TABELA = """
 """
 
 SQL_INSERIR = """
-    INSERT INTO usuario(nome, cpf, cnpj, email, telefone, cep, senha, perfil)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    INSERT INTO usuario(nome, cpf, cnpj, data_nascimento, email, telefone, cep, senha, perfil, credito)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
 """
 SQL_OBTER_SENHA_POR_EMAIL = """
     SELECT senha
@@ -24,7 +25,7 @@ SQL_OBTER_SENHA_POR_EMAIL = """
 """
 
 SQL_OBTER_DADOS_POR_EMAIL = """
-    SELECT id, nome, cpf, cnpj, email, telefone, cep, perfil, credito
+    SELECT id, nome, cpf, cnpj, data_nascimento, email, telefone, cep, perfil, credito
     FROM usuario
     WHERE email = ?
 """
@@ -37,7 +38,7 @@ SQL_OBTER_POR_ID = """
 
 SQL_ATUALIZAR_DADOS = """
     UPDATE usuario
-    SET nome = ?, cnpj = ?, cpf = ?, email = ?, telefone = ?, cep = ?
+    SET nome = ?, cnpj = ?, cpf = ?, data_nascimento = ?, email = ?, telefone = ?, cep = ?
     WHERE id = ?
 """
 

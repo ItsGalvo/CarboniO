@@ -22,12 +22,14 @@ class UsuarioRepo:
                     usuario.nome,
                     usuario.cpf,
                     usuario.cnpj,
+                    usuario.data_nascimento,
                     usuario.email,
                     usuario.telefone,
+                    usuario.cep,
                     usuario.senha,
                     usuario.perfil,
                     usuario.credito,
-                ),
+                )
             )
             if cursor.rowcount == 0:
                 return None
@@ -84,6 +86,7 @@ class UsuarioRepo:
                     usuario.nome,
                     usuario.cnpj,
                     usuario.cpf,
+                    usuario.data_nascimento,
                     usuario.email,
                     usuario.telefone,
                     usuario.cep,
