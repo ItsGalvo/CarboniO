@@ -182,4 +182,50 @@ function aplicarMascaras() {
     });
 }
 
+function inicializarMascaras() {
+    const inputs = document.querySelectorAll('input[data-mask]');
+    inputs.forEach(input => {
+        const maskType = input.getAttribute('data-mask');        
+        switch (maskType) {
+            case 'telefone':
+                mascararTelefone(input);
+                break;
+            case 'cpf':
+                mascararCPF(input);
+                break;
+            case 'cnpj':
+                mascararCNPJ(input);
+                break;
+            case 'cns':
+                mascararCNS(input);
+                break;
+            case 'reg':
+                mascararReg(input);
+                break;
+            case 'cep':
+                mascararCEP(input);
+                break;
+            case 'cartao':
+                mascararCartao(input);
+                break;
+            case 'mes_ano':
+                mascararMesAno(input);
+                break;
+            case 'mes_ano_maior':
+                mascararMesAnoMaior(input);
+                break;
+            case 'data':
+                mascararData(input);
+                break;
+            case 'nome':
+                mascararNome(input);
+                break;
+            case 'endereco':
+                mascararEndereco(input);
+                break;
+        }        
+    });
+}
+
 aplicarMascaras();
+inicializarMascaras();

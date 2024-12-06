@@ -114,3 +114,20 @@ async def post_alterarsenha(request: Request):
     response = RedirectResponse("/empresa/index", status.HTTP_303_SEE_OTHER)
     adicionar_mensagem_sucesso(response, "Senha alterada com sucesso!")
     return response
+
+@router.post("/post_cadastrar_cupom")
+async def post_cadastrar_cupom(request: Request):
+    dados = dict(await request.form())
+    usuario = Usuario(**dados)
+    usuario = UsuarioRepo.inserir(usuario)
+    if usuario:
+        response = RedirectResponse("/entrar", status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_sucesso(response, "Cadastro realizado com sucesso!")
+        return response
+    else:
+        response = RedirectResponse("/cadastrar", status.HTTP_303_SEE_OTHER)
+        adicionar_mensagem_erro(
+            response,
+            "Ocorreu um problema ao realizar seu cadastro. Tente novamente mais tarde.",
+        )
+        return response

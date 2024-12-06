@@ -18,26 +18,29 @@
     <div class="container flex-fill d-flex flex-column justify-content-center">
         <div class="bordered rounded-3 bg-darkgreen p-3 offset-3 col-6">
             <div class="row">
-                <div class="col-6">
-                    <div class="mb-3 ">
-                        {{input_text('nome', 'Nome do cupom', '', '')}}
+                <form action="" method="post">
+
+                    <div class="col-6">
+                        <div class="mb-3 ">
+                            {{input_text('nome', 'Nome do cupom', '', '')}}
+                        </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="mb-3">
-                        {{input_text('valor', 'Preço')}}
+                    <div class="col-6">
+                        <div class="mb-3">
+                            {{input_text('valor', 'Preço')}}
+                        </div>
                     </div>
-                </div>
-                <div class="col-12">
-                    <div class="mb-3">
-                        {{input_textarea('descricao', 'Descrição do cupom')}}
+                    <div class="col-12">
+                        <div class="mb-3">
+                            {{input_textarea('descricao', 'Descrição do cupom')}}
+                        </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <input type="file">
-                </div>
-                <div class="col-6 d-flex align-items-end">
-                    <button type="button" class="btn btn-outline-light w-100">Adicionar</button>
+                    <div class="col-6">
+                        <input type="file">
+                    </div>
+                    <div class="col-6 d-flex align-items-end">
+                        <button type="submit" class="btn btn-outline-light w-100">Adicionar</button>
+                    </form>
                 </div>
             </div>
         </div>
