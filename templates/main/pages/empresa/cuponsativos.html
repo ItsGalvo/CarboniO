@@ -14,8 +14,8 @@
   </div>
     <hr>
     <div class="container flex-fill">
+        {% for cupom in cupons %}
         <div class="row d-flex justify-content-center align-items-center mt-3">
-            {% for cupom in cupons %}
             <div class="col-2 d-flex justify-content-center">
                 <img src="/static/img/cupons/{{cupom.id}}.png" alt="{{cupom.nome}}" title="{{cupom.nome}}">
             </div>
@@ -30,7 +30,7 @@
             </div>
         </div>
         <hr>
-        {% endfor %}
     </div>
+    {% endfor %}
 </main>
 {% endblock %}
